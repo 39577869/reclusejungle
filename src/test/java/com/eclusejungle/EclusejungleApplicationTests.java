@@ -1,4 +1,4 @@
-package com.ljz.eclusejungle;
+package com.eclusejungle;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

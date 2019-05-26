@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+ <title>丛林闲居</title>
+    <link rel="stylesheet" href="style/cy.css">
+    <link rel="stylesheet" href="style/style.css">
+    <script src="js/laydate.js"></script>
+    <link rel="stylesheet" href="style/laydate.css">
+    <link rel="stylesheet" href="js/molv/laydate.css">  
+    <style rel="stylesheet">    
+.pagination {font-family: Tahoma;font-size: 12px;height: 22px;margin: 0px 100px;text-align: center;}  
+.pagination a,.page-cur,.page-start,.page-end,.page-disabled,.page-skip {  
+height:22px;line-height:22px;margin:0 3px 0 0;text-align:center;vertical-align:middle;white-space:nowrap;}  
+.pagination input {border-width: 1px;}  
+.page-start, .pagination a, .page-end, .page-disabled {border: 1px solid #CCCCCC;padding: 0 5px;}  
+.pagination a {text-decoration: none;}  
+.page-cur {background-color: #FFEDE1;border: 1px solid #FD6D01;color: #FD6D01;font-weight: 700;padding: 0 5px;}  
+.page-disabled {color: #CCCCCC;}  
+.page-skip {color: #666666;padding: 0 3px;}  
+</style> 
+</head>
+<body>
+<div>
+    <!--首页TOP-->
+    <div class="yc-txdd1">
+        
+        <!--首页banner-->
+         <jsp:include  page="head.jsp" />   
+        <script type="text/javascript">
+function Alllogin(){
+	window.location.href = "login.jsp?returnurl=/DonationLove.jsp";
+} 
+function loginOut(){
+	window.location.href = "<%=path%>/reguser!loginOut.action?returnurl=/DonationLove.jsp";
+}
+ </script>
+        <!--首页轮播图-->
+
+<%
+	String donationname = request.getParameter("donationname"); 
+if(donationname==null){
+	donationname="";
+}
+	String donationtime = request.getParameter("donationtime"); 
+	if(donationtime==null){
+		donationtime="";  
+	}
+%>
+        <!--用车-填写订单-->
+        <div class="yc-txdd">
+            <div class="yc-mbx">
+                <p>当前位置：<a href="index.jsp" class="ll">丛林闲居网</a> > <a href="FoundIndex.jsp" class="ll">基金会</a> > <a href="#"
+                                                                                               class="xz">爱心捐赠明细</a></p>
+            </div>
+            <div><img src="images/jjh_03.jpg"></div>
+            <div class="jjh-index">
+                <div class="jjh-index-left">
+                    <div class="kwff-p1">
+                        <p class="kwff-p11">公示列表</p>
+                        <p class="kwff-p12"><a href="PLpublicity.jsp"><span>款物发放公示</span></a> <a href="PLlist.jsp"><span>月底支出查询</span></a> <span class="qzfze">爱心捐赠明细</span></p>
+                    </div>
+                    <div class="jjh-jzfz1">    
+                        <div><p><span>捐款姓名：&nbsp; <input id="donationname" type="text" class="esg21" value="<%=donationname %>"></span></p> 
+                             <p><span>捐款时间：<input name="donationtime" class="laydate-icon" id="demo1" value="<%=donationtime %>" style="width:210px;"></span> </p></div>
+                        <div><input type="submit" value="开始查询" class="esg31" onclick="getDonations()"></div>     
+                    </div>     
+                   <div class="qxqz">
+                        <p>截止 2019-5-19，捐款总额为（￥）:</p>   
+                        <div id="mon">
+                       </div>
+                      
+                   </div>
+                    <div class="jzfj-gslb">
+                        <table border="1px solid #cccccc" id="tab">
+                            <thead>
+                                <td>捐赠人/单位</td>
+                                <td>金额</td> 
+                                <td>时间</td>
+                            </thead>
+                        </table>  
+                    </div>
+                    <div class="fenye" id="pageNav">
+                    </div>
+
+
+                </div>
+                <div class="jjh-index-right">
+                    <a href="FoundRescue.jsp"><div>
+                        <img src="images/brower_03.jpg" class="enheng">
+                        <p>我要求助</p>
+                        <img src="images/brower_07.jpg" >
+                    </div></a>
+                    <a href="DonationLove.jsp"><div>
+                        <img src="images/brower_11.jpg" class="enheng">
+                        <p>我要查询</p>
+                        <img src="images/brower_07.jpg">
+                    </div></a>
+                    <a href="FoundDonations.jsp"><div>
+                        <img src="images/brower_15.jpg" class="enheng" style="margin-top: 15px;">
+                        <p>我要捐款</p>
+                        <img src="images/brower_07.jpg">
+                    </div></a>
+                    <a href="UserPquery.jsp"><div>
+                        <img src="images/brower_19.jpg" class="enheng" style="margin-top: 23px;">
+                        <p>求助进度</p>
+                        <img src="images/brower_07.jpg">
+                    </div></a>
+                    <a href="FoundJzfzlist.jsp"><div>
+                        <img src="images/brower_23.jpg" style="margin-top: 16px;">
+                        <p>公示列表</p>
+                    </div></a>
+                </div>
+
+
+
+            </div>
+
+
+        </div>
+         <%@ include  file="bottom.jsp"%>
+    </div>
+    <div class="tcc none">
+        <div class="cgxd1">
+            <div class="cgxd-main">
+                <p class="xdcg"><img src="images/xdcg.png"> <img src="images/14_01.png" class="close"></p>
+
+                <p class="ddbh">订单编号：<i>WO20121015141125</i> [请牢记您的订单编号]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;订单总价：<i>9800元</i>
+                    （该订单属于线下支付类型）</p>
+
+                <p class="fhdd">您可以：<a href="#" class="fh">返回我的订单</a><a href="#" class="jx">继续预定用车</a>（如有疑问请联系丛林闲居客服QQ:88888888）
+                </p>
+
+                <p class="wxts"><i>*温馨提示：</i>IE6.0及更低版本浏览器用户请检查您的浏览器是否支持128位密钥长度，如果不支持，请升级您的浏览器（<span>查看如何检查和升级方案</span>）
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="tcc1 none">
+        <div class="cgxd2">
+            <div class="cgxd-main">
+                <p class="yzsj">
+                    验证手机
+                </p>
+
+                <div>
+                    <p class="sjh"><input type="text" placeholder="手机号"></p>
+
+                    <p class="tpyxm"><input type="text" placeholder="图片验证码"><img src="images/yzm_03.png"></p>
+
+                    <p class="tpyxm"><input type="text" placeholder="手机验证码"><a href="#">获取验证码</a></p>
+
+                    <p><i><a href="#">收不到验证码？重新再发一次</a> </i></p>
+
+                    <p><input type="submit" value="确&nbsp;&nbsp;定"></p>
+
+                    <p class="dlc"><i><a href="#">使用本站帐号登录</a></i></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="js/jquery.min.js"></script>
+<script src="js/index.js"></script>
+<script type="text/javascript">  
+!function(){
+	laydate.skin('molv');//切换皮肤，请查看skins下面皮肤库
+	laydate({elem: '#demo1'});//绑定元素
+	}();
+getDonations();   
+geMoneyCount();
+var count;//总数量
+var money;//捐款总额  
+function geMoneyCount(){
+	var mon=document.getElementById('mon'); 
+	mon.innerHTML="";
+	mon.innerHTML=" <ul id='moneys'> </ul>"; 
+	$.ajax({  
+        type : "post",  
+         url : "<%=path%>/donation!selMoneyCount.action",  
+         data: {}, 
+         dataType: "json", 
+         async : false,    
+         success : function(results){ 
+        	 var moneys=document.getElementById('moneys'); 
+        	 var t=moneys.childNodes.length; 
+        	 for (var i=0;i<t;i++){
+        		   moneys.removeChild(moneys.childNodes[i]); 
+        	  } 
+        	 money = results.moneys;
+        	 for(var i=1;i<money.length;i++){
+        		//添加 li
+        		var li = document.createElement("li");
+        		//设置 li 属性，如 id 
+        		li.innerHTML = money[i];
+        		moneys.appendChild(li);        
+            	 } 
+         }  
+    });
+}
+function getDonations(){
+	$.ajax({  
+        type : "post",  
+         url : "<%=path%>/donation!selDonationCount.action",   
+         data: {"donation.donationname":$("#donationname").val(),"donation.donationtime":$("input[name='donationtime'").val()}, 
+         dataType: "json", 
+         async : false,   
+         success : function(results){  
+        	 count = results.count; 
+        	 testPage(1);
+         }  
+    });
+}
+function InitTable(index){
+	var t1 = document.getElementById("tab"); 
+	var rowNum=t1.rows.length;  
+	if(rowNum>0){ 
+	for(i=1;i<rowNum;i++){ 
+	t1.deleteRow(i); 
+	rowNum=rowNum-1; 
+	i=i-1; 
+		} 
+	} 
+	$.ajax({  
+        type : "post",  
+         url : "<%=path%>/donation!selDonation.action",    
+         data: {"donation.donationname":$("#donationname").val(),"donation.donationtime":$("input[name='donationtime'").val(),"index":index}, 
+         dataType: "json", 
+         async : false,   
+         success : function(results){ 
+             if(results.donationJsons.length>0){
+        	 for(var i =0;i<results.donationJsons.length;i++){
+            	 var donationname = results.donationJsons[i].donationname;//捐款人名字
+            	 var money = results.donationJsons[i].money;//捐款金额
+            	 var donationtime = results.donationJsons[i].donationtime;//捐款时间
+            	 var innerTD = "<tr><td>"+donationname+"</td><td>"+money+"</td><td>"+donationtime+"</td></tr>";
+            	 $(innerTD).appendTo("#tab");  
+             }
+            }else{
+                var innerTD2 = "<tr><td  colspan='3'>暂时无捐款哦</td></tr>";
+            	 $(innerTD2).appendTo("#tab");   
+                }
+         }
+    });
+}
+function testPage(curPage){ 
+	InitTable(curPage);
+	if(count<15){
+		 document.getElementById("pageNav").innerHTML = ""; 
+		}else{ 
+		supage("pageNav", "testPage", "",curPage,count,14);
+		}
+}
+function supage(divId, funName, params, curPage, total, pageSize){  
+    var output = '<div class="pagination" style="margin-top:0px;margin-left:-60px;width:320px;">';    
+    var pageSize = parseInt(pageSize)>0 ? parseInt(pageSize) : 10;  
+    if(parseInt(total) == 0 || parseInt(total) == 'NaN') return;  
+    var totalPage = Math.ceil(total/pageSize);  
+    var curPage = parseInt(curPage)>0 ? parseInt(curPage) : 1;  
+      
+    //从参数对象中解析出来各个参数   
+    var param_str = '';  
+    if(typeof params == 'object'){  
+        for(o in params){  
+            if(typeof params[o] == 'string'){  
+               param_str += '\'' + params[o] + '\',';  
+            }  
+            else{  
+               param_str += params[o] + ',';  
+            }  
+        }  
+        //alert(111);  
+    }  
+    //设置起始页码  
+    if (totalPage > 10) {  
+        if ((curPage - 5) > 0 && curPage < totalPage - 5) {  
+            var start = curPage - 5;  
+            var end = curPage + 5;  
+        }  
+        else if (curPage >= (totalPage - 5)) {  
+            var start = totalPage - 10;  
+            var end = totalPage;  
+        }  
+        else {  
+            var start = 1;  
+            var end = 10;  
+        }  
+    }  
+    else {  
+        var start = 1;  
+        var end = totalPage;  
+    }  
+      
+    //首页控制  
+    if(curPage>1){  
+        output += '<a href="javascript:'+funName+'(' + param_str + '1);" title="第一页" class="page-first">«</a>';  
+    }  
+    else  
+    {  
+        output += '<span class="page-disabled">«</span> ';  
+    }  
+    //上一页菜单控制  
+    if(curPage>1){  
+        output += '<a href="javascript:'+funName+'(' + param_str + (curPage-1)+');" title="上一页" class="page-previous">‹</a>';  
+    }  
+    else{  
+        output += '<span class="page-disabled">‹</span>';  
+    }  
+      
+    //页码展示  
+    for (i = start; i <= end; i++) {  
+        if (i == curPage) {  
+            output += '<a href="javascript:;" class="page-cur">' + curPage + '</a>';  
+        }  
+        else {  
+            output += '<a href="javascript:'+funName+'(' + param_str + i + ');">' + i + '</a>';  
+        }  
+    }  
+    //下一页菜单控制  
+    if(totalPage>1 && curPage<totalPage){  
+        output += '<a title="下一页" href="javascript:'+funName+'('+param_str + (curPage+1)+');" class="page-next">›</a>';  
+    }  
+    else{  
+        output += '<span class="page-disabled">›</span>';  
+    }  
+    //最后页控制  
+    if(curPage<totalPage){  
+        output += '<a title="最后页" href="javascript:'+funName+'('+param_str + totalPage+');" class="page-end">»</a>';  
+    }  
+    else{  
+        output += '<span class="page-disabled">»</span>';  
+    }  
+      
+    output += '</div>';  
+    //渲染到dom中  
+    document.getElementById(divId).innerHTML = output;  
+};  
+</script>  
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+     <title>丛林闲居</title>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <link rel="stylesheet" href="style/cy.css">
+    <link rel="stylesheet" href="style/style.css">
+</head>
+<body style="background-color: #f6f6f6;">
+
+<!--首页TOP-->
+    <div class="yc-txdd1">
+        
+        <!--首页banner-->
+        <jsp:include  page="head.jsp" />   
+<script type="text/javascript">
+function Alllogin(){
+	window.location.href = "login.jsp?returnurl=/ConEntryPage.jsp";
+} 
+function loginOut(){
+	window.location.href = "<%=path%>/reguser!loginOut.action?returnurl=/ConEntryPage.jsp";
+}
+</script>
+<!--用车-填写订单-->
+
+
+    <div class="yc-mbx">
+        <div class="yc-mbx2">
+        <p>当前位置：<a href="index.jsp" class="ll">丛林闲居网</a> >  <a href="#" class="xz">忏悔</a></p>
+        </div>
+    </div>
+        <div class="yc-txdd">
+    <div class="ch-jry">
+    <div><img src="images/ch_03.jpg"></div>
+    <div class="ch-jry1">
+        <p><a href="ConRoom.jsp">进入忏悔室</a><a href="javascript:void(0)" class="ydtjw">阅读解脱文</a></p>
+    </div>
+    </div>
+</div>
+ <!--忏悔-进入页-->
+
+ <%@ include  file="bottom.jsp"%>
+    </div>
+<div class="tcc none">
+    <div class="tx-ydm">
+    		<form action="<%=path %>/free!selFreeOfPwd.action" method="post" id="myForm">
+            <p class="tx-sm"><span class="one"><img src="images/tx.png">提示</span><span class="two"><img src="images/14_01.png" class="close2"></span></p><br/><br/><br/>
+            <p><div style="text-align: center;color: red;" id="message"><input type="hidden" id="hidden"/></div></p>
+            <p class="ydm">请输入阅读码：<input type="text" name="confession.pwd" id="pwd" > </p><!-- onmouseout="checkPwd()" onfocus="resetPwd()" -->
+            <p><input   type="button" value="确&nbsp;&nbsp;认" onclick="checkPwd()" id="button" class="safe" ></p>
+            </form>
+    </div>
+</div>
+<script type="text/javascript">
+	function checkPwd(){
+		//判断表单的客户端验证是否通过
+		var pwd = document.getElementById("pwd").value;
+		var button = document.getElementById("button");
+		var valid = false;
+		if(pwd==""||pwd==null){
+			valid = false;
+		}else{
+			valid=true;
+		}
+		if (valid) {
+			$.post("<%=path %>/free!checkPwd.action",
+				  {"confession.pwd":pwd},
+				  function(result){
+					  if(result == null){
+						 /*  button.disabled=true; */
+						  $("#message").html(result.message);
+						  return false;
+					  }
+					  if(result.status=="true"||result.status==true){
+						  /* button.disabled=false; */
+					  	  $("#message").html(result.message);
+					  	  $("#hidden").value="1";
+					  	document.getElementById("myForm").submit();
+					  }else{
+						 /*  button.disabled=true; */
+						  $("#message").html(result.message);
+						  /* document.getElementById("pwd").value = "" */;
+					  }
+				  },"json");
+		}else{
+			 $("#message").html("请输入正确的密码格式");
+			 /* document.getElementById("pwd").value = "" */;
+		}
+	}
+	function resetPwd(){
+		if(document.getElementById("hidden").value!=1){
+		/* document.getElementById("pwd").value = "" */;
+		$("#message").html("");
+		}
+	}
+	function subForm(){
+		/* document.getElementById("myForm").submit(); */
+	}
+</script>
+<script src="js/index.js"></script>
+
+</body>
+</html>

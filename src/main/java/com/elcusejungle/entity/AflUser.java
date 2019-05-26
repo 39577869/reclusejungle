@@ -13,6 +13,7 @@ package com.elcusejungle.entity;
     @Data
         @EqualsAndHashCode(callSuper = false)
     @Accessors(chain = true)
+
     public class AflUser implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -25,6 +26,5 @@ package com.elcusejungle.entity;
     private String password;
 
     private String fileurl;
-
 
 }

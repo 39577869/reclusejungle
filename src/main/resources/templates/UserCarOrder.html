@@ -3,9 +3,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>丛林闲居-用户中心-用车订单</title>
-    <link rel="stylesheet" href="style/cy.css">
-    <link rel="stylesheet" href="style/style.css">
-<style rel="stylesheet">  
+    <link rel="stylesheet" href="style/cy.css" th:href="@{before/style/cy.css}">
+    <link rel="stylesheet" href="style/style.css" th:href="@{before/style/style.css}">
+<style rel="stylesheet">
 .pagination {font-family: Tahoma;font-size: 12px;height: 22px;margin: 5px 10px;text-align: right;}  
 .pagination a,.page-cur,.page-start,.page-end,.page-disabled,.page-skip {  
 height:22px;line-height:22px;margin:0 3px 0 0;text-align:center;vertical-align:middle;white-space:nowrap;}  
@@ -15,31 +15,28 @@ height:22px;line-height:22px;margin:0 3px 0 0;text-align:center;vertical-align:m
 .page-cur {background-color: #FFEDE1;border: 1px solid #FD6D01;color: #FD6D01;font-weight: 700;padding: 0 5px;}  
 .page-disabled {color: #CCCCCC;}  
 .page-skip {color: #666666;padding: 0 3px;}  
-</style> 
+</style>
 </head>
 <body style="background-color:#f6f6f6;">
-<c:if test="${sessionUser==null }">
-<script type="text/javascript">
-window.location.href = "<%=path%>/login.jsp";
+
+<script th:inline="javascript" th:if="${session.user}==null">
+   // window.location.href = "<%=path%>/login.jsp";
 </script>
-</c:if>
-<c:if test="${isUpdate ==1}">
-<script type="text/javascript">
-	alert("取消预定成功");
-	window.location.href = "<%=path%>/UserCarOrder.jsp"; 
+<script th:inline="javascript" th:if="${isUpdate}==1">
+    alert("取消预定成功");
+    window.location.href = "<%=path%>/UserCarOrder.jsp";
 </script>
-</c:if>
-<c:if test="${isUpdate ==0}">
-<script type="text/javascript">
-	alert("取消预定失败，请重试");
-	window.location.href = "<%=path%>/UserCarOrder.jsp";  
+<script th:inline="javascript" th:if="${isUpdate}==0">
+    alert("取消预定失败，请重试");
+    window.location.href = "<%=path%>/UserCarOrder.jsp";
 </script>
-</c:if>
+
 <div>
     <!--首页TOP-->
     
     <!--首页banner-->
-     <jsp:include  page="head.jsp" />
+   <div th:insert="~{head::top1}"></div>
+    <div th:insert="~{head::top2}"></div>
    <script type="text/javascript">
    function loginOut(){
 		window.location.href = "<%=path%>/reguser!loginOut.action?returnurl=/clxjmain!Homepage.action";
@@ -47,24 +44,24 @@ window.location.href = "<%=path%>/login.jsp";
    </script>
     <!--首页轮播图-->
     <!--用车-填写订单-->
-    <div class="personal-content">
-        <div><img src="images/ayw_03.gif"></div>
+    <div class="personal-content" th:fragment="user">
+        <div><img src="images/ayw_03.gif" th:src="@{before/images/ayw_03.gif}"></div>
         <div class="per-cont-left">
             <ul class="left-top">
                 <li class="top-one">
                     <ul class="lf one-i">
-                       <li><c:if test="${sessionUser.sex ==true}"><img src="images/touxiagn.png"/></c:if>
-                            	<c:if test="${sessionUser.sex ==false}"><img src="images/touxiagnv.jpg"/></c:if>
-                            </li>
+                      <!-- <li><img src="images/touxiagn.png" th:src="before/images/touxiagn.png" th:if="${session.user.sex}"/>
+                            	<img src="images/touxiagnv.jpg" th:src="before/images/touxiagnv.jpg" th:if="${session.user.sex}">
+                            </li>-->
                     </ul>
                     <ul class="lf one-ii">
                         <li> </li>
-                        <li>尊敬的会员！<input type="hidden" id="uid" value="${sessionUser.id }"/></li>
+                   <!--     <li>尊敬的会员！<input type="hidden" id="uid" value="${sessionUser.id }" th:text="${session.user.id}"/></li>-->
                         <li class="quit"><em onclick="loginOut()">[退出]</em></li>
                     </ul>
                 </li>
-                <li class="top-two cf">手机：${sessionUser.mobile }</li>
-                    <li class="top-two">邮箱：${sessionUser.email }</li>
+                <li1 class="top-two cf">手机：</li1>
+                    <li class="top-two">邮箱：</li>
             </ul>
             <ul class="grzl-banner">
                 <li> <a href="UserPersonal.jsp"><p class="grzl"></p>个人资料</a></li>
@@ -101,11 +98,12 @@ window.location.href = "<%=path%>/login.jsp";
         </div>
 
     </div>
-     <%@ include  file="bottom.jsp"%>
+    <div th:insert="~{bottom::bot1}"></div>
+    <div th:insert="~{bottom::bot2}"></div>
 </div>
 
-<script src="js/jquery.min.js"></script>
-<script src="js/index.js"></script>
+<script type="text/javascript" th:src="@{webjars/jquery/3.0.0/jquery.js}"></script>
+<script src="js/index.js" th:src="@{before/js/index.js}"></script>
 <script type="text/javascript">
 function updateOrder(update){
 	var oid = 'oid'+update;

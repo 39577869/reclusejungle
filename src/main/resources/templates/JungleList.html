@@ -3,21 +3,23 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>丛林闲居-闲居-列表页</title>
-    <link rel="stylesheet" href="style/cy.css">
-    <link rel="stylesheet" href="style/style.css">
-    <script src="js/laydate.js"></script>
-    <link rel="stylesheet" href="style/laydate.css">
-    <link rel="stylesheet" href="js/molv/laydate.css">
-    <script src="js/jquery.min.js"></script>
+    <link rel="stylesheet" th:href="@{before/style/cy.css}">
+    <link rel="stylesheet" th:href="@{before/style/style.css}">
+    <script th:src="@{before/js/laydate.js}"></script>
+    <link rel="stylesheet" th:href="@{before/style/laydate.css}">
+    <link rel="stylesheet" th:href="@{before/js/molv/laydate.css}">
+    <script th:src="@{webjars/jquery/3.0.0/jquery.js}"></script>
     <!--<script type='text/javascript' src='js/citylist.js'></script>-->
-    <script type='text/javascript' src='js/querycity1.js'></script>
-    <link href='style/cityquery.css' rel="stylesheet" type="text/css" />
+    <script type='text/javascript' th:src='@{before/js/querycity1.js}'></script>
+    <link th:href='@{before/style/cityquery.css}' rel="stylesheet" type="text/css" />
 </head>
 <body>
 <!--首页TOP-->
  
 <!--首页banner-->
-  <jsp:include  page="head.jsp" />
+  <!--<jsp:include  page="head.jsp" />-->
+<div th:insert="~{head::top1}"></div>
+<div th:insert="~{head::top2}"></div>
  <script type="text/javascript">
 function Alllogin(){
 	window.location.href = "login.jsp?returnurl=/clxjmain!selXjOfPage.action";
@@ -32,12 +34,10 @@ function Allregister(){
 <div class="index-lbt">
     <div id="scrollPics">
         <ul class="slider">
-             <li><img src="${clxjBackurl }/roll/home/lbt1.png" class="lower" width="100%" height="380px"/>
+            <li><img th:src="@{before/images/lbt1.jpg}" class="lower" width="100%" height="380px"/>
             </li>
-            <li><img src="${clxjBackurl }/roll/home/lbt2.png" width="100%" height="380px"/></li>
-            <li><img src="${clxjBackurl }/roll/home/lbt3.png" width="100%" height="380px"/></li>
-            <li><img src="${clxjBackurl }/roll/home/lbt4.png" width="100%" height="380px"/></li>
-            <li><img src="${clxjBackurl }/roll/home/lbt5.png" width="100%" height="380px"/></li>
+            <li><img th:src="@{before/images/lbt2.jpg}" width="100%" height="380px"/></li>
+            <li><img th:src="@{before/images/lbt3.png}" width="100%" height="380px"/></li>
         </ul> 
         <ul class="num">
             <li class="on"></li>
@@ -51,30 +51,30 @@ function Allregister(){
         <div class="gjcl">
             <div class="lbttj">
                 <div class="tj-top">
-                    <span <c:if test="${citytype ==true}"> class="gnxjac"</c:if> <c:if test="${citytype ==null}"> class="gnxjac"</c:if>>国内闲居</span ><span <c:if test="${citytype ==false}"> class="gnxjac"</c:if>>国际闲居</span>
+                    <span class="gnxjac">国内闲居</span ><span class="gnxjac">国际闲居</span>
                 </div> 
                 <div class="tj-bottom">
-                    <div <c:if test="${citytype ==true}">class="xj"</c:if><c:if test="${citytype ==false}">class="xj none"</c:if> <c:if test="${citytype ==null}"> class="xj"</c:if>>
+                    <div class="xj">
                      <form action="<%=path %>/clxjmain!selXjOfPage.action" method="post" onsubmit="getCity('10',ones)"> 
                         <table>
                             <tr>
                                 <td>目的地</td>
-                                <td class="sec "><input type="text"  <c:if test="${cityzw!=null }">value="${cityzw }"</c:if>  <c:if test="${citypy!=null }"> data-wholename="${citypy }"</c:if><c:if test="${citypy==null }"> data-wholename=""</c:if> placeholder="请输入城市名" id="ones"></td>
-                                			<input type="hidden" name="clxjmain.belong_city" id="city10" <c:if test="${cityzw!=null }">value="${cityzw }"</c:if>> 
+                                <td class="sec "><input type="text" placeholder="请输入城市名" id="ones"></td>
+                                			<input type="hidden" name="clxjmain.belong_city" id="city10">
                                         	<input type="hidden" name="clxjmain.type1" value="true"/>
                                         	<input type="hidden" name="clxjmain.type2" value="false"/>
                             </tr>
                             <tr>
                                 <td>入住</td>
-                                <td><p><input name="startTime" class="laydate-icon" id="demo1" <c:if test="${startTime !=null}">value="${startTime }"</c:if><c:if test="${startTime ==null}">value="2018-2-3"</c:if> >
+                                <td><p><input name="startTime" class="laydate-icon" id="demo1">
                                 </p>
 
-                                    <p>退房<input name="endTime" class="laydate-icon" id="demo2" <c:if test="${endTime !=null}">value="${endTime }"</c:if><c:if test="${endTime ==null}">value="2019-1-1"</c:if>>
+                                    <p>退房<input name="endTime" class="laydate-icon" id="demo2" value="2019-1-1">
                                     </p></td>
                             </tr>
                             <tr>  
                                 <td>关键词</td>
-                                <td class="sec"><input type="text" name="clxjmain.name"   <c:if test="${cityname==null }">placeholder="请输入地标/商圈/景点"</c:if> <c:if test="${cityname!=null }">value="${cityname }"</c:if> id="gnxjkey" ></td>
+                                <td class="sec"><input type="text" name="clxjmain.name" placeholder="请输入地标/商圈/景点" id="gnxjkey" ></td>
                             </tr>
                             <tr>
                                 <td></td>
@@ -83,7 +83,7 @@ function Allregister(){
                         </table> 
                         </form>
                     </div>
-                    <div <c:if test="${citytype ==true}">class="xj none"</c:if> <c:if test="${citytype ==false}">class="xj"</c:if> <c:if test="${citytype ==null}"> class="xj none"</c:if>>
+                    <div class="xj none">
                     <form action="<%=path %>/clxjmain!selXjOfPage.action" method="post" onsubmit="getCity('00',oness)"> 
                     <table>
                         <tr>
@@ -95,15 +95,15 @@ function Allregister(){
                         </tr>
                         <tr>
                             <td>入住</td>
-                            <td><p><input name="startTime" class="laydate-icon" id="demo3" <c:if test="${startTime !=null}">value="${startTime }"</c:if><c:if test="${startTime ==null}">value="2018-2-1"</c:if>>
+                            <td><p><input name="startTime" class="laydate-icon" id="demo3">
                             </p>
 
-                                <p>退房<input name="endTime" class="laydate-icon" id="demo4" <c:if test="${endTime !=null}">value="${endTime }"</c:if><c:if test="${endTime ==null}">value="2019-4-14"</c:if>>
+                                <p>退房<input name="endTime" class="laydate-icon" id="demo4">
                                 </p></td> 
                         </tr>
                         <tr> 
                             <td>关键词</td>
-                            <td class="sec"><input type="text" name="clxjmain.name" <c:if test="${cityname==null }">placeholder="请输入地标/商圈/景点"</c:if> <c:if test="${cityname!=null }">value="${cityname }"</c:if>  id="gjxjkey" ></td>
+                            <td class="sec"><input type="text" name="clxjmain.name" placeholder="请输入地标/商圈/景点"  id="gjxjkey" ></td>
                         </tr>
                         <tr>
                             <td></td>
@@ -118,7 +118,7 @@ function Allregister(){
     </div>
 </div>
 <div class="lby">
-<c:forEach items="${page.list}" var="x"> 
+<!--<c:forEach items="${page.list}" var="x"> -->
     <div class="lby-xy">
         <div class="lby-left">
             <a href="<%=path%>/clxjmain!selClxjOfId.action?clxjmain.id=${x.id}"><img width="296" height="188" src=${clxjBackurl }${x.first_img_min }></a>
@@ -145,11 +145,11 @@ function Allregister(){
             </div>
         </div>
     </div>
-    </c:forEach> 
+    <!--</c:forEach> -->
 </div>
 <form action="<%=path%>/clxjmain!selXjOfPage.action" method="post" id="xjForm">
     <input type="hidden" id="offset" name="offset" value="${offset }">
-      <c:if test="${citytype !=null}"> <input type="hidden" name="clxjmain.type1" value="${citytype }"/></c:if>
+      <!--<c:if test="${citytype !=null}"> <input type="hidden" name="clxjmain.type1" value="${citytype }"/></c:if>-->
     <input type="hidden" name="clxjmain.type2" value="${citytype2 }"/>
     <input type="hidden" name="clxjmain.name" value="${cityname }"/>  
     <input type="hidden" name="clxjmain.belong_city" value="${belong_city }"/>
@@ -157,10 +157,9 @@ function Allregister(){
 <div class="fenye">
     ${page.navigation }
 </div>
- <%@ include  file="bottom.jsp"%>
+ <!--<%@ include  file="bottom.jsp"%>-->
 
-
-<script src="js/index.js"></script>
+<script th:src="@{before/js/index.js}"></script>
 <script type="text/javascript">
     !function () {
         laydate.skin('molv');//切换皮肤，请查看skins下面皮肤库

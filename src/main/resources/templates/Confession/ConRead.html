@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <title>丛林闲居-忏悔-阅读脱解文</title>
 
-    <script type="text/javascript" src="../js/jquery.min.js"></script>
-    <link rel="stylesheet" href="../style/cy.css">
-    <link rel="stylesheet" href="../style/style.css">
+    <script type="text/javascript" src="../js/jquery.min.js" th:src="@{webjars/jquery/3.0.0/jquery.js}"></script>
+    <link rel="stylesheet" th:href="@{before/style/cy.css}" href="style/cy.css">
+    <link rel="stylesheet" th:href="@{before/style/style.css}" href="style/style.css">
 </head>
 <body style="background-color: #f6f6f6;">
 
@@ -15,11 +15,11 @@
     <div class="index-top">
         <div class="index-top3">
             <div class="left">
-                <span class="one"><a href="../index.html"><img src="../images/logo.png"></a></span>
-                <span class="two"><img src="../images/index_q.png"></span>
+<!--                <span class="one"><a href="../index.html"><img th:src="@{before/images/logo.png}"></a></span>-->
+                <span class="two"><img th:src="@{before/images/index_q.png}"></span>
 
                 <div class="three">
-                    <span><img src="../images/index_03.png"></span>
+                    <span><img th:src="@{before/images/index_03.png}"></span>
                     <ul>
                         <li class="rx">客户服务热线:</li>
                         <li class="phone">400-688-6798</li>
@@ -27,9 +27,9 @@
                 </div>
             </div>
             <div class="right">
-                <p class="one"><img src="../images/index_06.jpg"></p>
+                <p class="one"><img th:src="@{before/images/index_06.jpg}"></p>
 
-                <p class="two1"><img src="../images/index_04.jpg"></p>
+                <p class="two1"><img th:src="@{before/images/index_04.jpg}"></p>
             </div>
         </div>
     </div>
@@ -54,7 +54,7 @@
 
     <!--忏悔-忏悔室-->
     <div class="yc-txdd">
-        <img src="../images/ydtjw03.jpg" style="margin-top:10px;">
+        <img th:src="@{before/images/ydtjw03.jpg}" style="margin-top:10px;">
         <div class="ch-chs1">
                 <div class="ch">
                     <p>忏悔：</p>
@@ -70,7 +70,7 @@
                 </div>
             <p class="xuxian"></p>
             <div class="tjw">
-                <p><img src="../images/ydtjw103.jpg">解脱文：</p>
+                <p><img th:src="@{before/images/ydtjw103.jpg}">解脱文：</p>
                 <p class="tjw1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;弟子洪成发愿.从今日起我要好好认真学佛.听父母的话.听佛菩萨的话.听老法师的话做一个真正的佛弟子.弃恶从善.万恶莫作.
 
                     甩掉贪嗔痴慢疑.追上孝悌礼仪忠.弟子恳请西方极乐世界所有的佛菩萨加持弟子早日成就往生.我要向大慈父阿弥陀佛慈母观音菩萨
@@ -110,19 +110,19 @@
         </div>
         <div class="yj-right">
             <div class="yr-one">
-                <img src="../images/index_38.jpg">
+                <img th:src="@{before/images/index_38.jpg}">
                 <p>用户APP下载</p>
             </div>
             <div class="yr-one">
-                <img src="../images/index_40.jpg">
+                <img th:src="@{before/images/index_40.jpg}">
                 <p>丛林/闲居管理者APP下载</p>
             </div>
             <div class="yr-one">
-                <img src="../images/index_42.jpg">
+                <img th:src="@{before/images/index_42.jpg}" th:height="96px" th:width="96px">
                 <p>司机用车APP</p>
             </div>
             <div class="yr-one">
-                <img src="../images/index_42.jpg">
+                <img th:src="@{before/images/index_42.jpg}" th:height="96px" th:width="96px">
                 <p>微信平台</p>
             </div>
         </div>
@@ -133,22 +133,22 @@
         <li>旅行社业务经营许可证编号：L-SH-00321 赣ICP备11015723号</li>
         <li>Copyright © 2015 <a href="#">丛林闲居</a> 版权所有 3wcl.com | 营业执照 | 客服中心：025-86859999</li>
     </ul>
-    <p><a href="#"><img src="../images/index_48.jpg"></a><a href="#"><img src="../images/index_50.jpg"></a><a href="#"><img
-            src="../images/index_52.jpg"></a> <a href="#"><img src="../images/index_54.jpg"></a><a href="#"><img
-            src="../images/index_56.jpg"></a> <a href="#"><img src="../images/index_58.jpg"></a></p>
+    <p><a href="#"><img th:src="@{before/images/index_48.jpg}"></a><a href="#"><img th:src="@{before/images/index_50.jpg}"></a><a href="#"><img
+            th:src="@{before/images/index_52.jpg}"></a> <a href="#"><img th:src="@{before/images/index_54.jpg}"></a><a href="#"><img
+            th:src="@{before/images/index_56.jpg}"></a> <a href="#"><img th:src="@{before/images/index_58.jpg}"></a></p>
 </footer>
 </div>
 <div class="tcc none">
     <div class="cgxd3">
         <div class="cgxd-main">
-            <p class="xdcg"><img src="../images/chw.png">  <img src="../images/14_01.png" class="close"></p>
+            <p class="xdcg"><img th:src="@{before/images/chw.png}">  <img th:src="@{before/images/14_01.png}" class="close"></p>
             <p class="ddbh">您的“忏悔”内容已提交，阅读解脱文密码为 <i>WO2012</i> ！</p>
             <p class="fhdd"><a href="../index.html" class="fh">返回首页</a>（牢记上6位数字码，方便您阅读解脱文）</p>
         </div>
     </div>
 </div>
 
-<script src="../js/index.js"></script>
+<script src="../js/index.js" th:src="@{before/js/index.js}"></script>
 
 </body>
 </html>

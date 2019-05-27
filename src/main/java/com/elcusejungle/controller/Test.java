@@ -28,7 +28,17 @@ public class Test {
 
     @RequestMapping("/head")
     public String head(HttpSession session){
-        return "DonationLove";
+        //return "Confession/play-record";
+        return "UserPersonal";
     }
 
+    @RequestMapping("/login")
+    public String login(){
+        return "login";
+    }
+
+    @RequestMapping("/JungleList")
+    public String JungleList(){
+        return "JungleList";
+    }
 }

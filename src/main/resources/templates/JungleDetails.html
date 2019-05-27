@@ -5,12 +5,12 @@
 	<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=6ckv1PGt7okn9XhxK6ris4IB"></script>
      <title>丛林闲居</title>
 
-    <script type="text/javascript" src="js/jquery.min.js"></script>
-    <script type="text/javascript" src="js/jquery.ad-gallery.js"></script>
-    <script type="text/javascript" src="js/zzsc.js"></script>
-    <link rel="stylesheet" href="style/cy.css">
-    <link rel="stylesheet" href="style/style.css">
-    <link rel="stylesheet" type="text/css" href="style/jquery.ad-gallery.css">
+    <script type="text/javascript" th:src="@{before/js/jquery.min.js}"></script>
+    <script type="text/javascript" th:src="@{before/js/jquery.ad-gallery.js}"></script>
+    <script type="text/javascript" th:src="@{before/js/zzsc.js}"></script>
+    <link rel="stylesheet" th:href="@{before/style/cy.css}">
+    <link rel="stylesheet" th:href="@{before/style/style.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{before/style/jquery.ad-gallery.css}">
 	<style rel="stylesheet">  
 .pagination {font-family: Tahoma;font-size: 12px;height: 22px;margin: 5px 10px;text-align: right;}  
 .pagination a,.page-cur,.page-start,.page-end,.page-disabled,.page-skip {  
@@ -29,7 +29,8 @@ height:22px;line-height:22px;margin:0 3px 0 0;text-align:center;vertical-align:m
     <div class="yc-txdd1">
         
         <!--首页banner-->
-         <jsp:include  page="head.jsp" />
+        <div th:insert="~{head::top1}"></div>
+        <div th:insert="~{head::top2}"></div>
  <script type="text/javascript">
 //获取地址栏
  function GetRequest() {
@@ -67,7 +68,7 @@ function loginOut(){
     <div class="yc-mbx"> 
         <p>当前位置：<a href="javascript:void(0)" class="ll" onclick="goList()"><c:if test="${clxjmainJson.type1 == 1}">国内</c:if><c:if test="${clxjmainJson.type1 ==0}">国际</c:if><c:if test="${clxjmainJson.type2 == 1}">丛林</c:if><c:if test="${clxjmainJson.type2 == 0}">闲居</c:if></a> >  <a href="javascript:void(0)" class="xz">${clxjmainJson.name }</a></p>
     </div>
-    <div><img src="images/xxy_03.jpg"></div>
+    <div><img th:src="@{before/images/xxy_03.jpg}"></div>
 </div>
  <!--详情页（丛林）-->
         <div class="xqy-top">
@@ -86,13 +87,13 @@ function loginOut(){
                 <div class="ad-nav">
                     <div class="ad-thumbs">
                         <ul class="ad-thumb-list">
-                        <c:forEach items="${urlStr }" var="pl">
+                        <!--<c:forEach items="${urlStr }" var="pl">-->
                             <li>  
                                 <a href="${clxjBackurl }${pl}">
                                     <img width="75" height="50" src="${clxjBackurl }${pl}" class="image0">
                                 </a>
                             </li>
-                          </c:forEach>
+                          <!--</c:forEach>-->
                         </ul>
                     </div>
                 </div>
@@ -103,7 +104,7 @@ function loginOut(){
             <div class="xr-top">
                 <!-- <div class="hpl"><i class="bfl">98%</i><i class="hp">好评率</i></div> -->
                 <span class="dp">共<i>${clxjmainJson.ccount }</i>点评</span>|
-                <span class="fwzs"><img src="images/18.png">服务指数：<i class="fs">${clxjmainJson.hpl }</i><i class="yg">/10分</i></span>
+                <span class="fwzs"><img th:src="@{before/js/images/18.png}">服务指数：<i class="fs">${clxjmainJson.hpl }</i><i class="yg">/10分</i></span>
             </div>
             <div class="xr-bottom">
                 <!-- <div class="tk">
@@ -120,9 +121,10 @@ function loginOut(){
                     <p class="xjq">地铁4号线北宫门站，换乘346路公交车至终</p>
                 </div> -->  
                <div class="tk rjj"> 
-                    <p>日均价：<i style="font-size: 25px;"><c:if test="${clxjmainJson.price ==0}">随缘</c:if><c:if test="${clxjmainJson.price !=0}">${clxjmainJson.price}</c:if></i>
-                    <c:if test="${sessionUser!=null }"><a href="<%=path%>/clxjmain!selClxjOfId.action?clxjmain.id=${clxjmainJson.id}&isOrder=2">立即预定</a> </c:if>
-                     <c:if test="${sessionUser==null }"><a href="#" onclick="Alllogin()">请先登录</a> </c:if> 
+                    <p>日均价：<i style="font-size: 25px;">随缘</i>
+                    <a href="<%=path%>/clxjmain!selClxjOfId.action?clxjmain.id=${clxjmainJson.id}&isOrder=2">立即预定</a>
+                        <!-- 未登录显示-->
+                     <!--<a href="#" onclick="Alllogin()">请先登录</a> -->
                      </p> 
                 </div> 
                 <div style="margin-top: 100px;">       
@@ -136,7 +138,7 @@ function loginOut(){
         <div class="xqy-content"> 
             <div class="xqycon-left">
                 <p class="cljj">
-                    <c:if test="${clxjmainJson.type2 == 1}">丛林</c:if><c:if test="${clxjmainJson.type2 == 0}">闲居</c:if>简介<input type="hidden" id="cid" value="${clxjmainJson.id }"/>
+                    丛林 闲居 简介<input type="hidden" id="cid" value="${clxjmainJson.id }"/>
                 </p>
                 <p class="jj"> 
                 	${clxjmainJson.introduction }
@@ -203,12 +205,12 @@ function loginOut(){
                             <tr>
                                 <td></td>
                                 <td>
-                                	<c:if test="${sessionUser !=null}">
+                                	<!--<c:if test="${sessionUser !=null}">-->
                                 		<input type="button" value="提交点评" onclick="subForm()">
-                                	</c:if>
-                                	<c:if test="${sessionUser ==null}" >
-                                		<input type="button" value="请先登录" onclick="Alllogin()">
-                                	</c:if>
+                                	<!--</c:if>-->
+                                	<!--<c:if test="${sessionUser ==null}" >-->
+                                		<!--<input type="button" value="请先登录" onclick="Alllogin()">-->
+                                	<!--</c:if>-->
                                 </td>
                             </tr>
                         </table>
@@ -219,15 +221,13 @@ function loginOut(){
             </div>
             <div class="xqycon-right">
                 
-                <p class="zbxj"><img src="images/xxy1_03.jpg">周边<c:if test="${clxjmainJson.type2 == 1}">丛林</c:if><c:if test="${clxjmainJson.type2 == 0}">闲居</c:if></p>
-                <c:if test="${clxjmainJsons ==null}">周边暂时无推荐哦</c:if> 
-                <c:forEach items="${clxjmainJsons }"  var="clxj"  end="9">  
+                <p class="zbxj"><img src="images/xxy1_03.jpg">周边</p>
+                <!--周边暂时无推荐哦-->
                 <div class="jd" >      
                     <p><img style="cursor:pointer;" onclick="goOther(${clxj.id})" height="70" width="100" src="${clxjBackurl }${clxj.first_img_min}"> </p>
                     <p class="js"><span>${clxj.name}</span><span class="jdy"></span></p>
-                    <p class="qian">￥<i><c:if test="${clxj.price==0}">随缘</c:if><c:if test="${clxj.price!=0}">${clxj.price}</c:if></i></p>
-                </div>      
-                </c:forEach>
+                    <p class="qian">￥<i>随缘</i></p>
+                </div>
             </div>
         </div>
  <%@ include  file="bottom.jsp"%>
@@ -235,7 +235,7 @@ function loginOut(){
 <div class="tcc none">
     <div class="cgxd1">
         <div class="cgxd-main">
-            <p class="xdcg"><img src="images/xdcg.png">  <img src="images/14_01.png" class="close"></p>
+            <p class="xdcg"><img th:src="@{before/images/xdcg.png}">  <img th:src="@{before/images/14_01.png}" class="close"></p>
             <p class="ddbh">订单编号：<i>WO20121015141125</i> [请牢记您的订单编号]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;订单总价：<i>9800元</i> （该订单属于线下支付类型）</p>
             <p class="fhdd">您可以：<a href="#" class="fh">返回我的订单</a><a href="#" class="jx">继续预定用车</a>（如有疑问请联系丛林闲居客服QQ:88888888）</p>
             <p class="wxts"><i>*温馨提示：</i>IE6.0及更低版本浏览器用户请检查您的浏览器是否支持128位密钥长度，如果不支持，请升级您的浏览器（<span>查看如何检查和升级方案</span>）</p>
@@ -261,7 +261,7 @@ function loginOut(){
     </div>
 </div>
 
-<script src="js/index.js"></script>
+<script th:src="@{before/js/index.js}"></script>
 
 
 <script type="text/javascript">

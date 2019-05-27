@@ -3,8 +3,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
      <title>丛林闲居</title>
-    <link rel="stylesheet" href="style/cy.css">
-    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" th:href="@{before/style/cy.css}">
+    <link rel="stylesheet" th:href="@{before/style/style.css}">
 
 </head>
 <body>
@@ -13,7 +13,8 @@
     <div class="yc-txdd1">
         
         <!--首页banner-->
-        <jsp:include  page="head.jsp" />   
+        <div th:insert="~{head::top1}"></div>
+        <div th:insert="~{head::top2}"></div>
        <script type="text/javascript">     
 function Alllogin(){
 	window.location.href = "login.jsp?returnurl=/FoundIndex.jsp";
@@ -30,7 +31,7 @@ function loginOut(){
             <div class="yc-mbx">
                 <p>当前位置：<a href="index.jsp" class="ll">丛林闲居网</a> > <a href="#" class="xz">基金会</a></p>
             </div>
-            <div><img src="images/jjh_03.jpg"></div>
+            <div><img th:src="@{before/images/jjh_03.jpg}"/></div>
             <div class="jjh-index">
                 <div class="jjh-index-left">
                     <p class="jyjs">简要介绍</p>
@@ -44,34 +45,34 @@ function loginOut(){
                     </p>
                     <p class="jyjs">活动图片</p>
                     <div class="hdtp">
-                        <img src="images/hd1.jpg"><img src="images/hd2.jpg"><img src="images/hd3.jpg"><img src="images/hd4.jpg"><img src="images/hd5.jpg"> 
-                        <img src="images/hd6.jpg"><img src="images/hd7.jpg"><img src="images/hd8.jpg"><img src="images/hd9.jpg"><img src="images/hd10.jpg">
-                        <img src="images/hd11.jpg"><img src="images/hd12.jpg"><img src="images/hd13.jpg"><img src="images/hd14.jpg"><img src="images/hd15.jpg">
+                        <img th:src="@{before/images/hd1.jpg}"><img th:src="@{before/images/hd2.jpg}"><img th:src="@{before/images/hd3.jpg}"><img th:src="@{before/images/hd4.jpg}"><img th:src="@{before/images/hd5.jpg}">
+                        <img th:src="@{before/images/hd6.jpg}"><img th:src="@{before/images/hd7.jpg}"><img th:src="@{before/images/hd8.jpg}"><img th:src="@{before/images/hd9.jpg}"><img th:src="@{before/images/hd10.jpg}">
+                        <img th:src="@{before/images/hd11.jpg}"><img th:src="@{before/images/hd12.jpg}"><img th:src="@{before/images/hd13.jpg}"><img th:src="@{before/images/hd14.jpg}"><img th:src="@{before/images/hd15.jpg}">
                     </div>
                 </div>
                 <div class="jjh-index-right">
                     <a href="FoundRescue.jsp"><div>
-                        <img src="images/brower_03.jpg" class="enheng">
+                        <img th:src="@{before/images/brower_03.jpg}" class="enheng">
                         <p>我要求助</p>
-                        <img src="images/brower_07.jpg" >
+                        <img th:src="@{before/images/brower_07.jpg}" >
                     </div></a>
                     <a href="DonationLove.jsp"><div>
-                        <img src="images/brower_11.jpg" class="enheng">
+                        <img th:src="@{before/images/brower_11.jpg}" class="enheng">
                         <p>我要查询</p>
-                        <img src="images/brower_07.jpg">
+                        <img th:src="@{before/images/brower_07.jpg}">
                     </div></a>
                     <a href="FoundDonations.jsp"><div>
-                        <img src="images/brower_15.jpg" class="enheng" style="margin-top: 15px;">
+                        <img th:src="@{before/images/brower_15.jpg}" class="enheng" style="margin-top: 15px;">
                         <p>我要捐款</p>
-                        <img src="images/brower_07.jpg">
+                        <img th:src="@{before/images/brower_07.jpg}">
                     </div></a>
                     <a href="UserPquery.jsp"><div>
-                        <img src="images/brower_19.jpg" class="enheng" style="margin-top: 23px;">
+                        <img th:src="@{before/images/brower_19.jpg}" class="enheng" style="margin-top: 23px;">
                         <p>求助进度</p>
-                        <img src="images/brower_07.jpg">
+                        <img th:src="@{before/images/brower_07.jpg}">
                     </div></a>
                     <a href="FoundJzfzlist.jsp"><div>
-                        <img src="images/brower_23.jpg" style="margin-top: 16px;">
+                        <img th:src="@{before/images/brower_23.jpg}" style="margin-top: 16px;">
                         <p>公示列表</p>
                     </div></a>
                 </div>
@@ -82,13 +83,13 @@ function loginOut(){
 
 
         </div>
-        <%@ include  file="bottom.jsp"%>
+        <!--<%@ include  file="bottom.jsp"%>-->
     </div>
 
 
 </div>
-<script src="js/jquery.min.js"></script>
-<script src="js/index.js"></script>
+<script th:src="@{before/js/jquery.min.js}"></script>
+<script th:src="@{before/js/index.js}"></script>
 
 </body>
 </html>

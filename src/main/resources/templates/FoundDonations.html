@@ -3,8 +3,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
    <title>丛林闲居-基金会-我要捐款</title>
-    <link rel="stylesheet" href="style/cy.css">
-    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" th:href="@{before/style/cy.css}">
+    <link rel="stylesheet" th:href="@{before/style/style.css}">
 </head>
 <body>
 <div>
@@ -12,7 +12,8 @@
     <div class="yc-txdd1">
          
         <!--首页banner-->
-        <jsp:include  page="head.jsp" />   
+        <div th:insert="~{head::top1}"></div>
+        <div th:insert="~{head::top2}"></div>
         <script type="text/javascript">
 function Alllogin(){
 	window.location.href = "login.jsp?returnurl=/FoundDonations.jsp";
@@ -30,7 +31,7 @@ function loginOut(){
                 <p>当前位置：<a href="index.jsp" class="ll">丛林闲居网</a> > <a href="FoundIndex.jsp" class="ll">基金会</a> > <a href="#"
                                                                                                class="xz">我要捐款</a></p>
             </div>
-            <div><img src="images/jjh_03.jpg"></div>
+            <div><img th:src="@{before/images/jjh_03.jpg}"/></div>
             <div class="jjh-index">
                 <div class="wyjk-index-left" style="padding-left:80px;">
                         <div class="jjh-p2">
@@ -70,7 +71,7 @@ function loginOut(){
                     <p class="address1">地址：江西省南昌高新开发区高新一路海外大厦北楼4层  邮编：330000</p>
                     <div class="wyjk-index-right">
                         <div class="axjz">
-                            <img src="images/love_03.jpg">我要捐款
+                            <img th:src="@{before/images/love_03.jpg}">我要捐款
                         </div>
                         <div class="axjz1">
                             <p class="srzs"><i>01/</i>基金会收入总数</p>
@@ -86,27 +87,27 @@ function loginOut(){
                 </div>
                 <div class="jjh-index-right">
                     <a href="FoundRescue.jsp"><div>
-                        <img src="images/brower_03.jpg" class="enheng">
+                        <img th:src="@{before/images/brower_03.jpg}" class="enheng">
                         <p>我要求助</p>
-                        <img src="images/brower_07.jpg" >
+                        <img th:src="@{before/images/brower_07.jpg}" >
                     </div></a>
                     <a href="DonationLove.jsp"><div>
-                        <img src="images/brower_11.jpg" class="enheng">
+                        <img th:src="@{before/images/brower_11.jpg}" class="enheng">
                         <p>我要查询</p>
-                        <img src="images/brower_07.jpg">
+                        <img th:src="@{before/images/brower_07.jpg}">
                     </div></a>
                     <a href="FoundDonations.jsp"><div>
-                        <img src="images/brower_15.jpg" class="enheng" style="margin-top: 15px;">
+                        <img th:src="@{before/images/brower_15.jpg}" class="enheng" style="margin-top: 15px;">
                         <p>我要捐款</p>
-                        <img src="images/brower_07.jpg">
+                        <img th:src="@{before/images/brower_07.jpg}">
                     </div></a>
                     <a href="UserPquery.jsp"><div>
-                        <img src="images/brower_19.jpg" class="enheng" style="margin-top: 23px;">
+                        <img th:src="@{before/images/brower_19.jpg}" class="enheng" style="margin-top: 23px;">
                         <p>求助进度</p>
-                        <img src="images/brower_07.jpg">
+                        <img th:src="@{before/images/brower_07.jpg}">
                     </div></a>
                     <a href="FoundJzfzlist.jsp"><div>
-                        <img src="images/brower_23.jpg" style="margin-top: 16px;">
+                        <img th:src="@{before/images/brower_23.jpg}" style="margin-top: 16px;">
                         <p>公示列表</p>
                     </div></a>
                 </div>
@@ -118,8 +119,8 @@ function loginOut(){
 
 
 </div>
-<script src="js/jquery.min.js"></script>
-<script src="js/index.js"></script>
+<script th:src="@{before/js/jquery.min.js}"></script>
+<script th:src="@{before/js/index.js}"></script>
 <script type="text/javascript">
 var em1 = document.getElementById("em1");
 var em2 = document.getElementById("em2");

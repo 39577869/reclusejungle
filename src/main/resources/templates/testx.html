@@ -3,10 +3,10 @@
 <head>
 <title>test</title>
 </head>
-<script type="text/javascript" src="js/jquery.js"></script>
-<script src="js/jquery.validate.min.js" type="text/javascript"></script>
-<script type="text/javascript" src="js/jquery.metadata.js"></script>
-<script type="text/javascript" src="js/messages_cn.js"></script>
+<script type="text/javascript" th:src="@{webjars/jquery/3.0.0/jquery.js}"></script>
+<script type="text/javascript" th:src="@{before/js/jquery.validate.min.js}"></script>
+<script type="text/javascript" src="js/jquery.metadata.js" th:src="@{before/js/jquery.metadata.js}"></script>
+<script type="text/javascript" src="js/messages_cn.js" th:src="@{before/js/messages_cn.js}"></script>
 
 <script type="text/javascript">
 $().ready(function() {

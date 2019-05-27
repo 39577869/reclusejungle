@@ -3,13 +3,13 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <title>丛林闲居-丛林加盟</title>
-    <link rel="stylesheet" href="style/cy.css">
-    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" th:href="@{before/style/cy.css}">
+    <link rel="stylesheet" th:href="@{before/style/style.css}">
 <!-- 表单验证start -->
-<script src="<%=path %>/js/jquery.js"></script>
-<script src="<%=path %>/js/jquery.validate.js"></script>
-<script src="<%=path%>/js/jquery.metadata.js"></script>
-<script type="text/javascript" src="<%=path%>/js/messagesx_cn.js"></script>
+    <script th:src="@{before/js/jquery.js}"></script>
+    <script th:src="@{before/js/jquery.validate.js}"></script>
+    <script th:src="@{before/js/jquery.metadata.js}"></script>
+    <script type="text/javascript" th:src="@{before/js/messagesx_cn.js}"></script>
 <!-- 表单验证stop -->
 <!-- 下载中文文件start -->
 <script src="<%=path %>/sheet/js/download.js"></script>
@@ -64,7 +64,7 @@ function loginOut(){
     <div class="yc-mbx">
         <p>当前位置：<a href="index.jsp" class="ll">丛林闲居网</a> > <a href="#" class="xz">加盟</a></p>
     </div>
-    <div><img src="images/jm_03.jpg"></div>
+    <div><img th:src="@{before/images/jm_03.jpg}></div>
     <div class="jm">
     <div class="kwff-p1">
           <p class="kwff-p11">加盟列表</p> 

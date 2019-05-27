@@ -3,40 +3,38 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
       <title>丛林闲居-用户中心-加盟进度查询</title>
-    <link rel="stylesheet" href="style/cy.css">
-    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="style/cy.css" th:href="@{before/style/cy.css}">
+    <link rel="stylesheet" href="style/style.css" th:href="@{before/style/style.css}">
 </head>
 <body style="background-color:#f6f6f6;">
-<c:if test="${sessionUser==null }">
-<script type="text/javascript">
-window.location.href = "<%=path%>/login.jsp";
+<script th:inline="javascript" th:if="${session.user}==null">
+    // window.location.href = "<%=path%>/login.jsp";
 </script>
-</c:if>
 <div>
     <!--首页TOP-->
      
     <!--首页banner-->
-     <jsp:include  page="head.jsp" />
+<!--     <jsp:include  page="head.jsp" />-->
    <script type="text/javascript">
    function loginOut(){
 		window.location.href = "<%=path%>/reguser!loginOut.action?returnurl=/clxjmain!Homepage.action";
 	}
    </script>
     <!--首页轮播图-->
-    <!--用车-填写订单-->
+   &lt;!&ndash;用车-填写订单&ndash;&gt;
     <div class="personal-content">
-        <div><img src="images/ayw_03.gif"></div>
+        <div><img src="images/ayw_03.gif" th:src="@{before/images/ayw_03.gif}"></div>
         <div class="per-cont-left">
             <ul class="left-top">
                 <li class="top-one">
                     <ul class="lf one-i">
-                        <li><c:if test="${sessionUser.sex ==true}"><img src="images/touxiagn.png"/></c:if>
-                            	<c:if test="${sessionUser.sex ==false}"><img src="images/touxiagnv.jpg"/></c:if>
-                            </li>
+                        <!-- <li><img src="images/touxiagn.png" th:src="before/images/touxiagn.png" th:if="${session.user.sex}"/>
+                               <img src="images/touxiagnv.jpg" th:src="before/images/touxiagnv.jpg" th:if="${session.user.sex}">
+                           </li>-->
                     </ul>
                     <ul class="lf one-ii">
                         <li> </li>
-                        <li>尊敬的会员！<input type="hidden" id="uid" value="${sessionUser.id }"/></li>
+                <!--        <li>尊敬的会员！<input type="hidden" id="uid" value="${sessionUser.id }"/></li>-->
                         <li class="quit"><em onclick="loginOut()">[退出]</em></li>
                     </ul>
                 </li>
@@ -68,11 +66,12 @@ window.location.href = "<%=path%>/login.jsp";
         </div>
 
     </div>
-     <%@ include  file="bottom.jsp"%>
+    <div th:insert="~{bottom::bot1}"></div>
+    <div th:insert="~{bottom::bot2}"></div>
 
 </div>
-<script src="js/jquery.min.js"></script>
-<script src="js/index.js"></script>
+<script type="text/javascript" th:src="@{webjars/jquery/3.0.0/jquery.js}"></script>
+<script src="js/index.js" th:src="@{before/js/index.js}"></script>
 <script type="text/javascript">
 getCount();
 var cl =0;

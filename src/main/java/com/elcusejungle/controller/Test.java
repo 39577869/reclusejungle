@@ -24,4 +24,5 @@ public class Test {
         list.forEach(log::info);
         return "index";
     }
+
 }

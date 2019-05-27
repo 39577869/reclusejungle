@@ -16,11 +16,11 @@ public class WebConfig implements WebMvcConfigurer {
         registry.addResourceHandler("/static/**");
     }
 
-    @Override//调用拦截器
+    /*@Override//调用拦截器
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(new HandlerIntercepter()).addPathPatterns("/**")//拦截所有请求
                 .excludePathPatterns("/login");//排除请求
-    }
+    }*/
 
     //配置试图解析器
     public WebMvcConfigurer webMvcConfigurerAdapter(){

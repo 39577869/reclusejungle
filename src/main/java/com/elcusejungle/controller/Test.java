@@ -18,7 +18,6 @@ public class Test {
     @Autowired
     IAdminuserService adminuserService;
 
-    @ResponseBody
     @RequestMapping("/test")
     public String test(){
         List<Adminuser> list = adminuserService.list();
@@ -30,5 +29,15 @@ public class Test {
     public String head(HttpSession session){
         //return "Confession/play-record";
         return "UserPersonal";
+    }
+
+    @RequestMapping("/login")
+    public String login(){
+        return "login";
+    }
+
+    @RequestMapping("/JungleList")
+    public String JungleList(){
+        return "JungleList";
     }
 }

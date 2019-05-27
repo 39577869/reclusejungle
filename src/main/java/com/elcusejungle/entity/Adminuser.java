@@ -2,8 +2,12 @@ package com.elcusejungle.entity;
 
     import com.baomidou.mybatisplus.annotation.IdType;
     import com.baomidou.mybatisplus.annotation.TableId;
+
+    import java.sql.Timestamp;
     import java.time.LocalDateTime;
     import java.io.Serializable;
+
+    import com.fasterxml.jackson.annotation.JsonFormat;
     import lombok.Data;
     import lombok.EqualsAndHashCode;
     import lombok.experimental.Accessors;
@@ -34,7 +38,8 @@ package com.elcusejungle.entity;
 
     private Boolean userflag;
 
-    private LocalDateTime regtime;
+    //@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss ",timezone = "GMT+8")
+    private Timestamp regtime;
 
     private Integer joinid;
 

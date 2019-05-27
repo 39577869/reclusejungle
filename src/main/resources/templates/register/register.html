@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Register</title>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script src="js/jquery.validate.js" type="text/javascript"></script>
+<script type="text/javascript" src="js/jquery.metadata.js"></script>
+<script type="text/javascript" src="js/messagesx_cn.js"></script>
+<script type="text/javascript">
+
+
+    //function register(){
+        //document.forms[0].action = '${pageContext.request.contextPath}/register/addUser!addUser.action';
+       // document.forms[0].submit();
+    //}
+
+    //$().ready(function() {
+   	 //for(var i=0;i<5;i++)
+   	 //{
+   		//addMore();
+   	  //}
+   	//});
+   	
+   	$().ready(function() {
+ 	$("#registerForm").validate({
+ 		rules: {
+ 		username:
+ 		{
+ 			remote: {
+ 	    	url: "${pageContext.request.contextPath}/register/addUser!validateUserName.action",     //后台处理程序
+ 	    	type: "post",               //数据发送方式
+ 	    	dataType: "json",           //接受数据格式   
+ 	    	data: {                     //要传递的数据
+ 	          			username: function() {
+ 	          			return $("#username").val();
+ 	          			},
+ 	          			password: function() {
+ 	 	          		return $("#password").val();
+ 	 	          		}
+ 	          	  }
+ 			}
+ 		}
+		},
+		messages: {
+			username: {
+			remote: "用户名重复"
+			}
+		},
+ 		
+        submitHandler:function(form){
+            form.submit();
+        },
+        errorPlacement: function(error, element) {
+            if ( element.is(":radio") )
+                error.appendTo( element.parent().next().next() );
+            else if ( element.is(":checkbox") )
+                error.appendTo ( element.next() );
+            else
+                error.appendTo( element.parent().next() );
+        }
+    });
+
+
+ 	
+});
+
+
+
+   	function addMore()
+   	 {
+   	     var td = document.getElementById("more");
+   	     
+   	     var br = document.createElement("br");
+   	     var input = document.createElement("input");
+   	     var button = document.createElement("input");
+
+   	     var newImg = document.createElement("img");
+   	     //newImg.src = "http://i3.sinaimg.cn/home/deco/2008/0325/sinahome_Logo.gif";
+   	     newImg.width = "242";
+   	     newImg.height="100";
+   	     
+   	     input.type = "file";
+   	     input.name = "file";
+   	     
+   	     button.type = "button";
+   	     button.value = "Remove";
+
+   	     input.onchange = function()
+	     {
+   	    	var url; 
+   	    	if (navigator.userAgent.indexOf("MSIE")>=1) { // IE 
+   	    	url = input.value; 
+   	    	} else if(navigator.userAgent.indexOf("Firefox")>0) { // Firefox 
+   	    	url = window.URL.createObjectURL(input.files.item(0)); 
+   	    	} else if(navigator.userAgent.indexOf("Chrome")>0) { // Chrome 
+   	    	url = window.URL.createObjectURL(input.files.item(0)); 
+   	    	} 
+
+   		     alert(url);
+   	    	newImg.src=url;
+	   	 };
+   	     
+   	     button.onclick = function()
+   	     {
+   	         td.removeChild(br);
+   	         td.removeChild(newImg);
+   	         td.removeChild(input);
+   	         td.removeChild(button);
+   	     };
+
+   	     
+   	     
+   	     td.appendChild(br);
+   	     td.appendChild(newImg);
+   	     td.appendChild(input);
+   	     td.appendChild(button);
+   	 }
+
+
+
+
+   	/** 
+   	* 从 file 域获取 本地图片 url 
+   	*/ 
+   	function getFileUrl(sourceId) { 
+   	var url; 
+   	if (navigator.userAgent.indexOf("MSIE")>=1) { // IE 
+   	url = document.getElementById(sourceId).value; 
+   	} else if(navigator.userAgent.indexOf("Firefox")>0) { // Firefox 
+   	url = window.URL.createObjectURL(document.getElementById(sourceId).files.item(0)); 
+   	} else if(navigator.userAgent.indexOf("Chrome")>0) { // Chrome 
+   	url = window.URL.createObjectURL(document.getElementById(sourceId).files.item(0)); 
+   	} 
+   	return url; 
+   	} 
+
+   	/** 
+   	* 将本地图片 显示到浏览器上 
+   	*/ 
+   	function preImg(sourceId, targetId) { 
+   	var url = getFileUrl(sourceId);
+   	var imgPre = document.getElementById(targetId); 
+
+   	if (window.navigator.userAgent.indexOf("MSIE") >= 1) {
+   	   	alert(url);
+   	 imgPre.style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale);";
+   	imgPre.filters.item("DXImageTransform.Microsoft.AlphaImageLoader").src = url;
+   	}
+   	else
+   	{
+   	imgPre.src = url;
+   	} 
+   	} 
+   		 
+</script>
+</head>
+<body >
+    <form method="post" id="registerForm" action="${pageContext.request.contextPath}/register/addUser!addUser.action" enctype="multipart/form-data">
+        <table style ="width:100%" border="1">
+            <tr>
+                <td width="10%" height="40px">user name:</td>
+                <td width="10%"><input type="text" name="username" id="username" maxlength="10" class="{required:true,byteRangeLength:['1','2']}"/></td>
+                <td class="status"></td>
+            </tr>
+            <tr>
+                <td height="40px">password:</td>
+                <td><input type="password" name="password" id="password" maxlength="15" class="required"/></td>
+                <td class="status"></td>
+            </tr>
+            <tr>
+                 <td>file:</td>
+                 <td id="more">
+                 <img src="" id="imgPre" width="242px" height="100px">
+                 <input type="file" name="file" id="file" onchange="preImg(this.id,'imgPre');" > 
+                 </td>
+                 <td><input type="button" value="Add More.." onclick="addMore()"></td>
+            </tr>
+            <tr>
+            	<td></td>
+                <td><input type="submit" value="Register"></td>
+                <td class="status"></td>
+            </tr>
+        </table>
+    </form>
+    <a href="${pageContext.request.contextPath}/register/addUser!queryUsers.action">查询</a>
+    
+       
+    
+    <c:forEach var="x" begin="0" end="3">
+    <script type="text/javascript">
+       addMore();
+       </script>
+    </c:forEach>
+</body>
+<STYLE TYPE="text/css"> 
+<!-- 
+input.error { border: 1px solid red; }
+label.error {
+  background:url("./image/unchecked.gif") no-repeat 0px 0px;
+
+  padding-left: 16px;
+
+  padding-bottom: 2px;
+
+  font-weight: bold;
+
+  color: #EA5200;
+}
+--> 
+</STYLE> 
+
+</html>

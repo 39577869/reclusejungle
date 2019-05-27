@@ -3,8 +3,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
  <title>丛林闲居-用户中心-丛林闲居订单</title>
-    <link rel="stylesheet" href="style/cy.css">
-    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="style/cy.css" th:href="@{before/style/cy.css}">
+    <link rel="stylesheet" href="style/style.css" th:href="@{before/style/style.css}">
     <style rel="stylesheet">  
 .pagination {font-family: Tahoma;font-size: 12px;height: 22px;margin: 5px 10px;text-align: right;}  
 .pagination a,.page-cur,.page-start,.page-end,.page-disabled,.page-skip {  
@@ -18,94 +18,35 @@ height:22px;line-height:22px;margin:0 3px 0 0;text-align:center;vertical-align:m
 </style> 
 </head>
 <body style="background-color:#f6f6f6;">
-<c:if test="${sessionUser==null }">
-<script type="text/javascript">
-window.location.href = "<%=path%>/login.jsp";
+<script th:inline="javascript" th:if="${session.user}==null">
+    // window.location.href = "<%=path%>/login.jsp";
 </script>
-</c:if>
-<c:if test="${isUpdate ==1}">
-<script type="text/javascript">
-	alert("取消预定成功");
-	window.location.href = "<%=path%>/UserJAOrder.jsp"; 
+<script th:inline="javascript" th:if="${isUpdate}==1">
+    alert("取消预定成功");
+    window.location.href = "<%=path%>/UserCarOrder.jsp";
 </script>
-</c:if>
-<c:if test="${isUpdate ==0}">
-<script type="text/javascript">
-	alert("取消预定失败，请重试");
-	window.location.href = "<%=path%>/UserJAOrder.jsp";
+<script th:inline="javascript" th:if="${isUpdate}==0">
+    alert("取消预定失败，请重试");
+    window.location.href = "<%=path%>/UserCarOrder.jsp";
 </script>
-</c:if>
 <div>
     <!--首页TOP-->
      
     <!--首页banner-->
-     <jsp:include  page="head.jsp" />
+    <div th:insert="~{head::top1}"></div>
+    <div th:insert="~{head::top2}"></div>
    <script type="text/javascript">
    function loginOut(){
 		window.location.href = "<%=path%>/reguser!loginOut.action?returnurl=/clxjmain!Homepage.action";
 	}
    </script>
     <!--首页轮播图-->
-    <!--用车-填写订单-->
-    <div class="personal-content">
-        <div><img src="images/ayw_03.gif"></div>
-        <div class="per-cont-left">
-            <ul class="left-top">
-                <li class="top-one">
-                    <ul class="lf one-i">
-                        <li><c:if test="${sessionUser.sex ==true}"><img src="images/touxiagn.png"/></c:if>
-                            	<c:if test="${sessionUser.sex ==false}"><img src="images/touxiagnv.jpg"/></c:if>
-                            </li>
-                    </ul>
-                    <ul class="lf one-ii">
-                        <li> </li>
-                        <li>尊敬的会员！<input type="hidden" id="uid" value="${sessionUser.id }"/></li> 
-                        <li class="quit"><em onclick="loginOut()">[退出]</em></li>
-                    </ul>
-                </li>
-                <li class="top-two cf">手机：${sessionUser.mobile }</li>
-                <li class="top-two">邮箱：${sessionUser.email }</li>
-            </ul>
-            <ul class="grzl-banner">
-                <li> <a href="UserPersonal.jsp"><p class="grzl"></p>个人资料</a></li>
-                <li> <a href="UserCPassword.jsp"><p class="xgmm"></p>密码修改</a></li>
-                <li  class="yhzxsp yhzxs"> <a href="javascript:void(0)"> <p class="clxjdd"></p>丛林闲居订单</a></li>
-                <li> <a href="UserCarOrder.jsp"><p class="ycdd"></p>我的用车订单</a></li>
-                <li> <a href="UserPquery.jsp"><p class="qzjd"></p>求助进度查询</a></li>
-                <li > <a href="UserJPquery.jsp"><p class="jmcx"></p>加盟进度查询</a></li>
-            </ul>
-        </div>
 
-        <div class="per-cont-right">
-            <div class="yhzx-jmjdcx">
-                <div class="jmjdcx-top">
-                   <span class="dywr" onclick="selTable(0)">所有订单(<em id="countAll"></em>)</span> |<span onclick="selTable(1)">未完成(<em id="countNo"></em>)</span> |<span onclick="selTable(2)">已完成(<em id="countOk"></em>)</span>
-                </div>
-                <div class="jmjdcx-nr">
-                    <div class="jmjdx-one">
-                        <div class="clxjdd-top">
-                            <p class="one">酒店</p>
-                            <p class="two">入住时间</p>
-                            <p class="two">订单状态</p>
-                            <p class="two">订单操作</p>
-                        </div>
-                        <div class="clxjdd-bot" id="tab"> 
-                           
-                        </div>
-                        <div class="fenye4" style="width: 100%"> 
-                            <div id="pageNav"  align="center"></div>     
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-
-    </div>
-    <%@ include  file="bottom.jsp"%>
+    <div th:insert="~{bottom::bot1}"></div>
+    <div th:insert="~{bottom::bot2}"></div>
 </div>
-<script src="js/jquery.min.js"></script>
-<script src="js/index.js"></script>
+<script type="text/javascript" th:src="@{webjars/jquery/3.0.0/jquery.js}"></script>
+<script src="js/index.js" th:src="@{before/js/index.js}"></script>
 <script type="text/javascript">  
 function updateOrder(update){
 	var oid = 'oid'+update;

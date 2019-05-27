@@ -4,55 +4,17 @@
     <meta charset="UTF-8">
     <title>丛林闲居</title>
 
-    <script type="text/javascript" src="../js/jquery.min.js"></script>
-
-    <link rel="stylesheet" href="../style/cy.css">
-    <link rel="stylesheet" href="../style/style.css">
+    <script type="text/javascript" src="../js/jquery.min.js" th:src="@{/webjars/jquery/3.0.0/jquery.js}"></script>
+    <link rel="stylesheet" th:href="@{before/style/cy.css}">
+    <link rel="stylesheet" th:href="@{before/style/style.css}">
 
 </head>
 <body style="background-color: #f6f6f6;">
 
 <!--首页TOP-->
 <div class="yc-txdd1">
-    <div class="index-top">
-        <div class="index-top3">
-            <div class="left">
-                <span class="one"><a href="../index.html"><img src="../images/logo.png"></a></span>
-                <span class="two"><img src="../images/index_q.png"></span>
-
-                <div class="three">
-                    <span><img src="../images/index_03.png"></span>
-                    <ul>
-                        <li class="rx">客户服务热线:</li>
-                        <li class="phone">400-688-6798</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="right">
-                <p class="one"><img src="../images/index_06.jpg"></p>
-
-                <p class="two1"><img src="../images/index_04.jpg"></p>
-            </div>
-        </div>
-    </div>
-    <!--首页banner-->
-    <div class="index-banner">
-        <div class="index-banner1">
-            <ul>
-                <li><a href="../index.html">首页</a></li>
-                <li><a href="../JAList/JungleList.html">丛林</a></li>
-                <li><a href="../JAList/AtList.html">闲居</a></li>
-                <li><a href="ConEntryPage.html">忏悔</a></li>
-                <li><a href="../Foundation/FoundIndex.html">基金会</a></li>
-                <li><a href="../JAList/Join.html">加盟</a></li>
-                <li><a href="../JAList/ContactUs.html">联系我们</a></li>
-                <li><a href="../JAList/AppDown.html">APP下载</a></li>
-            </ul>
-            <div class="dl">
-                <a href="../LRis/login.html">登录</a><i>|</i><a href="../LRis/register.html">注册</a>
-            </div>
-        </div>
-    </div>
+    <div th:insert="~{head::top1}"></div>
+    <div th:insert="~{head::top2}"></div>
 
     <!--忏悔-忏悔室-->
     <div class="yc-txdd">
@@ -115,19 +77,19 @@
             </div>
             <div class="yj-right">
                 <div class="yr-one">
-                    <img src="../images/index_38.jpg">
+                    <img th:src="@{before/images/index_38.jpg}">
                     <p>用户APP下载</p>
                 </div>
                 <div class="yr-one">
-                    <img src="../images/index_40.jpg">
+                    <img th:src="@{before/images/index_40.jpg}">
                     <p>丛林/闲居管理者APP下载</p>
                 </div>
                 <div class="yr-one">
-                    <img src="../images/index_42.jpg">
+                    <img th:src="@{before/images/index_42.jpg}" th:height="96px" th:width="96px">
                     <p>司机用车APP</p>
                 </div>
                 <div class="yr-one">
-                    <img src="../images/index_42.jpg">
+                    <img th:src="@{before/images/index_42.jpg}" th:height="96px" th:width="96px">
                     <p>微信平台</p>
                 </div>
             </div>
@@ -138,15 +100,15 @@
             <li>旅行社业务经营许可证编号：L-SH-00321 赣ICP备11015723号</li>
             <li>Copyright © 2015 <a href="#">丛林闲居</a> 版权所有 3wcl.com | 营业执照 | 客服中心：025-86859999</li>
         </ul>
-        <p><a href="#"><img src="../images/index_48.jpg"></a><a href="#"><img src="../images/index_50.jpg"></a><a href="#"><img
-                src="../images/index_52.jpg"></a> <a href="#"><img src="../images/index_54.jpg"></a><a href="#"><img
-                src="../images/index_56.jpg"></a> <a href="#"><img src="../images/index_58.jpg"></a></p>
+        <p><a href="#"><img th:src="@{before/images/index_48.jpg}"></a><a href="#"><img th:src="@{before/images/index_50.jpg}"></a><a href="#"><img
+                th:src="@{before/images/index_52.jpg}"></a> <a href="#"><img th:src="@{before/images/index_54.jpg}"></a><a href="#"><img
+                th:src="@{before/images/index_56.jpg}"></a> <a href="#"><img th:src="@{before/images/index_58.jpg}"></a></p>
     </footer>
 </div>
 <div class="tcc none">
     <div class="cgxd3">
         <div class="cgxd-main">
-            <p class="xdcg"><img src="../images/chw.png">  <img src="../images/14_01.png" class="close"></p>
+            <p class="xdcg"><img th:src="@{before/images/chw.png}">  <img th:src="@{before/images/14_01.png}" class="close"></p>
             <p class="ddbh">您的“忏悔”内容已提交，阅读解脱文密码为 <i>WO2012</i> ！</p>
             <p class="fhdd"><a href="../index.html" class="fh">返回首页</a>（牢记上6位数字码，方便您阅读解脱文）</p>
         </div>

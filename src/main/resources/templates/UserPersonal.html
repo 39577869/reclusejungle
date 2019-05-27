@@ -3,53 +3,48 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>丛林闲居-用户中心-个人资料</title>
-    <link rel="stylesheet" href="style/cy.css">
-    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="style/cy.css" th:href="@{before/style/cy.css}">
+    <link rel="stylesheet" href="style/style.css" th:href="@{before/style/style.css}">
 <!-- 表单验证start -->
-<script src="<%=path %>/js/jquery.js"></script>
+    <script type="text/javascript" th:src="@{webjars/jquery/3.0.0/jquery.js}"></script>
 <script src="<%=path %>/js/jquery.validate.js"></script>
 <script src="<%=path%>/js/jquery.metadata.js"></script>
 <script src="<%=path%>/js/messages_cn.js"></script>
 <!-- 表单验证stop -->
 </head>
 <body style="background-color:#f6f6f6;">
-<c:if test="${sessionUser==null }">
-<script type="text/javascript">
-window.location.href = "<%=path%>/login.jsp";
+<script th:inline="javascript" th:if="${session.user}==null">
+    // window.location.href = "<%=path%>/login.jsp";
 </script>
-</c:if>
-<c:if test="${updateUser ==true}">
-<script type="text/javascript">
-	alert("更新资料成功");
-	window.location.href = "<%=path%>/UserPersonal.jsp";
-</script></c:if>
-<c:if test="${updateUser ==false}">
-<script type="text/javascript">
-	alert("更新资料失败，请重试");
-	window.location.href = "<%=path%>/UserPersonal.jsp"; 
+<script th:inline="javascript" th:if="${isUpdate}==1">
+    alert("取消预定成功");
+    window.location.href = "<%=path%>/UserCarOrder.jsp";
 </script>
-</c:if>
+<script th:inline="javascript" th:if="${isUpdate}==0">
+    alert("取消预定失败，请重试");
+    window.location.href = "<%=path%>/UserCarOrder.jsp";
+</script>
 
 <div>
 <!--首页TOP-->
         
         <!--首页banner-->
-         <jsp:include  page="head.jsp" />
+    <div th:insert="~{head::top1}"></div>
+    <div th:insert="~{head::top2}"></div>
        <script type="text/javascript">
    function loginOut(){
 		window.location.href = "<%=path%>/reguser!loginOut.action?returnurl=/clxjmain!Homepage.action";
 	}
    </script>
         <!--首页轮播图-->
-<!--用车-填写订单-->
-        <div class="personal-content">
-            <div><img src="images/ayw_03.gif"></div>
+       <div class="personal-content">
+           <div><img src="images/ayw_03.gif" th:src="@{before/images/ayw_03.gif}"></div>
             <div class="per-cont-left">
                 <ul class="left-top">
                     <li class="top-one">
                         <ul class="lf one-i">
-                            <li><c:if test="${sessionUser.sex ==true}"><img src="images/touxiagn.png"/></c:if>
-                            	<c:if test="${sessionUser.sex ==false}"><img src="images/touxiagnv.jpg"/></c:if>
+                            <li><img src="images/touxiagn.png" th:src="@{before/images/touxiagn.png}" th:if="${session.user.sex}"/>
+                            	<img src="images/touxiagnv.jpg" th:src="@{before/images/touxiagnv.jpg}" th:if="!${session.user.sex}"/>
                             </li>
                         </ul>
                         <ul class="lf one-ii">
@@ -89,8 +84,9 @@ window.location.href = "<%=path%>/login.jsp";
                         <tr>
                             <td>性别：</td>
                             <td>
-                            	<input type="radio" value="true" <c:if test="${sessionUser.sex ==true}">checked="checked" </c:if> name="reguser.sex">&nbsp;&nbsp;男&nbsp;&nbsp;
-                            	<input type="radio" value="false" <c:if test="${sessionUser.sex ==false}">checked="checked" </c:if> name="reguser.sex">&nbsp;&nbsp;女
+
+                            	<!--<input type="radio" value="true" name="reguser.sex" th:if="${session.user.sex}">&nbsp;&nbsp;男&nbsp;&nbsp;
+                            	<input type="radio" value="false" th:if="!${session.user.sex}" name="reguser.sex">&nbsp;&nbsp;女-->
                             </td> 
                         </tr>
                     </table> 
@@ -109,24 +105,25 @@ window.location.href = "<%=path%>/login.jsp";
                             <td>身份证明：</td>
                             <td><input id="idcard" name="reguser.idcard" type="text"  class="idCard"  value="${sessionUser.idcard }"><label id="idcard-error" style="color: red" class="error" for="idcard"></label></td>
                         </tr>
-                        <!--<tr>
+                        &lt;!&ndash;<tr>
                             <td>所在城市：</td>
                             <td><select><option>江西省</option><option>江西省</option></select><select><option>南昌市</option><option>江西省</option></select></td>
-                        </tr>-->
+                        </tr>&ndash;&gt;
                         <tr>  
                             <td></td>
                             <td><i>*完善详细信息可加强您账号真实性</i></td>
                         </tr>
                     </table>
                 </div>
-                <input type="hidden" id="id" name="reguser.username" value="${sessionUser.username }"/>
+                <input type="hidden" id="username" name="reguser.username" value="${sessionUser.username }"/>
                 <input type="hidden" id="id" name="reguser.id" value="${sessionUser.id }"/>
                 <input type="hidden" id="city" name="reguser.city" value="${sessionUser.city }"/>
                 <div class="anniu"><input  type="submit" value="保存"><input type="reset" value="取消"></div>
             </div>
 			</form>
         </div>
- <%@ include  file="bottom.jsp"%>
+    <div th:insert="~{bottom::bot1}"></div>
+    <div th:insert="~{bottom::bot2}"></div>
 </div>
 <script src="<%=path %>/js/index.js"></script> 
 <script type="text/javascript">

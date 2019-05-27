@@ -28,6 +28,7 @@ public class Test {
 
     @RequestMapping("/head")
     public String head(HttpSession session){
-        return "head";
+        return "DonationLove";
     }
+
 }

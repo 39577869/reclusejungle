@@ -3,11 +3,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
  <title>丛林闲居</title>
-    <link rel="stylesheet" href="style/cy.css">
-    <link rel="stylesheet" href="style/style.css">
-    <script src="js/laydate.js"></script>
-    <link rel="stylesheet" href="style/laydate.css">
-    <link rel="stylesheet" href="js/molv/laydate.css">  
+    <link rel="stylesheet" th:href="@{before/style/cy.css}">
+    <link rel="stylesheet" th:href="@{before/style/style.css}">
+    <script th:src="@{before/js/laydate.js}"></script>
+    <link rel="stylesheet" th:href="@{before/style/laydate.css}">
+    <link rel="stylesheet" th:href="@{before/js/molv/laydate.css}">  
     <style rel="stylesheet">    
 .pagination {font-family: Tahoma;font-size: 12px;height: 22px;margin: 0px 100px;text-align: center;}  
 .pagination a,.page-cur,.page-start,.page-end,.page-disabled,.page-skip {  
@@ -26,7 +26,8 @@ height:22px;line-height:22px;margin:0 3px 0 0;text-align:center;vertical-align:m
     <div class="yc-txdd1">
         
         <!--首页banner-->
-         <jsp:include  page="head.jsp" />   
+        <div th:replace="head :: top1"></div>
+        <div th:replace="head :: top2"></div>   
         <script type="text/javascript">
 function Alllogin(){
 	window.location.href = "login.jsp?returnurl=/DonationLove.jsp";
@@ -37,7 +38,7 @@ function loginOut(){
  </script>
         <!--首页轮播图-->
 
-<%
+<!--<%
 	String donationname = request.getParameter("donationname"); 
 if(donationname==null){
 	donationname="";
@@ -46,14 +47,14 @@ if(donationname==null){
 	if(donationtime==null){
 		donationtime="";  
 	}
-%>
+%>-->
         <!--用车-填写订单-->
         <div class="yc-txdd">
             <div class="yc-mbx">
                 <p>当前位置：<a href="index.jsp" class="ll">丛林闲居网</a> > <a href="FoundIndex.jsp" class="ll">基金会</a> > <a href="#"
                                                                                                class="xz">爱心捐赠明细</a></p>
             </div>
-            <div><img src="images/jjh_03.jpg"></div>
+            <div><img th:src="@{before/images/jjh_03.jpg}"></div>
             <div class="jjh-index">
                 <div class="jjh-index-left">
                     <div class="kwff-p1">
@@ -87,27 +88,27 @@ if(donationname==null){
                 </div>
                 <div class="jjh-index-right">
                     <a href="FoundRescue.jsp"><div>
-                        <img src="images/brower_03.jpg" class="enheng">
+                        <img th:src="@{before/images/brower_03.jpg}" class="enheng">
                         <p>我要求助</p>
-                        <img src="images/brower_07.jpg" >
+                        <img th:src="@{before/images/brower_07.jpg}" >
                     </div></a>
                     <a href="DonationLove.jsp"><div>
-                        <img src="images/brower_11.jpg" class="enheng">
+                        <img th:src="@{before/images/brower_11.jpg}" class="enheng">
                         <p>我要查询</p>
-                        <img src="images/brower_07.jpg">
+                        <img th:src="@{before/images/brower_07.jpg}">
                     </div></a>
                     <a href="FoundDonations.jsp"><div>
-                        <img src="images/brower_15.jpg" class="enheng" style="margin-top: 15px;">
+                        <img th:src="@{before/images/brower_15.jpg}" class="enheng" style="margin-top: 15px;">
                         <p>我要捐款</p>
-                        <img src="images/brower_07.jpg">
+                        <img th:src="@{before/images/brower_07.jpg}">
                     </div></a>
                     <a href="UserPquery.jsp"><div>
-                        <img src="images/brower_19.jpg" class="enheng" style="margin-top: 23px;">
+                        <img th:src="@{before/images/brower_19.jpg}" class="enheng" style="margin-top: 23px;">
                         <p>求助进度</p>
-                        <img src="images/brower_07.jpg">
+                        <img th:src="@{before/images/brower_07.jpg}">
                     </div></a>
                     <a href="FoundJzfzlist.jsp"><div>
-                        <img src="images/brower_23.jpg" style="margin-top: 16px;">
+                        <img th:src="@{before/images/brower_23.jpg}" style="margin-top: 16px;">
                         <p>公示列表</p>
                     </div></a>
                 </div>
@@ -118,12 +119,13 @@ if(donationname==null){
 
 
         </div>
-         <%@ include  file="bottom.jsp"%>
+        <div th:replace="bottom :: bot1"></div>
+        <div th:replace="bottom :: bot2"></div>
     </div>
     <div class="tcc none">
         <div class="cgxd1">
             <div class="cgxd-main">
-                <p class="xdcg"><img src="images/xdcg.png"> <img src="images/14_01.png" class="close"></p>
+                <p class="xdcg"><img th:src="@{before/images/xdcg.png}"> <img th:src="@{before/images/14_01.png}" class="close"></p>
 
                 <p class="ddbh">订单编号：<i>WO20121015141125</i> [请牢记您的订单编号]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;订单总价：<i>9800元</i>
                     （该订单属于线下支付类型）</p>
@@ -146,7 +148,7 @@ if(donationname==null){
                 <div>
                     <p class="sjh"><input type="text" placeholder="手机号"></p>
 
-                    <p class="tpyxm"><input type="text" placeholder="图片验证码"><img src="images/yzm_03.png"></p>
+                    <p class="tpyxm"><input type="text" placeholder="图片验证码"><img th:src="@{before/images/yzm_03.png}"></p>
 
                     <p class="tpyxm"><input type="text" placeholder="手机验证码"><a href="#">获取验证码</a></p>
 
@@ -160,8 +162,8 @@ if(donationname==null){
         </div>
     </div>
 </div>
-<script src="js/jquery.min.js"></script>
-<script src="js/index.js"></script>
+<script th:src="@{before/js/jquery.min.js}"></script>
+<script th:src="@{before/js/index.js}"></script>
 <script type="text/javascript">  
 !function(){
 	laydate.skin('molv');//切换皮肤，请查看skins下面皮肤库
@@ -202,7 +204,7 @@ function getDonations(){
 	$.ajax({  
         type : "post",  
          url : "<%=path%>/donation!selDonationCount.action",   
-         data: {"donation.donationname":$("#donationname").val(),"donation.donationtime":$("input[name='donationtime'").val()}, 
+         data: {"donation.donationname":$("#donationname").val(),"donation.donationtime":$("input[name='donationtime']").val()},
          dataType: "json", 
          async : false,   
          success : function(results){  
@@ -224,7 +226,7 @@ function InitTable(index){
 	$.ajax({  
         type : "post",  
          url : "<%=path%>/donation!selDonation.action",    
-         data: {"donation.donationname":$("#donationname").val(),"donation.donationtime":$("input[name='donationtime'").val(),"index":index}, 
+         data: {"donation.donationname":$("#donationname").val(),"donation.donationtime":$("input[name='donationtime']").val(),"index":index},
          dataType: "json", 
          async : false,   
          success : function(results){ 

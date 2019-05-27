@@ -3,30 +3,29 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>丛林闲居-用车-填写订单</title>
-<link rel="stylesheet" href="style/cy.css">
-<link rel="stylesheet" href="style/style.css">
-<script src="js/laydate.js"></script>
-<link rel="stylesheet" href="style/laydate.css">
-<link rel="stylesheet" href="js/molv/laydate.css">
-<script type="text/javascript" src="My97DatePicker/WdatePicker.js"></script>
+<link rel="stylesheet" th:href="@{before/style/cy.css}">
+<link rel="stylesheet" th:href="@{before/style/style.css}">
+<script th:src="@{before/js/laydate.js}"></script>
+<link rel="stylesheet" th:href="@{before/style/laydate.css}">
+<link rel="stylesheet" th:href="@{before/style/laydate.css}">
+<script type="text/javascript" th:src="@{before/js/WdatePicker.js}"></script>
 <!-- 表单验证start -->
-<script src="<%=path %>/js/jquery.js"></script>
-<script src="<%=path %>/js/jquery.validate.js"></script>
-<script src="<%=path%>/js/jquery.metadata.js"></script>
-<script src="<%=path%>/js/messages_cn.js"></script>
-<link rel="stylesheet" href="<%=path%>/css/validation.css">
+<script th:src="@{before/js/jquery.js}"></script>
+<script th:src="@{before/js/jquery.validate.js}"></script>
+<script th:src="@{before/js/query.metadata.js}"></script>
+<script th:src="@{before/js/messages_cn.js}"></script>
+<link rel="stylesheet" th:href="@{before/style/validation.css}">
 <!-- 表单验证stop -->
 </head>
 <body>
-<c:if test="${sessionUser==null }">
-<script type="text/javascript">
-window.location.href = "<%=path%>/login.jsp";
-</script>
-</c:if>
+<!--<script type="text/javascript" th:if="${session.User }==null">
+	window.location.href = "<%=path%>/login.jsp";
+</script>-->
 <div><!--首页TOP-->
 <div class="yc-txdd1"><!--首页banner--> 
-<jsp:include  page="head.jsp" />   
-<script type="text/javascript">
+	<div th:replace="head :: top1"></div>
+	<div th:replace="head :: top2"></div>
+	<script type="text/javascript">
 function loginOut(){
 	window.location.href = "<%=path%>/reguser!loginOut.action?returnurl=/clxjmain!Homepage.action";
 }
@@ -37,11 +36,11 @@ function loginOut(){
 <p>当前位置：<a href="JungleList.jsp" class="ll">国内丛林</a> > <a
 	href="CarAllModels.jsp" class="ll">用车</a> > <a href="#" class="xz">填写乘车人信息</a></p>
 </div>
-<div><img src="images/yc_03.jpg"></div>
+<div><img th:src="@{before/images/yc_03.jpg}"></div>
 <div class="yc-mbx1">
-<p><span>用车</span><img src="images/tj_03.jpg"><span>选择车型</span><img
-	src="images/tj_03.jpg"><span>订单填写</span><img
-	src="images/tj_05.jpg"><i>完成订单</i></p>
+<p><span>用车</span><img th:src="@{before/images/tj_03.jpg}"><span>选择车型</span><img
+	th:src="@{before/images/tj_03.jpg}"><span>订单填写</span><img
+	th:src="@{before/images/tj_05.jpg}"><i>完成订单</i></p>
 </div>
 <div class="yc-title">填写订单</div>
 <form action="<%=path %>/carorder!saveCarorder.action" method="post"
@@ -144,7 +143,7 @@ function loginOut(){
 </ul>
 </div>
 <div class="ym-r2">
-<p><img src="images/11.png"></p>
+<p><img th:src="@{before/images/11.png}"></p>
 <p><span>如需帮组请咨询</span></p>
 <p><i>400-688-6798</i></p>
 </div>
@@ -152,13 +151,13 @@ function loginOut(){
 </div>
 </form>
 </div>
- <%@ include  file="bottom.jsp"%>
+	<div th:replace="bottom :: bot1"></div>
+	<div th:replace="bottom :: bot2"></div>
 </div>
-<c:if test="${carorderOk==1}">  
-<div class="tcc">
+<div class="tcc" th:if="${carorderOk}==1">
 <div class="cgxd1">
 <div class="cgxd-main">
-<p class="xdcg"><img src="images/xdcg.png"></p>  
+<p class="xdcg"><img th:src="@{before/images/xdcg.png}"></p>
 <p class="ddbh">订单编号：<i>${carorder.oid }</i>
 [请牢记您的订单编号]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;订单总价：<i>${carorder.total }</i>
 （该订单属于线下支付类型）</p>
@@ -167,7 +166,6 @@ function loginOut(){
 </div>
 </div>
 </div>
-</c:if>
 <div class="tcc1 none">
 <div class="cgxd2">
 <div class="cgxd-main">
@@ -175,7 +173,7 @@ function loginOut(){
 <div>
 <p class="sjh"><input type="text" placeholder="手机号"></p>
 <p class="tpyxm"><input type="text" placeholder="图片验证码"><img
-	src="images/yzm_03.png"></p>
+	th:src="@{before/images/yzm_03.png}"></p>
 <p class="tpyxm"><input type="text" placeholder="手机验证码"><a
 	href="#">获取验证码</a></p>
 <p><i><a href="#">收不到验证码？重新再发一次</a> </i></p>
@@ -186,7 +184,7 @@ function loginOut(){
 </div>
 </div>
 </div>
-<script src="js/index.js"></script>
+<script th:src="@{before/js/index.js}"></script>
 <script type="text/javascript">
 function subForm(){
 	var sub = document.getElementById("sub");

@@ -3,16 +3,15 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <title>丛林闲居</title>
-    <link rel="stylesheet" href="style/slider.css">
-    <link rel="stylesheet" href="style/cy.css">
-    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" th:href="@{before/style/slider.css}">
+    <link rel="stylesheet" th:href="@{before/style/cy.css}">
+    <link rel="stylesheet" th:href="@{before/style/style.css}">
 </head>
 <body>
-<c:if test="${sessionUser==null }">
-<script type="text/javascript">
-window.location.href = "<%=path%>/login.jsp";
-</script>
-</c:if>
+<!--
+<script type="text/javascript" th:if="${session.User}==null">
+    window.location.href = "<%=path%>/login.jsp";
+</script>-->
 <!--首页TOP-->
     <div class="yc-txdd1">
          
@@ -32,18 +31,15 @@ window.location.href = "<%=path%>/login.jsp";
         <p>当前位置：<a href="index.jsp" class="ll">丛林闲居网</a> > <a href="#" class="xz">所有车型</a></p>
     </div>
     <div class="yc-sycx">   
-    <c:forEach items="${carinfoJsons}" var="car" varStatus="status">  
-        <div class="che">
+        <div class="che" th:each="car,status:${carinfoJsons}">
             <br/><br/>
             <div class="che-left">   
                 <div class="slider" >  
                     <div class="slider_box" id="slider_name${status.index + 1}" >
                         <ul class="silder_con"> 
-                        <c:forEach items="${car.carouselImg}" var="img">
-                            <li class="silder_panel clearfix">  
-                                <a href="javascript:void(0)" class="f_l"><img  src="${clxjBackurl }${img }"/></a>
+                            <li class="silder_panel clearfix" th:each="img:${car.carouselImg}">  
+                                <a href="javascript:void(0)" class="f_l"><img  th:src="@{before/${clxjBackurl }${img }}"/></a>
                             </li>
-                            </c:forEach>  
                         </ul>
                     </div>
             </div>
@@ -56,20 +52,22 @@ window.location.href = "<%=path%>/login.jsp";
                 <p><a href="javascript:void(0)" onclick="getCarcomment(${car.id })" class="a1">查看评价</a> <a href="<%=path %>/carinfo!selCarOfid.action?carinfo.id=${car.id }" class="a2">点击预订</a> </p>
             </div>
     </div>
-    </c:forEach>
-    <c:if test="${carinfoJsons ==null}"> 
-    	<div class="che">
+    	<div class="che" th:if="${carinfoJsons} ==null">
             <br/><br/>
             	抱歉，当前入住并没有加盟车辆
     </div>
-    </c:if>
     <br/><br/>
         <!--<div class="che-bot">
                 <p >点击查看更多</p> 
         </div>
 --></div>
 </div>    
- <%@ include  file="bottom.jsp"%>
+        <!--<div th:insert="~{buttom::bot1}"></div>-->
+        <!--<div th:insert="bottom::bot1"></div>
+        <div th:insert="bottom::bot2"></div>-->
+
+        <div th:replace="bottom :: bot1"></div>
+        <div th:replace="bottom :: bot2"></div>
     </div>
 <div class="tcc none">
     <div class="cgxd5">
@@ -91,9 +89,9 @@ window.location.href = "<%=path%>/login.jsp";
 </div>
 
 </div>
-<script src="js/jquery.min.js"></script>
-<script src="js/index.js"></script>
-<script src="js/jquery.slides.js" type="text/javascript"></script>
+<script th:src="@{before/js/jquery.min.js}"></script>
+<script th:src="@{before/js/index.js}"></script>
+<script th:src="@{before/js/jquery.slides.js}" type="text/javascript"></script>
 <script>
 //限制textarea输入长度
 function checkLength(obj,maxlength){

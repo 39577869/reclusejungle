@@ -3,18 +3,18 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <title>丛林闲居-App下载</title>
-    <link rel="stylesheet" href="style/cy.css">
-    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" th:href="@{before/style/cy.css}">
+    <link rel="stylesheet" th:href="@{before/style/style.css}">
 </head>
 <body>
 <!--首页TOP-->
 <div class="index-top2">
     <div class="left"> 
-        <span class="one"><a href=""><img width="131" height="52" src="images/logo2.png"></a></span>
-        <span class="two"><img src="images/index_q.png"></span>  
+        <span class="one"><a href=""><img width="131" height="52" th:src="@{before/images/logo2.png}"></a></span>
+        <span class="two"><img th:src="@{before/images/index_q.png}"></span>
 
         <div class="three">
-            <span><img src="images/index_03.png"></span>
+            <span><img th:src="@{before/images/index_03.png}"></span>
             <ul>
                 <li class="rx">客户服务热线:</li>
                 <li class="phone">400-688-6798</li>
@@ -39,16 +39,14 @@
     <div class="index-lbt1">
     <div id="scrollPics">
         <ul class="slider">
-            <li><img src="http://117.169.17.224:8080/clxjBack/roll/download/lbt1.png" class="lower" height="497px" width="100%"/>
+            <li><img th:src="@{before/images/lbt1.jpg}" class="lower" height="497px" width="100%"/>
             </li>
-            <li><img src="http://117.169.17.224:8080/clxjBack/roll/download/lbt2.png" height="497px" width="100%"/></li>
-            <li><img src="http://117.169.17.224:8080/clxjBack/roll/download/lbt3.png" height="497px" width="100%"/></li>
-            <li><img src="http://117.169.17.224:8080/clxjBack/roll/download/lbt4.png" height="497px" width="100%"/></li>
-            <li><img src="http://117.169.17.224:8080/clxjBack/roll/download/lbt5.png" height="497px" width="100%"/></li>
+            <li><img th:src="@{before/images/lbt2.jpg}" height="497px" width="100%"/></li>
+            <li><img th:src="@{before/images/lbt3.png}" height="497px" width="100%"/></li>
+            <li><img th:src="@{before/images/lbt-03.png}" height="497px" width="100%"/></li>
         </ul>
         <ul class="num"> 
             <li class="on"></li>
-            <li></li>
             <li></li>
             <li></li>
             <li></li>

@@ -3,18 +3,18 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>丛林闲居-丛林素斋</title>
-<link rel="stylesheet" href="style/cy.css">
-<link rel="stylesheet" href="style/style.css">
+<link rel="stylesheet" th:href="@{before/style/cy.css}">
+<link rel="stylesheet" th:href="@{before/style/style.css}">
 </head>
 <body>
 <!--首页TOP-->
 <div class="index-top2">
 <div class="left"><span class="one"><a
 	href="                   "><img width="131" height="52"
-	src="images/logo2.png"></a></span> <span class="two"><img
-	src="images/index_q.png"></span>
+	th:src="@{before/images/logo2.png}"></a></span> <span class="two"><img
+	th:src="@{before/images/index_q.png}"></span>
 
-<div class="three"><span><img src="images/index_03.png"></span>
+<div class="three"><span><img th:src="@{before/images/index_03.png}"></span>
 <ul>
 	<li class="rx">客户服务热线:</li>
 	<li class="phone">400-688-6798</li>
@@ -49,7 +49,7 @@
 			<p  style="margin-left: 100px;">生同一悲仰”的精神是一致的。</p>
 			<p  style="margin-left: 100px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;无论你是为了持戒或者其他原因而食素，开始的时候是被</p>
 			<p  style="margin-left: 100px;">动的、从众的。食素时久，爱心日深。</p> 
-			<p><img style="margin-top: 10px;" src="images/wx1.jpg" /></p>
+			<p><img style="margin-top: 10px;" th:src="@{before/images/wx1.jpg}" /></p>
 		</div>
 	</li>
 	<li>
@@ -60,7 +60,7 @@
 			<P  style="margin-left: 100px;">白制品、小麦蛋白制品、香菇制品、素食调味酱料等系列近</P>
 			<p  style="margin-left: 100px;">300个品种，以室温或冷冻两种储存方式保存。注重饮食健</P>
 			<p  style="margin-left: 100px;">康，兼顾营养美味。</P>
-			<p><img style="margin-top: 10px;" src="images/wx2.jpg"/></p>
+			<p><img style="margin-top: 10px;" th:src="@{before/images/wx2.jpg}"/></p>
 		</div>
 	</li>
 	<li>
@@ -74,20 +74,21 @@
 			<p  style="margin-left: 100px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;自然界物种丰富，素食原料也丰常繁多，这为我们进行素</p>
 			<p  style="margin-left: 100px;">食烹饪的创作提供前提。丛林素斋将素食与美食巧妙地结</p>
 			<p  style="margin-left: 100px;">合。</p> 
-			<p style="margin-top: 10px;"><img src="images/wx3.jpg" /></p>
+			<p style="margin-top: 10px;"><img th:src="@{before/images/wx3.jpg}" /></p>
 		</div> 
 	</li>
 	<li>
 		<div style="text-align: left; font-size: 15px;margin-top: 10px;margin-left: 560px;">
 			<p >详情添加微信公众号：CHAN-3WCL</p>
-			<p><img style="margin-top: 10px;margin-left: 20px;" src="images/clszwx.jpg" height="200px;" width="200px;"/></p>
+			<p><img style="margin-top: 10px;margin-left: 20px;" th:src="@{before/images/clszwx.jpg}" height="200px;" width="200px;"/></p>
 		</div>
 	</li>
 </ul>
 </div>
-<%@ include file="bottom.jsp"%>
-<script src="js/jquery.min.js"></script>
-<script src="js/index.js"></script>
+<div th:replace="bottom :: bot1"></div>
+<div th:replace="bottom :: bot2"></div>
+<script th:src="@{before/js/jquery.min.js}"></script>
+<script th:src="@{before/js/index.js}"></script>
 
 </body>
 </html>

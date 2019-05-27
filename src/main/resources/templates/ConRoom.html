@@ -7,18 +7,18 @@
 <!-- 录音必需start -->
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<link rel="stylesheet" href="<%=path %>/record/js/bootstrap.min.css">
-<script type="text/javascript" src="<%=path %>/record/js/bootstrap.min.js"></script>
-<script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-<script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+<link rel="stylesheet" th:href="@{before/record/js/bootstrap.min.css}">
+<script type="text/javascript" th:src="@{before/record/js/bootstrap.min.js}"></script>
+<script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js}"></script>
+<script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js}"></script>
 <script type="text/javascript">
 	var base = "<%=path%>";
 </script>
 <!--录音必需end-->
 
-    <script type="text/javascript" src="<%=path %>/js/jquery.min.js"></script>
-    <link rel="stylesheet" href="<%=path %>/style/cy.css">
-    <link rel="stylesheet" href="<%=path %>/style/style.css">
+    <script type="text/javascript" th:src="@{before/record/js/jquery.min.js}"></script>
+    <link rel="stylesheet" th:href="@{before/style/cy.css}">
+    <link rel="stylesheet" th:href="@{before/style/style.css}">
     
 </head>
 <body style="background-color: #f6f6f6;">
@@ -27,7 +27,8 @@
 <div class="yc-txdd1">
      
     <!--首页banner-->
-     <jsp:include  page="head.jsp" />   
+	<div th:replace="head :: top1"></div>
+	<div th:replace="head :: top2"></div>  
 <script type="text/javascript">
 function Alllogin(){
 	window.location.href = "login.jsp?returnurl=/ConRoom.jsp";
@@ -62,36 +63,36 @@ function loginOut(){
 										<!-- =========================================录音部分从这里开始，页面仅仅需要一下部分======================================= -->
 										<!-- =============================================================================================================== -->
 										<script type="text/javascript"
-											src="<%=path%>/record/js/swfobject.js"></script>
+											th:src="@{before/record/js/swfobject.js}"></script>
 										<script type="text/javascript"
-											src="<%=path%>/record/js/recorder.js"></script>
+											th:src="@{before/record/js/recorder.js}"></script>
 										<script type="text/javascript"
-											src="<%=path%>/record/js/main.js"></script>
-										<link rel="stylesheet" href="<%=path%>/record/style.css">
+											th:src="@{before/record/js/main.js}"></script>
+										<link rel="stylesheet" th:href="@{before/record/style.css}">
 										<div class="qcontainer" id="myRecordDiv">
 											<div id="recorder-audio" class="control_panel idle">
 												<button class="record_button"
 													onclick="FWRecorder.record('audio', 'audio.wav');"
 													title="Record">
-													<img src="<%=path%>/record/images/record.png" alt="开始录音">
+													<img th:src="@{before/record/images/record.png}" alt="开始录音">
 												</button>
 												<button class="stop_recording_button"
 													onclick="FWRecorder.stopRecording('audio');"
 													title="Stop Recording">
-													<img src="<%=path%>/record/images/stop.png" alt="停止录音">
+													<img th:src="@{before/record/images/stop.png}" alt="停止录音">
 												</button>
 												<button class="play_button"
 													onclick="FWRecorder.playBack('audio');" title="Play">
-													<img src="<%=path%>/record/images/play.png" alt="播放">
+													<img th:src="@{before/record/images/play.png}" alt="播放">
 												</button>
 												<button class="pause_playing_button"
 													onclick="FWRecorder.pausePlayBack('audio');"
 													title="Pause Playing">
-													<img src="<%=path%>/record/images/pause.png" alt="暂停">
+													<img th:src="@{before/record/images/pause.png}" alt="暂停">
 												</button>
 												<button class="stop_playing_button"
 													onclick="FWRecorder.stopPlayBack();" title="Stop Playing">
-													<img src="<%=path%>/record/images/stop.png" alt="停止">
+													<img th:src="@{before/record/images/stop.png}" alt="停止">
 												</button>
 												<div class="level"></div>
 											</div>
@@ -105,12 +106,12 @@ function loginOut(){
 												<button class="show_settings"
 													onclick="microphonePermission()">麦克风权限</button>
 												<span id="save_button" style="display: inline-block;">
-													<object data="<%=path%>/record/recorder.swf"
+													<object th:data="@{before/record/recorder.swf}"
 														name="recorderApp" id="recorderApp"
 														type="application/x-shockwave-flash" height="24"
 														width="24">
 														<param
-															value="upload_image=<%=path%>/record/images/upload.png"
+															th:value="@{before/record/images/upload.png}"
 															name="flashvars">
 													</object>
 												</span>
@@ -146,12 +147,13 @@ function loginOut(){
 
     <!--忏悔-进入页-->
 
-     <%@ include  file="bottom.jsp"%>
+	<div th:replace="bottom :: bot1"></div>
+	<div th:replace="bottom :: bot2"></div>
 </div>
 <div class="tcc none" id="okok">
     <div class="cgxd3">
         <div class="cgxd-main">
-            <p class="xdcg"><img src="images/chw.png"></p>
+            <p class="xdcg"><img th:src="@{before/images/chw.png}"></p>
             <p class="ddbh"><em id="pwd"></em></p>  
             <p class="fhdd"><a href="ConEntryPage.jsp" class="fh">返回忏悔首页</a>（牢记上10位数字码，方便您阅读解脱文）</p>
         </div>
@@ -196,6 +198,6 @@ function loginOut(){
 		window.location.href ="<%=path%>/ConEntryPage.jsp"; 
 		}
 </script>
-<script src="js/index.js"></script>
+<script th:src="@{before/js/index.js}"></script>
 </body>
 </html>

@@ -8,6 +8,6 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration
 @MapperScan("com.ljz.mybaitspulsdemo.dao")
-public class mybaitsConfig {
+public class MybaitsConfig {
 
 }

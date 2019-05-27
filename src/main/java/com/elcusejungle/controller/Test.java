@@ -17,7 +17,6 @@ public class Test {
     @Autowired
     IAdminuserService adminuserService;
 
-    @ResponseBody
     @RequestMapping("/test")
     public String test(){
         List<Adminuser> list = adminuserService.list();

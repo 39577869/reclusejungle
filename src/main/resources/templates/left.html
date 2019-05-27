@@ -3,8 +3,8 @@
 <head>
 <meta http-equiv="Content-type" content="text/html; charset=UTF-8">
 <title>ZRCMS Control Panel</title>
-<script src="js/jquery.js" type="text/javascript"></script>
-<script type="text/javascript" src="js/menu_min.js"></script>
+<script th:src="@{before/js/jquery.js}" type="text/javascript"></script>
+<script type="text/javascript" th:src="@{before/js/menu_min.js}"></script>
 <script type="text/javascript">
 $(document).ready(function (){ 
   
@@ -12,8 +12,8 @@ $(document).ready(function (){
   
 }); 
 </script> 
-<link rel="stylesheet" type="text/css" href="css/menu-css.css">
-<link rel="stylesheet" type="text/css" href="css/styleleft.css"> 
+<link rel="stylesheet" type="text/css" th:href="@{before/css/menu-css.css}">
+<link rel="stylesheet" type="text/css" th:href="@{before/css/styleleft.css}">
 </head><body> 
 <div id="content">
 <div class="menu">
@@ -80,8 +80,8 @@ $(document).ready(function (){
 	   </li>
 	<li><a>【技 术 支 持】</a>
 		<ul>			
-                        <li><a href="                       " target="_blank">官方网站</a></li>
-			<li><a href="                        " target="_blank">系统升级</a></li>
+                        <li><a href="#" target="_blank">官方网站</a></li>
+			<li><a href="#" target="_blank">系统升级</a></li>
 		</ul>
     </li>
 </ul>

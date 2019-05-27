@@ -1,0 +1,154 @@
+@charset "utf-8";
+/* CSS Document */
+body
+{
+	background-color:#09F;
+	margin:0px;
+}
+body a
+{
+	text-decoration:none;	
+}
+.logo
+{
+	
+	margin-left:20px;
+	width:250px;
+	height:80px;
+	background-image:url(../image/logo.png);
+	float:left;
+}
+.topnav
+{	width:700px;
+	height:80px;
+	margin-left:100px;
+	float:left;
+}
+.navbar
+{
+	width:700px;
+	height:50px;
+	margin-top:30px;
+
+}
+.right
+{
+	width:250px;
+	height:80px;
+	float:right;
+	color:#FFF;
+}
+.userinfo
+{
+	font-family:微软雅黑;
+	font-size:18px;
+	color:#FF0;
+}
+.cplink
+{
+	font-family:微软雅黑;
+	font-size:15px;
+	color:#FFF;
+}
+.right a:hover
+{
+	color:#FF0;
+}
+.leftnav
+{
+	margin-top:0px;
+	background-image:url(../image/leftbg.jpg);
+}
+
+.leftnav li
+{
+	display:block;
+	width:150px;
+	height:14px;
+	margin-left:0px;
+	margin-top:0px;
+	margin-bottom:0px;
+	padding:0px;
+	line-height:0px;
+}
+input
+{
+ 	padding:0px;
+ 	border:1px solid #CCC;
+ 	width:150px;
+ 	height:23px;;
+ 	font-size:10pt;
+	font-family:微软雅黑;
+	color:#333;
+ 	cursor:hand;
+	text-align:center;
+}
+.rightmain
+{
+	background-color:#FFF;
+}
+.login
+{
+	background-color:#FFF;
+}
+.loginform
+{
+	width:225px;
+	margin-top:150px;
+}
+.logintxt
+{
+	color:#F30;
+	font-family:微软雅黑;
+	font-size:35px;
+	background-color:#FFC;
+}
+.logininfo
+{
+	color:#09F;
+	font-size:20px;
+	font-family:微软雅黑;
+	border-color:#F60;
+	border-width:3px;
+	width:220px;
+	height:30px;
+	margin-top:25px;
+	text-align:left;
+	border-radius:5;
+}
+.btnlogin
+{
+	color:#FFF;
+	font-size:20px;
+	font-family:微软雅黑;
+	width:225px;
+	height:37px;
+	background-color:#09F;
+	border-width:5px;
+	border-color:#09F;
+	margin-top:25px;
+}
+.logincodeinput
+{
+	color:#F30;
+	font-size:20px;
+	font-family:微软雅黑;
+	width:130px;
+	height:30px;
+	border-width:1px;
+	border-color:#F60;
+	margin-top:25px;
+	margin-right:10px;
+}
+.logincode
+{
+	color:#F30;
+	font-size:30px;
+	font-family:微软雅黑;
+	width:60px;
+	height:30px;
+}
+.logincode a:visited
+{
+	color:#F60;
+}

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Log4j2
@@ -19,9 +20,14 @@ public class Test {
 
     @ResponseBody
     @RequestMapping("/test")
-    public void test(){
+    public String test(){
         List<Adminuser> list = adminuserService.list();
         list.forEach(log::info);
-        return;
+        return "index";
+    }
+
+    @RequestMapping("/head")
+    public String head(HttpSession session){
+        return "head";
     }
 }

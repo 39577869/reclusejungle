@@ -1,50 +1,50 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ page import="com.util.DateUtils" %>
+<%--<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>--%>
+<%--<%@ page import="com.util.DateUtils" %>
 <%@taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core"%>
-<jsp:directive.page import="java.util.Calendar" />
-<%
-	String path = request.getContextPath();
-%>
-<%
-  String timeBanner = "你好";
-  Calendar cal = Calendar.getInstance();
-  int hour = cal.get(Calendar.HOUR_OF_DAY);
-  if (hour >= 5 && hour < 11) {
-   timeBanner = "上午好，";
-  } else if (hour >= 11 && hour < 13) {
-   timeBanner = "中午好，";
-  } else if (hour >= 13 && hour < 18) {
-   timeBanner = "下午好，";
-  } else if (hour >= 18 && hour < 23) {
-   timeBanner = "晚上好，";
-  } else {
-   timeBanner = "夜深啦，";
-  }
-%>
-<% 
-java.text.SimpleDateFormat formatter = new java.text.SimpleDateFormat("yyyy-MM-dd"); 
-java.text.SimpleDateFormat formatter2 = new java.text.SimpleDateFormat("yyyy年MM月dd日"); 
-java.util.Date currentTime = new java.util.Date();//得到当前系统时间 
-java.util.Date date2 = DateUtils.ctrlDate(currentTime,1);
+<jsp:directive.page import="java.util.Calendar" />--%>
+<%--<%--%>
+<%--	String path = request.getContextPath();--%>
+<%--%>--%>
+<%--<%--%>
+<%--  String timeBanner = "你好";--%>
+<%--  Calendar cal = Calendar.getInstance();--%>
+<%--  int hour = cal.get(Calendar.HOUR_OF_DAY);--%>
+<%--  if (hour >= 5 && hour < 11) {--%>
+<%--   timeBanner = "上午好，";--%>
+<%--  } else if (hour >= 11 && hour < 13) {--%>
+<%--   timeBanner = "中午好，";--%>
+<%--  } else if (hour >= 13 && hour < 18) {--%>
+<%--   timeBanner = "下午好，";--%>
+<%--  } else if (hour >= 18 && hour < 23) {--%>
+<%--   timeBanner = "晚上好，";--%>
+<%--  } else {--%>
+<%--   timeBanner = "夜深啦，";--%>
+<%--  }--%>
+<%--%>--%>
+<%--<% --%>
+<%--java.text.SimpleDateFormat formatter = new java.text.SimpleDateFormat("yyyy-MM-dd"); --%>
+<%--java.text.SimpleDateFormat formatter2 = new java.text.SimpleDateFormat("yyyy年MM月dd日"); --%>
+<%--java.util.Date currentTime = new java.util.Date();//得到当前系统时间 --%>
+<%--java.util.Date date2 = DateUtils.ctrlDate(currentTime,1);--%>
 
-String str_date1 = formatter.format(currentTime); //将日期时间格式化 
+<%--String str_date1 = formatter.format(currentTime); //将日期时间格式化 --%>
 
-String str_date4 = formatter.format(date2); //将下一天
+<%--String str_date4 = formatter.format(date2); //将下一天--%>
 
-String str_date2 = currentTime.toString(); //将Date型日期时间转换成字符串形式 
+<%--String str_date2 = currentTime.toString(); //将Date型日期时间转换成字符串形式 --%>
 
-String str_date3 = formatter2.format(currentTime); //将Date型日期时间转换成年月日
+<%--String str_date3 = formatter2.format(currentTime); //将Date型日期时间转换成年月日--%>
 
-/** 
- * 获得指定日期的后一天 
- *  
- * @param specifiedDay 
- * @return 
- */  
-%>   
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<%--/** --%>
+<%-- * 获得指定日期的后一天 --%>
+<%-- *  --%>
+<%-- * @param specifiedDay --%>
+<%-- * @return --%>
+<%-- */  --%>
+<%--%>   --%>
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>head</title>

@@ -1,0 +1,53 @@
+@charset "utf-8";
+.menu ul li {
+	display:block;
+	width:190px;
+	padding-top:0px;
+	margin-bottom:0px;
+	background: url(../image/barbg.png) top left no-repeat;
+	list-style:none;
+	overflow:visible;
+}
+.menu ul li a {
+	display:block;
+	height:30px; width:160px;
+	margin-top:0px;
+	padding-top:12px;/*一级菜单*/
+	padding-left:35px;
+	font-size:14px;
+	color:#82846f;
+	outline:none;
+}
+.menu ul li .active {
+	background:url(../image/on.png) top right no-repeat;
+}
+
+.menu ul li .inactive {
+	background:url(../image/off.png) top right no-repeat;
+}
+.menu ul li ul {
+	display:none; 
+	margin-top:-5px;
+	margin-bottom:15px;   
+}
+
+.menu ul li ul li {
+	display:block;
+	background:none;
+	font-size:12px;
+	list-style:circle;
+	color:#8f9d4c;
+	margin-bottom:0px;
+	margin-top:5px;
+	padding-top:0px;
+	padding-bottom:0px;
+	padding-left:1px;
+	margin-left:35px;
+}
+.menu ul li ul li a {
+	background:none;
+	font-size:12px;
+	height:10px;
+	color:#8f9d4c;
+	padding-left:0px; 
+}

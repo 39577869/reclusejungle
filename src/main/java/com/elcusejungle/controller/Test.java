@@ -21,7 +21,7 @@ public class Test {
     @RequestMapping("/test")
     public void test(){
         List<Adminuser> list = adminuserService.list();
-        list.forEach(log::info);
+//        list.forEach(log::info);
         return;
     }
 }

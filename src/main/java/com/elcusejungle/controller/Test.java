@@ -19,9 +19,9 @@ public class Test {
 
     @ResponseBody
     @RequestMapping("/test")
-    public void test(){
+    public String test(){
         List<Adminuser> list = adminuserService.list();
-//        list.forEach(log::info);
-        return;
+        list.forEach(log::info);
+        return "index";
     }
 }

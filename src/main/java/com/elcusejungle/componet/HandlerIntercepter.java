@@ -12,7 +12,7 @@ public class HandlerIntercepter implements HandlerInterceptor {
 
     @Override//拦截器
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-//        System.out.println("拦截器进来了。。。。");
+        /*System.out.println("拦截器进来了。。。。");*/
         return true;
     }
 

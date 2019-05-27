@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Configuration;
  * mybaits配置类
  */
 @Configuration
-@MapperScan("com.ljz.mybaitspulsdemo.dao")
+@MapperScan("com.elcusejungle.mapper")
 public class MybaitsConfig {
 
 }

@@ -3,11 +3,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
  <title>丛林闲居-公示列表-款物发放公示</title>
-    <link rel="stylesheet" href="style/cy.css">
-    <link rel="stylesheet" href="style/style.css">
-    <script src="js/laydate.js"></script>
-    <link rel="stylesheet" href="style/laydate.css">
-    <link rel="stylesheet" href="js/molv/laydate.css">
+    <link rel="stylesheet" th:href="@{before/style/cy.css}">
+    <link rel="stylesheet" th:href="@{before/style/style.css}">
+    <script th:src="@{before/js/laydate.js}"></script>
+    <link rel="stylesheet" th:href="@{before/style/laydate.css}">
+    <link rel="stylesheet" th:href="@{before/js/molv/laydate.css}">
     
 <style rel="stylesheet">  
 .pagination {font-family: Tahoma;font-size: 12px;height: 22px;margin: 0px 100px;text-align: center;}  
@@ -28,7 +28,8 @@ height:22px;line-height:22px;margin:0 3px 0 0;text-align:center;vertical-align:m
     <div class="yc-txdd1">
          
         <!--首页banner-->
-         <jsp:include  page="head.jsp" />
+        <div th:insert="~{head::top1}"></div>
+        <div th:insert="~{head::top2}"></div>
                       <script type="text/javascript">
 function Alllogin(){
 	window.location.href = "login.jsp?returnurl=/PLpublicity.jsp";
@@ -43,15 +44,15 @@ function loginOut(){
         <!--用车-填写订单-->
         <div class="yc-txdd">
             <div class="yc-mbx">
-                <p>当前位置：<a href="index.jsp" class="ll">丛林闲居网</a> > <a href="FoundIndex.jsp" class="ll">基金会</a> > <a href="#"
+                <p>当前位置：<a href="index.html" class="ll">丛林闲居网</a> > <a href="FoundIndex.html" class="ll">基金会</a> > <a href="#"
                                                                                                class="xz">款物发放公示</a></p>
             </div>
-            <div><img src="images/jjh_03.jpg"></div>
+            <div><img th:src="@{before/images/jjh_03.jpg}"></div>
             <div class="jjh-index">
                 <div class="jjh-index-left">
                     <div class="kwff-p1">
                         <p class="kwff-p11">公示列表</p>
-                        <p class="kwff-p12"><span class="qzfze">款物发放公示</span><a href="PLlist.jsp" ><span>月底支出查询</span></a> <a href="DonationLove.jsp"><span>爱心捐赠明细</span></a></p></p>
+                        <p class="kwff-p12"><span class="qzfze">款物发放公示</span><a href="PLlist.html" ><span>月底支出查询</span></a> <a href="DonationLove.html"><span>爱心捐赠明细</span></a></p></p>
                     </div>
   
                     <div class="jjh-jzfz">
@@ -85,28 +86,28 @@ function loginOut(){
 
                 </div>
                 <div class="jjh-index-right">
-                    <a href="FoundRescue.jsp"><div>
-                        <img src="images/brower_03.jpg" class="enheng">
+                    <a href="FoundRescue.html"><div>
+                        <img th:src="@{before/images/brower_03.jpg}" class="enheng">
                         <p>我要求助</p>
-                        <img src="images/brower_07.jpg" >
+                        <img th:src="@{before/images/brower_07.jpg}" >
                     </div></a>
-                    <a href="DonationLove.jsp"><div>
-                        <img src="images/brower_11.jpg" class="enheng">
+                    <a href="DonationLove.html"><div>
+                        <img th:src="@{before/images/brower_11.jpg}" class="enheng">
                         <p>我要查询</p>
-                        <img src="images/brower_07.jpg">
+                        <img th:src="@{before/images/brower_07.jpg}">
                     </div></a>
-                    <a href="FoundDonations.jsp"><div>
-                        <img src="images/brower_15.jpg" class="enheng" style="margin-top: 15px;">
+                    <a href="FoundDonations.html"><div>
+                        <img th:src="@{before/images/brower_15.jpg}" class="enheng" style="margin-top: 15px;">
                         <p>我要捐款</p>
-                        <img src="images/brower_07.jpg">
+                        <img th:src="@{before/images/brower_07.jpg}">
                     </div></a>
-                    <a href="UserPquery.jsp"><div>
-                        <img src="images/brower_19.jpg" class="enheng" style="margin-top: 23px;">
+                    <a href="UserPquery.html"><div>
+                        <img th:src="@{before/images/brower_19.jpg}" class="enheng" style="margin-top: 23px;">
                         <p>求助进度</p>
-                        <img src="images/brower_07.jpg">
+                        <img th:src="@{before/images/brower_07.jpg}">
                     </div></a>
-                    <a href="FoundJzfzlist.jsp"><div>
-                        <img src="images/brower_23.jpg" style="margin-top: 16px;">
+                    <a href="FoundJzfzlist.html"><div>
+                        <img th:src="@{before/images/brower_23.jpg}" style="margin-top: 16px;">
                         <p>公示列表</p>
                     </div></a>
                 </div>
@@ -117,7 +118,8 @@ function loginOut(){
 
 
         </div>
-         <%@ include  file="bottom.jsp"%>
+        <div th:replace="bottom::html"></div>
+         <!--<%@ include  file="bottom.jsp"%>-->
     </div>
 
 

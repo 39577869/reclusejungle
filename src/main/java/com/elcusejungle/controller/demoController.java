@@ -19,6 +19,7 @@ public class demoController {
 
     @Autowired
     private RedisTemplate redisTemplate;
+
     @ResponseBody
     @RequestMapping(value = "hello")
     public String hello(){

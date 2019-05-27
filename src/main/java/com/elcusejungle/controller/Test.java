@@ -29,4 +29,14 @@ public class Test {
     public String head(HttpSession session){
         return "head";
     }
+
+    @RequestMapping("/login")
+    public String login(){
+        return "login";
+    }
+
+    @RequestMapping("/JungleList")
+    public String JungleList(){
+        return "JungleList";
+    }
 }

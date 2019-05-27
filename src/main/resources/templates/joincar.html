@@ -3,13 +3,13 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <title>丛林闲居-用车加盟</title>
-    <link rel="stylesheet" href="style/cy.css">
-    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" th:href="@{before/style/cy.css}">
+    <link rel="stylesheet" th:href="@{before/style/style.css}">
 <!-- 表单验证start -->
-<script src="<%=path %>/js/jquery.js"></script>
-<script src="<%=path %>/js/jquery.validate.js"></script>
-<script src="<%=path%>/js/jquery.metadata.js"></script>
-<script type="text/javascript" src="<%=path%>/js/messagesx_cn.js"></script>
+    <script th:src="@{before/js/jquery.js}"></script>
+    <script th:src="@{before/js/jquery.validate.js}"></script>
+    <script th:src="@{before/js/jquery.metadata.js}"></script>
+    <script type="text/javascript" th:src="@{before/js/messagesx_cn.js}"></script>
 <!-- 表单验证stop -->
 <!-- 下载中文文件start -->
 <script src="<%=path %>/sheet/js/download.js"></script>
@@ -64,12 +64,12 @@ function loginOut(){
     <div class="yc-mbx">
         <p>当前位置：<a href="index.jsp" class="ll">丛林闲居网</a> > <a href="#" class="xz">加盟</a></p>
     </div>
-    <div><img src="images/jm_03.jpg"></div>
+    <div><img th:src="@{before/images/jm_03.jpg}"></div>
     <div class="jm">
     <div class="kwff-p1">
-          <p class="kwff-p11">加盟列表</p> 
+          <p class="kwff-p11">加盟列表</p>
            <p class="kwff-p12"><a href="joincl.jsp"><span>丛林加盟</span></a><a href="joinxj.jsp"><span>闲居加盟</span></a> <span   class="qzfze">车辆加盟</span> </p>
-     </div>   
+     </div>
      <div class="qzsqb">
      <div class="qzsqb-one">
                <ul> 
@@ -79,8 +79,10 @@ function loginOut(){
       </div>  
         <div class="jm-left">  
             <p class="xx">
-            	<c:if test="${sessionUser ==null }"><em style="font-size: 10px;color: red">加盟首先要登录哦，点击<a href="login.jsp?returnurl=/joincar.jsp">登录</a><br/></em></c:if>
-            	<img src="images/09.png">请填写加盟信息：
+            	<!--<c:if test="${sessionUser ==null }">-->
+                    <em style="font-size: 10px;color: red">加盟首先要登录哦，点击<a href="login.jsp?returnurl=/joincar.jsp">登录</a><br/></em>\
+                <!--</c:if>-->
+            	<img th:src="@{before/images/09.png}">请填写加盟信息：
             	</p> 
             <span class="rxxx">如果您是丛林，想加盟丛林闲居网，请填写如下信息（<i>* 为必填项</i>）</span>
            <form method="post" action="<%=path %>/joincar!addJoincar.action" id="joincarForm"  enctype="multipart/form-data">
@@ -95,18 +97,18 @@ function loginOut(){
                <p><input type="text" value="${joincar.travelrun }" name="joincar.travelrun" id="travelrun"  placeholder="已行驶里程" class="lxr "><i>*</i><span class="status" style="color: red" id="td6"></span></p>
                <p><input type="text" value="${joincar.drivername }" name="joincar.drivername" id="drivername"  placeholder="指定驾驶员姓名" class="lxr "><i>*</i><span class="status" style="color: red" id="td7"></span></p>
                <p><input type="text" value="${joincar.drivernumber }" name="joincar.drivernumber" id="drivernumber"  placeholder="驾驶证号" class="lxr "><i>*</i><span class="status" style="color: red" id="td8"></span></p>
-               <c:if test="${joincar==null }">
+               <!--<c:if test="${joincar==null }">-->
                <p><input type="text" value="${joincar.driverphone }" maxlength="11" name="joincar.driverphone" id="driverphone"  placeholder="指定驾驶员电话（11位手机号码，作为后台管理员登录帐号）" class="lxr " onblur="checkDriverphone()"><i>*</i><span class="status" style="color: red" id="td9"></span></p>
                <p><input type="text"  id="mobileYZM"   placeholder="验证码" maxlength="6"  onblur="checkYZM()" class="yzm"> <button type="button" id="hqyzmbutton" onclick="getNumRandom()">获取验证码</button><i>*</i>
                		<span class="status" style="color: red" id="td10"></span></p>  
                		<input type="hidden" name="update" value="" id="update"/> 
-               </c:if>
-               <c:if test="${joincar !=null }">
+               <!--</c:if>-->
+               <!--<c:if test="${joincar !=null }">-->
                		<input type="hidden" name="joincar.driverphone" value="${joincar.driverphone }" id="driverphone"/>
                		<input type="hidden" name="joincar.id" value="${joincar.id}" id="id"/>
                		<input type="hidden" name="joincar.jointime" value="${joincar.jointime}" id="jointime"/>
                		<input type="hidden" name="update" value="1" id="update"/> 
-               </c:if> 
+               <!--</c:if> -->
                <p><input type="text" value="${joincar.insurancename }" name="joincar.insurancename" id="insurancename"  placeholder="车辆保险公司" class="lxr "><i>*</i><span class="status" style="color: red" id="td11"></span></p>
                <p><input type="text" value="${joincar.insurancenumber }" name="joincar.insurancenumber" id="insurancenumber"  placeholder="保险证号" class="lxr "><i>*</i><span class="status" style="color: red" id="td11"></span></p>
                <p><input type="text" value="${joincar.insurancephone }" name="joincar.insurancephone" id="insurancephone"  placeholder="车辆保险公司电话" class="lxr "><i>*</i><span class="status" style="color: red" id="td11"></span></p>
@@ -115,12 +117,12 @@ function loginOut(){
                <p style="margin-top:20px;"><input type="button" id="sub" value="提交信息"></p>  
             </div>      
             </form> 
-            <p class="xx"><img src="images/09.png">要求及流程说明</p>
+            <p class="xx"><img th:src="@{before/images/09.png}">要求及流程说明</p>
             <p class="ln">本着双赢的理念，丛林闲居已建立了一个遍及全国的完善代理商网络。无论是个人还是企业，只要符合丛林闲居的要求，都可
                 以成为丛林闲居的代理商，代理丛林闲居的国内、国外闲居预订的业务。 代理商将获得强大的品牌支持，良好的售后服务体系
                 同时获得丰厚的利润回报。</p>
             <div class="liucheng">
-                <img src="images/one_03.jpg">
+                <img th:src="@{before/images/one_03.jpg}">
             </div>
         </div>
 </div> 
@@ -130,21 +132,21 @@ function loginOut(){
  <%@ include  file="bottom.jsp"%>
     </div>
 </div>
-<c:if test="${show !=null}"> 
+<!--<c:if test="${show !=null}"> -->
 <div class="tcc2">     
     <div class="tx-ydm" style="margin-top: 300px;">  
-            <p class="tx-sm"><span class="one"><img src="images/tx.png">提示</span><span class="two"><img src="images/14_01.png" class="carose5"></span></p><br/><br/><br/>
+            <p class="tx-sm"><span class="one"><img th:src="@{before/images/tx.png}">提示</span><span class="two"><img th:src="@{before/images/14_01.png}" class="carose5"></span></p><br/><br/><br/>
             <p align="center"> 
-            	<c:if test="${isOk ==true}">加盟成功，你的临时密码为${pwd }</c:if>
-            	<c:if test="${isOk ==false }">加盟失败</c:if></p><br/><br/><br/> 
+            	<!--<c:if test="${isOk ==true}">加盟成功，你的临时密码为${pwd }</c:if>-->
+            	<!--<c:if test="${isOk ==false }">加盟失败</c:if></p><br/><br/><br/> -->
             <p align="center">      
-            	<c:if test="${isOk ==true }">点击<a href="<%=path %>/UserJPquery.jsp">查看</a>加盟进度</c:if>
-            	<c:if test="${isOk ==false }">点击<a href="<%=path %>/joincar.jsp">加盟</a>重新加盟</c:if> <br/><br/><br/> 
+            	<!--<c:if test="${isOk ==true }">点击<a href="<%=path %>/UserJPquery.jsp">查看</a>加盟进度</c:if>-->
+            	<!--<c:if test="${isOk ==false }">点击<a href="<%=path %>/joincar.jsp">加盟</a>重新加盟</c:if> <br/><br/><br/> -->
             </p>
     </div>
 </div>     
-</c:if>
-<script src="js/index.js"></script>
+<!--</c:if>-->
+<script th:src="@{before/js/index.js}"></script>
 <script type="text/javascript">
 var wait=120;//倒计时获取验证码时间
 var checks = false; //一个全局变量，用来最终判断表单是否可以提交

@@ -65,7 +65,7 @@
             <artifactId>jquery</artifactId>
             <version>3.0.0</version>
         </dependency>
-       <!-- 自动代码生成器-->
+        <!-- 自动代码生成器-->
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-generator</artifactId>

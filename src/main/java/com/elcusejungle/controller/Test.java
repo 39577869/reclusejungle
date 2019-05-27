@@ -17,11 +17,11 @@ public class Test {
     @Autowired
     IAdminuserService adminuserService;
 
-    @ResponseBody
+    //@ResponseBody
     @RequestMapping("/test")
-    public void test(){
+    public String test(){
         List<Adminuser> list = adminuserService.list();
         list.forEach(log::info);
-        return;
+        return "index";
     }
 }

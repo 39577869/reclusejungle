@@ -16,5 +16,4 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class AflUserServiceImpl extends ServiceImpl<AflUserMapper, AflUser> implements IAflUserService {
-
 }

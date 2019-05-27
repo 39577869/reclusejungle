@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Register</title>
+<script type="text/javascript">
+    //ログイン
+    function edit(){
+        document.forms[0].action = 'addUser!updateUser.action';
+        document.forms[0].submit();
+    }
+</script>
+</head>
+<body >
+    <form method="post">
+    <input type="hidden" id="id" name="id" value="${user.id }">
+        <table style ="width:100%">
+            <tr>
+                <td>user name:</td>
+                <td><input type="text" name="username" id="username" value="${user.username }" maxlength="10"/></td>
+            </tr>
+            <tr>
+                <td>password:</td>
+                <td><input type="password" name="password" id="password" value="${user.password }" maxlength="15"/></td>
+            </tr>
+            <tr>
+                <td>imagefile:</td>
+                <td>
+                    <s:iterator id="imgUrl" value="#request.user.filelist">
+                    <br /><img src="${pageContext.request.contextPath}/${imgUrl}" width="100px" height="100px"/>
+                    </s:iterator>
+                </td>
+            </tr>
+            <tr>
+            	<td></td>
+                <td><input type="button" value="edit" onclick="edit();"></td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>

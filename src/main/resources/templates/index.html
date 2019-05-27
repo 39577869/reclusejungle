@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    
+    <title>index</title>
+    <link rel="stylesheet" href="style/cy.css">
+    <link rel="stylesheet" href="style/style.css">
+    <script  src="js/laydate.js"></script>
+    <link rel="stylesheet" href="style/laydate.css">
+    <link rel="stylesheet" href="js/molv/laydate.css">
+     <script type="text/javascript" src="js/lazyload-min.js"></script>
+     <script src="js/jquery.min.js"></script>
+      <script type='text/javascript' src='js/citylist.js'></script>
+    <script type='text/javascript' src='js/querycity.js'></script>
+    <link href='style/cityquery.css' rel="stylesheet" type="text/css" />
+</head>
+<body>
+<!--��ҳTOP-->
+<div class="index-top">
+    <div class="index-top3">
+    <div class="left">
+        <span class="one"><a href="index.html"><img src="images/logo.png"></a></span>
+        <span class="two"><img src="images/index_q.png"></span>
+
+        <div class="three">
+            <span><img src="images/index_03.png"></span>
+            <ul>
+                <li class="rx">�ͻ���������:</li>
+                <li class="phone">400-688-6798</li>
+            </ul>
+        </div>
+    </div>
+    <div class="right">
+        <p class="one"><img src="images/index_06.jpg"></p>
+        <p class="two"><img src="images/e_03.jpg"></p>
+        <p class="three none"><img src="images/ewm_03.jpg"></p>
+    </div>
+    </div>
+</div>
+<!--��ҳbanner-->
+<div class="index-banner">
+    <div class="index-banner1">
+    <ul>
+        <li><a href="index.html">��ҳ</a></li>
+        <li><a href="JAList/AtList.html">����</a></li>
+        <li><a href="JAList/JungleList.html">�о�</a></li>
+        <li><a href="Confession/ConEntryPage.html">���</a></li>
+        <li><a href="Foundation/FoundIndex.html">����</a></li>
+        <li><a href="JAList/Join.html">����</a></li>
+        <li><a href="JAList/ContactUs.html">��ϵ����</a></li>
+        <li><a href="JAList/AppDown.html">APP����</a></li>
+    </ul>
+    <div class="dl none">
+        <a href="LRis/login.html">��¼</a><i>|</i><a href="LRis/register.html">ע��</a>
+    </div>
+        <div class="index-grzx "><a href="User/UserPersonal.html">��������</a> </div>
+    </div>
+</div>
+<!--��ҳ�ֲ�ͼ-->
+<div class="index-lbt">
+    <div id="scrollPics">
+        <ul class="slider">
+            <li><img src="images/lbt1.jpg" class="lower"/></li>
+            <li><img src="images/lbt2.jpg"/></li>
+            <li><img src="images/lbt1.jpg"/></li>
+            <li><img src="images/lbt2.jpg"/></li>
+            <li><img src="images/lbt1.jpg"/></li>
+        </ul>
+        <ul class="num">
+            <li class="on"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+      <div class="nested">
+                    <div class="nTab">
+                        <div class="TabTitle">
+                            <ul id="myTab">
+                                <li class="active normal"><p class="selected0"></p>�о�</li>
+                                <li class="normal"><p class="selected1"></p>����</li>
+                            </ul>
+                        </div>
+                        <div class="TabContent">
+                            <div class="myTab_Content">
+                                <div class="lbttj">
+                                    <div class="tj-top">
+                                        <span class="gnxjac">�����о�</span><span>����о�</span>
+                                    </div>
+                                    <div class="tj-bottom">
+                                        <div class="xj">
+                                            <table>
+                                                <tr>
+                                                    <td>Ŀ�ĵ�</td>
+                                                    <td class="sec"><input type="text"  id='fromcity' placeholder="�����������"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>��ס</td>
+                                                    <td><p><input class="laydate-icon ts" id="demo1" value="2015-10-14"> </p>
+
+                                                        <p>�˷���<input class="laydate-icon" id="demo2" value="2015-10-14"> </p></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>�ؼ��</td>
+                                                    <td class="sec"><input type="text" placeholder="������ر�/��Ȧ/����"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td></td>
+                                                    <td class="ses sec"><input type="submit" value="����"> <a
+                                                            href="#"><img src="images/06.png">�����о�</a></td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                        <div class="xj none">
+                                            <table>
+                                                <tr>
+                                                    <td>Ŀ�ĵ�</td>
+                                                    <td class="sec"><input type="text" id="zmx" placeholder="�人��"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>��ס</td>
+                                                    <td><p><input class="laydate-icon ts" id="demo3" value="2015-10-14"> </p>
+
+                                                        <p>�˷���<input class="laydate-icon" id="demo4" value="2015-10-14"> </p></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>�ؼ��</td>
+                                                    <td class="sec"><input type="text" placeholder="������ر�/��Ȧ/����"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td></td>
+                                                    <td class="ses sec"><input type="submit" value="����"> <a
+                                                            href="#"><img src="images/06.png">�����о�</a></td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="myTab_Content none">
+                                <div class="lbttj">
+                                    <div class="tj-top">
+                                        <span class="gnxjac">�����о�</span><span>����о�</span>
+                                    </div>
+                                    <div class="tj-bottom">
+                                        <div class="xj">
+                                            <table>
+                                                <tr>
+                                                    <td>Ŀ�ĵ�</td>
+                                                    <td class="sec"><input type="text" placeholder="�人��" id="yyqx"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>��ס</td>
+                                                    <td><p><input class="laydate-icon ts" id="demo5" value="2015-10-14"> </p>
+
+                                                        <p>�˷���<input class="laydate-icon" id="demo6" value="2015-10-14"> </p></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>�ؼ��</td>
+                                                    <td class="sec"><input type="text" placeholder="������ر�/��Ȧ/����"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td></td>
+                                                    <td class="ses sec"><input type="submit" value="����"> <a
+                                                            href="#"><img src="images/06.png">�����о�</a></td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                        <div class="xj none">
+                                            <table>
+                                                <tr>
+                                                    <td>Ŀ�ĵ�</td>
+                                                    <td class="sec"><input type="text" placeholder="�人��" id="jackson"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>��ס</td>
+                                                    <td><p><input class="laydate-icon ts" id="demo7" value="2015-10-14"> </p>
+
+                                                        <p>�˷���<input class="laydate-icon" id="demo8" value="2015-10-14"> </p></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>�ؼ��</td>
+                                                    <td class="sec"><input type="text" placeholder="������ر�/��Ȧ/����"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td></td>
+                                                    <td class="ses sec"><input type="submit" value="����"> <a
+                                                            href="#"><img src="images/06.png">�����о�</a></td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+</div>
+<div class="index-content">
+    <div id="a1" class="index-recommended">
+        <p class="rmtj">�����Ƽ�<i>�����ɼ��գ���Ȫʯ����</i></p>
+
+        <div class="taq1">
+            <div>
+                <img src="images/tu_01.jpg">
+            </div>
+            <span>̤��֮�ã����湺��������</span><span class="mfcy"><a href="#">��ѳ���</a> </span>
+        </div>
+        <div class="taq1 spec">
+            <div>
+                <img src="images/tu_03.jpg">
+            </div>
+            <span>̤��֮�� ���湺��������</span><span class="mfcy"><a href="#">�����޼���</a> </span>
+        </div>
+        <div class="taq2 spec">
+            <div>
+                <div>
+                    <img src="images/t2_01.jpg">
+
+                    <span>��������</span><span class="mfcy"><a href="#">��ѳ���</a> </span>
+                </div>
+                <div class="spec2">
+                    <img src="images/t2_02.jpg">
+
+                    <span>��������</span><span class="mfcy"><a href="#">��ѳ���</a> </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="a2" class="index-domestic">
+        <div class="rmtj">
+            <div class="rmtj1">����<i>�����ɼ��գ���Ȫʯ����</i></div>
+            <div class="rmtj2"><span class="forest">����</span><span>�о�</span></div>
+            <div class="rmtj3"><a href="#">��������></a> </div>
+        </div>
+        <div class="im-main">
+            <div class="one">
+                <div class="one-left">
+                    <p class="rm">����Ŀ�ĵ�</p>
+                    <ul class="city">
+                        <li><a href="#">�Ϻ�</a> </li>
+                        <li><a href="#">����</a> </li>
+                        <li><a href="#">̩��</a> </li>
+                        <li><a href="#">�ൺ</a> </li>
+                        <li><a href="#">��ׯ</a> </li>
+                        <li><a href="#">����</a> </li>
+                        <li><a href="#">����</a> </li>
+                        <li><a href="#">�ĳ�</a> </li>
+                        <li><a href="#">����</a> </li>
+                        <li><a href="#">����</a> </li>
+                        <li><a href="#">����</a> </li>
+                        <li><a href="#">��կ��</a> </li>
+                        <li><a href="#">����</a> </li>
+                        <li><a href="#">����</a> </li>
+                        <li><a href="#">�żҽ�</a> </li>
+                    </ul>
+                    <p class="cld">���ֶ�̬</p>
+                    <ul class="cldt">
+                        <li><a href="#">���?������֣���ʼҷ���о�</a> </li>
+                        <li><a href="#"> �����콭�ϣ�����ʮ�ﻭ��</a> </li>
+                        <li><a href="#">"ϸ��ȫ������Ķ�Ѩ�Ƶ�"</a> </li>
+                        <li><a href="#">"���֮����Դ����Ȼ-�����о�"</a> </li>
+                    </ul>
+                </div>
+                <div class="one-con">
+                    <a href="JAList/JungleDetails.html"><img src="images/index_12.jpg"></a>
+                    <a href="JAList/JungleDetails.html"><span>������Ͽ4��3����Զ�����</span></a>
+                </div>
+                <div class="one-right">
+                    <div class="or-one">
+                        <div>
+                            <a href="JAList/JungleDetails.html"> <img src="images/index_14.jpg"></a>
+                                <a href="JAList/JungleDetails.html"><span>������������</span></a>
+                        </div>
+                        <div>
+                            <a href="JAList/JungleDetails.html"><img src="images/index_20.jpg"></a>
+                                <a href="JAList/JungleDetails.html"><span>������������</span></a>
+                        </div>
+                    </div>
+                <div class="or-two">
+                    <div>
+                        <a href="JAList/JungleDetails.html"><img src="images/index_16.jpg"></a>
+                            <a href="JAList/JungleDetails.html"><span>������������</span></a>
+                    </div>
+                    <div>
+                        <a href="JAList/JungleDetails.html"><img src="images/index_21.jpg"></a>
+                            <a href="JAList/JungleDetails.html"><span>������������</span></a>
+                    </div>
+                </div>
+            </div>
+            </div>
+            <div class="one none">
+                <div class="one-left">
+                    <p class="rm">����Ŀ�ĵ�</p>
+                    <ul class="city">
+                        <li><a href="#">�Ϻ�</a> </li>
+                        <li><a href="#">����</a> </li>
+                        <li><a href="#">̩��</a> </li>
+                        <li><a href="#">�ൺ</a> </li>
+                        <li><a href="#">��ׯ</a> </li>
+                        <li><a href="#">����</a> </li>
+                        <li><a href="#">����</a> </li>
+                        <li><a href="#">�ĳ�</a> </li>
+                        <li><a href="#">����</a> </li>
+                        <li><a href="#">����</a> </li>
+                        <li><a href="#">����</a> </li>
+                        <li><a href="#">��կ��</a> </li>
+                        <li><a href="#">����</a> </li>
+                        <li><a href="#">����</a> </li>
+                        <li><a href="#">�żҽ�</a> </li>
+                    </ul>
+                    <p class="cld">�оӶ�̬</p>
+                    <ul class="cldt">
+                        <li><a href="#">���?������֣���ʼҷ���о�</a> </li>
+                        <li><a href="#"> �����콭�ϣ�����ʮ�ﻭ��</a> </li>
+                        <li><a href="#">"ϸ��ȫ������Ķ�Ѩ�Ƶ�"</a> </li>
+                        <li><a href="#">"���֮����Դ����Ȼ-�����о�"</a> </li>
+                    </ul>
+                </div>
+                <div class="one-con">
+                    <a href="#"><img src="images/index_12.jpg"></a>
+                    <span>������Ͽ4��3����Զ�����</span>
+                </div>
+                <div class="one-right">
+                    <div class="or-one">
+                        <div>
+                           <a href="JAList/AtDetails.html"><img src="images/index_14.jpg"></a>
+                            <a href="JAList/AtDetails.html"><span>������������</span></a>
+                        </div>
+                        <div>
+                            <a href="JAList/AtDetails.html"><img src="images/index_20.jpg"></a>
+                            <a href="JAList/AtDetails.html"><span>������������</span></a>
+                        </div>
+                    </div>
+                    <div class="or-two">
+                        <div>
+                            <a href="JAList/AtDetails.html"><img src="images/index_16.jpg"></a>
+                            <a href="JAList/AtDetails.html"> <span>������������</span></a>
+                        </div>
+                        <div>
+                            <a href="JAList/AtDetails.html"><img src="images/index_21.jpg"></a>
+                            <a href="JAList/AtDetails.html"><span>������������</span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="a3" class="index-abroad">
+        <div class="rmtj">
+            <div class="rmtj1">����<i>�����ɼ��գ���Ȫʯ����</i></div>
+            <div class="rmtj2"><span class="forest1">����</span><span>�о�</span></div>
+            <div class="rmtj3"><a href="#">��������></a> </div>
+        </div>
+        <div class="ia-main">
+            <div class="one">
+                <div class="one-left">
+                    <p class="rm">����Ŀ�ĵ�</p>
+                    <ul class="city">
+                        <li><a href="#">̩��</a> </li>
+                        <li><a href="#">�����</a> </li>
+                        <li><a href="#">�ռ���</a> </li>
+                        <li><a href="#">��̲��</a> </li>
+                        <li><a href="#">���嵺</a> </li>
+                        <li><a href="#">�ϰ�</a> </li>
+                        <li><a href="#">���ݵ�</a> </li>
+                        <li><a href="#">��ൺ</a> </li>
+                        <li><a href="#">����</a> </li>
+                    </ul>
+                    <p class="cld">���ֶ�̬</p>
+                    <ul class="cldt">
+                        <li><a href="#">���?������֣���ʼҷ���о�</a> </li>
+                        <li><a href="#"> �����콭�ϣ�����ʮ�ﻭ��</a> </li>
+                        <li><a href="#">"ϸ��ȫ������Ķ�Ѩ�Ƶ�"</a> </li>
+                        <li><a href="#">"���֮����Դ����Ȼ-�����о�"</a> </li>
+                    </ul>
+                </div>
+                <div class="one-con">
+                    <a href="JAList/JungleDetails.html"><img src="images/index_26.jpg"></a>
+                    <a href="JAList/JungleDetails.html"><span>������Ͽ4��3����Զ�����</span></a>
+                </div>
+                <div class="one-right">
+                    <div class="or-one">
+                        <div>
+                            <a href="JAList/JungleDetails.html"><img src="images/index_27.jpg"></a>
+                            <a href="JAList/JungleDetails.html"><span>������������</span></a>
+                        </div>
+                        <div>
+                            <a href="JAList/JungleDetails.html"> <img src="images/index_31.jpg"></a>
+                            <a href="JAList/JungleDetails.html"><span>������������</span></a>
+                        </div>
+                    </div>
+                    <div class="or-two">
+                        <div>
+                            <a href="JAList/JungleDetails.html"> <img src="images/index_28.jpg"></a>
+                            <a href="JAList/JungleDetails.html"><span>������������</span></a>
+                        </div>
+                        <div>
+                            <a href="JAList/JungleDetails.html"> <img src="images/index_33.jpg"></a>
+                            <a href="JAList/JungleDetails.html"><span>������������</span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="one none">
+                <div class="one-left">
+                    <p class="rm">����Ŀ�ĵ�</p>
+                    <ul class="city">
+                        <li><a href="#">̩��</a> </li>
+                        <li><a href="#">�����</a> </li>
+                        <li><a href="#">�ռ���</a> </li>
+                        <li><a href="#">��̲��</a> </li>
+                        <li><a href="#">���嵺</a> </li>
+                        <li><a href="#">�ϰ�</a> </li>
+                        <li><a href="#">���ݵ�</a> </li>
+                        <li><a href="#">��ൺ</a> </li>
+                        <li><a href="#">����</a> </li>
+                    </ul>
+                    <p class="cld">�оӶ�̬</p>
+                    <ul class="cldt">
+                        <li><a href="#">���?������֣���ʼҷ���о�</a> </li>
+                        <li><a href="#"> �����콭�ϣ�����ʮ�ﻭ��</a> </li>
+                        <li><a href="#">"ϸ��ȫ������Ķ�Ѩ�Ƶ�"</a> </li>
+                        <li><a href="#">"���֮����Դ����Ȼ-�����о�"</a> </li>
+                    </ul>
+                </div>
+                <div class="one-con">
+                    <a href="#"><img src="images/index_26.jpg"></a>
+                    <span>������Ͽ4��3����Զ�����</span>
+                </div>
+                <div class="one-right">
+                    <div class="or-one">
+                        <div>
+                            <a href="JAList/AtDetails.html"><img src="images/index_27.jpg"></a>
+                                <a href="JAList/AtDetails.html"><span>������������</span></a>
+                        </div>
+                        <div>
+                            <a href="JAList/AtDetails.html"><img src="images/index_31.jpg"></a>
+                                <a href="JAList/AtDetails.html"><span>������������</span></a>
+                        </div>
+                    </div>
+                    <div class="or-two">
+                        <div>
+                            <a href="JAList/AtDetails.html"><img src="images/index_28.jpg"></a>
+                                <a href="JAList/AtDetails.html"><span>������������</span></a>
+                        </div>
+                        <div>
+                            <a href="JAList/AtDetails.html"> <img src="images/index_33.jpg"></a>
+                                <a href="JAList/AtDetails.html"><span>������������</span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="a4" class="index-charity">
+        <div class="rmtj">
+            <div class="rmtj1">����<i>�����ɼ��գ���Ȫʯ����</i></div>
+            <div class="rmtj3"><a href="#">��ྰ��></a> </div>
+        </div>
+        <div class="ic-left">
+            <div class="il-one">
+                <p class="title">���ľ��� / Donation</p>
+                <p><input type="text" placeholder="��������������"></p>
+                <p><input type="text" placeholder="����������"></p>
+                <p><a href="Foundation/FoundDonations.html"><input type="submit" value="���߾���"></a></p>
+            </div>
+            <div class="il-two">
+                <p class="title">�ƿ��ѯ / inquiry</p>
+                <p><input type="text" placeholder="Ҫ����������"></p>
+                <p><input type="text" placeholder="��������˺ź�"></p>
+                <p><a href="Foundation/DonationLove.html"><input type="submit" value="���߲�ѯ"></a> </p>
+            </div>
+        </div>
+        <div class="ic-con">
+            <p class="ckax"><img src="images/07.png">ʵʱ�鿴�����ܰ��Ľ��</p>
+            <p class="money">87��397��539.50</p>
+            <p><img src="images/jk_03.jpg"></p>
+            <p class="xz"><span class="one"><a href="Foundation/PLpublicity.html">���֧��ϸ��</a> </span><span class="two"><a href="Foundation/FoundIndex.html">������</a> </span></p>
+        </div>
+        <div class="ic-right">
+            <p>��ʽ / pattern</p>
+            <ul>
+                <li>��λ��ƣ� �����о���xxx����</li>
+                <li>��       ַ�� ����ʡxxxxxxxxxxxx</li>
+                <li>������ߣ� 0791-8888000</li>
+                <li>�����ַ��1048307jjh@Info.com</li>
+                <li>���л��� �����о���xxx����</li>
+                <li>�����˺ţ� 27560279608276475680</li>
+                <li>�� �� �У� ����������֧��</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div id="nav">
+    <ul>
+        <li class="c"><a id="a11" href="#a1">�Ƽ�</a> </li>
+        <li><a id="a22" href="#a2">����</a> </li>
+        <li><a id="a33" href="#a3">����</a> </li>
+        <li><a id="a44" href="#a4">����</a> </li>
+    </ul>
+</div>
+<div class="yj">
+    <div class="yj-con">
+
+
+    <div class="yj-left">
+        <p>��������</p>
+        <ul>
+            <li><a href="#">��������</a>&nbsp;&nbsp;<a href="#">���������  </a>&nbsp;&nbsp;<a href="#">�й��������  </a>&nbsp;&nbsp;<a href="#">�ٶ�����  </a>&nbsp;&nbsp;<a href="#">����������  </a>&nbsp;&nbsp;<a href="#">�й�������  </a>&nbsp;&nbsp;<a href="#">51766������</a>&nbsp;&nbsp; </li>
+            <li><a href="#">�ɶ�����������  </a>&nbsp;&nbsp;<a href="#">����������    </a>&nbsp;&nbsp;<a href="#">¿����������    </a>&nbsp;&nbsp;<a href="#">��������    </a>&nbsp;&nbsp;<a href="#">����������    </a>&nbsp;&nbsp;<a href="#">������������    </a>&nbsp;&nbsp;<a href="#">�ٳ�������  </a>&nbsp;&nbsp; </li>
+            <li><a href="#">�½�����    </a>&nbsp;&nbsp;<a href="#">��Ѷ����      </a>&nbsp;&nbsp;<a href="#">360����    </a>&nbsp;&nbsp;<a href="#">wed114�����    </a>&nbsp;&nbsp;<a href="#">��ͨ��ѧ��      </a>&nbsp;&nbsp;<a href="#">���ֳ�      </a>&nbsp;&nbsp;<a href="#">�й�ǩ֤��Ѷ��  </a>&nbsp;&nbsp; </li>
+            <li><a href="#">�ɶ�����������      </a>&nbsp;&nbsp;<a href="#">����������        </a>&nbsp;&nbsp;<a href="#">¿����������      </a>&nbsp;&nbsp;<a href="#">��������     </a>&nbsp;&nbsp;<a href="#">����������        </a>&nbsp;&nbsp;<a href="#">������������        </a>&nbsp;&nbsp;<a href="#">�ٳ�������   </a>&nbsp;&nbsp; </li>
+        </ul>
+    </div>
+    <div class="yj-right">
+        <div class="yr-one">
+            <img src="images/index_38.jpg">
+            <p>�û�APP����</p>
+        </div>
+        <div class="yr-one">
+            <img src="images/index_40.jpg">
+            <p>����/�оӹ�����APP����</p>
+        </div>
+        <div class="yr-one">
+            <img src="images/index_42.jpg">
+            <p>˾���ó�APP</p>
+        </div>
+        <div class="yr-one">
+            <img src="images/index_42.jpg">
+            <p>΢��ƽ̨</p>
+        </div>
+    </div>
+    </div>
+</div>
+<footer>
+    <ul>
+        <li>������ҵ��Ӫ���֤��ţ�L-SH-00321  ��ICP��11015723��</li>
+        <li>Copyright ? 2015 <a href="#">�����о�</a>  ��Ȩ���� 3wcl.com | Ӫҵִ�� | �ͷ����ģ�025-86859999</li>
+    </ul>
+    <p><a href="#"><img src="images/index_48.jpg"></a><a href="#"><img src="images/index_50.jpg"></a><a href="#"><img src="images/index_52.jpg"></a> <a href="#"><img src="images/index_54.jpg"></a><a href="#"><img src="images/index_56.jpg"></a> <a href="#"><img src="images/index_58.jpg"></a>    </p>
+</footer>
+
+
+<script src="js/index.js"></script>
+<script type="text/javascript">
+!function(){
+laydate.skin('molv');//�л�Ƥ������鿴skins����Ƥ����
+laydate({elem: '#demo1'});//��Ԫ��
+    laydate({elem: '#demo2'});//��Ԫ��
+    laydate({elem: '#demo3'});//��Ԫ��
+    laydate({elem: '#demo4'});//��Ԫ��
+    laydate({elem: '#demo5'});//��Ԫ��
+    laydate({elem: '#demo6'});//��Ԫ��
+    laydate({elem: '#demo7'});//��Ԫ��
+    laydate({elem: '#demo8'});//��Ԫ��
+}();
+
+var labelFromcity = new Array();
+labelFromcity ['���ų���'] = new Array(0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40);
+labelFromcity ['A-F'] = new Array(0,3,4,5,6,28,29);
+labelFromcity ['G-J'] = new Array(1,7,8,9,30,31,32,33,37,40);
+labelFromcity ['K-N'] = new Array(10,11,12,34,35,38);
+labelFromcity ['P-W'] = new Array(13,14,15,16,17,18,22,24,25,36);
+labelFromcity ['X-Z'] = new Array(2,19,20,21,26,27,39);
+labelFromcity ['��ʳ���'] = new Array(41,42,43,44,45,46,47,48,49);
+var hotList = new Array(14,15,16,17,18,19);
+
+$(document).ready(function(){
+    $('#fromcity').querycity({'data':citysFlight,'tabs':labelFromcity,'hotList':hotList});
+    $('#zmx').querycity({'data':citysFlight,'tabs':labelFromcity,'hotList':hotList});
+    $('#yyqx').querycity({'data':citysFlight,'tabs':labelFromcity,'hotList':hotList});
+    $('#jackson').querycity({'data':citysFlight,'tabs':labelFromcity,'hotList':hotList});
+});
+</script>
+</body>
+</html>

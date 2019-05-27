@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=6ckv1PGt7okn9XhxK6ris4IB"></script>
+     <title>丛林闲居</title>
+
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/jquery.ad-gallery.js"></script>
+    <script type="text/javascript" src="js/zzsc.js"></script>
+    <link rel="stylesheet" href="style/cy.css">
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" type="text/css" href="style/jquery.ad-gallery.css">
+	<style rel="stylesheet">  
+.pagination {font-family: Tahoma;font-size: 12px;height: 22px;margin: 5px 10px;text-align: right;}  
+.pagination a,.page-cur,.page-start,.page-end,.page-disabled,.page-skip {  
+height:22px;line-height:22px;margin:0 3px 0 0;text-align:center;vertical-align:middle;white-space:nowrap;}  
+.pagination input {border-width: 1px;}  
+.page-start, .pagination a, .page-end, .page-disabled {border: 1px solid #CCCCCC;padding: 0 5px;}  
+.pagination a {text-decoration: none;}  
+.page-cur {background-color: #FFEDE1;border: 1px solid #FD6D01;color: #FD6D01;font-weight: 700;padding: 0 5px;}  
+.page-disabled {color: #CCCCCC;}  
+.page-skip {color: #666666;padding: 0 3px;}  
+</style>  
+</head>
+<body>
+<div>
+<!--首页TOP-->
+    <div class="yc-txdd1">
+        
+        <!--首页banner-->
+         <jsp:include  page="head.jsp" />
+ <script type="text/javascript">
+//获取地址栏
+ function GetRequest() {
+ 	  var url = location.search; //获取url中"?"符后的字串
+ 	   var theRequest = new Object();
+ 	   if (url.indexOf("?") != -1) {
+ 	      var str = url.substr(1);
+ 	      strs = str.split("&");
+ 	      for(var i = 0; i < strs.length; i ++) {
+ 	         theRequest[strs[i].split("=")[0]]=(strs[i].split("=")[1]);
+ 	      }
+ 	   }
+ 	   return theRequest;
+ 	}
+function Alllogin(){
+	var Request = new Object();
+		Request = GetRequest();
+		var returnUrl;
+		returnUrl = Request['clxjmain.id'];     
+	window.location.href = "login.jsp?returnurl=/clxjmain!selClxjOfId.action&clxjmain.id="+returnUrl; 
+		
+	
+} 
+function loginOut(){
+	var Request = new Object();
+	Request = GetRequest();
+	var returnUrl;
+	returnUrl = Request['clxjmain.id'];  
+	window.location.href = "<%=path%>/reguser!loginOut.action?returnurl=/clxjmain!selClxjOfId.action&clxjmainid="+returnUrl;
+}
+ </script>
+<!--用车-填写订单-->
+
+<div class="yc-txdd">
+    <div class="yc-mbx"> 
+        <p>当前位置：<a href="javascript:void(0)" class="ll" onclick="goList()"><c:if test="${clxjmainJson.type1 == 1}">国内</c:if><c:if test="${clxjmainJson.type1 ==0}">国际</c:if><c:if test="${clxjmainJson.type2 == 1}">丛林</c:if><c:if test="${clxjmainJson.type2 == 0}">闲居</c:if></a> >  <a href="javascript:void(0)" class="xz">${clxjmainJson.name }</a></p>
+    </div>
+    <div><img src="images/xxy_03.jpg"></div>
+</div>
+ <!--详情页（丛林）-->
+        <div class="xqy-top">
+<div class="xqy-cl">
+<input type="hidden" value="${clxjmainJson.type1 }" id="type1"/>
+<input type="hidden" value="${clxjmainJson.type2 }" id="type2"/> 
+<input type="hidden" value="${clxjmainJson.id }" id="clxjmainId"/>
+    <p class="difang">${clxjmainJson.name }</p>
+    <p class="luxian">${clxjmainJson.address }</p>
+    <div>
+        <div class="xqyt-left">
+            <div id="gallery" class="ad-gallery">
+                <div class="ad-image-wrapper">
+                </div>
+
+                <div class="ad-nav">
+                    <div class="ad-thumbs">
+                        <ul class="ad-thumb-list">
+                        <c:forEach items="${urlStr }" var="pl">
+                            <li>  
+                                <a href="${clxjBackurl }${pl}">
+                                    <img width="75" height="50" src="${clxjBackurl }${pl}" class="image0">
+                                </a>
+                            </li>
+                          </c:forEach>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="xqyt-right">
+            <div class="xr-top">
+                <!-- <div class="hpl"><i class="bfl">98%</i><i class="hp">好评率</i></div> -->
+                <span class="dp">共<i>${clxjmainJson.ccount }</i>点评</span>|
+                <span class="fwzs"><img src="images/18.png">服务指数：<i class="fs">${clxjmainJson.hpl }</i><i class="yg">/10分</i></span>
+            </div>
+            <div class="xr-bottom">
+                <!-- <div class="tk">
+                    <p class="syzc">寺院主持</p>
+                    <p class="xjq"><a href="#">学诚法师</a><span>1966年生于福建仙游，1982于莆田广化寺定海长
+                       老座下剃度，并依止圆拙老法师修学..</span> </p>
+                </div>
+                <div class="tk">
+                <p class="syzc">开放时间</p>
+                <p class="xjq">全年开放</p>
+            </div>
+                <div class="tk">
+                    <p class="syzc">交通路线</p>
+                    <p class="xjq">地铁4号线北宫门站，换乘346路公交车至终</p>
+                </div> -->  
+               <div class="tk rjj"> 
+                    <p>日均价：<i style="font-size: 25px;"><c:if test="${clxjmainJson.price ==0}">随缘</c:if><c:if test="${clxjmainJson.price !=0}">${clxjmainJson.price}</c:if></i>
+                    <c:if test="${sessionUser!=null }"><a href="<%=path%>/clxjmain!selClxjOfId.action?clxjmain.id=${clxjmainJson.id}&isOrder=2">立即预定</a> </c:if>
+                     <c:if test="${sessionUser==null }"><a href="#" onclick="Alllogin()">请先登录</a> </c:if> 
+                     </p> 
+                </div> 
+                <div style="margin-top: 100px;">       
+                <p>&nbsp;&nbsp;联系电话:&nbsp;&nbsp;${clxjmainJson.mobile}</p> 
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+        </div>
+        <div class="xqy-content"> 
+            <div class="xqycon-left">
+                <p class="cljj">
+                    <c:if test="${clxjmainJson.type2 == 1}">丛林</c:if><c:if test="${clxjmainJson.type2 == 0}">闲居</c:if>简介<input type="hidden" id="cid" value="${clxjmainJson.id }"/>
+                </p>
+                <p class="jj"> 
+                	${clxjmainJson.introduction }
+                </p>
+                <c:if test="${clxjmainJson.type2==1 }">
+                <div class="xr-bottom"> 
+                    <div>
+                        <p class="syzc">寺院主持</p>
+                        <p class="xjq1"><a href="#">${clxjmainJson.abbot }</a><span>${clxjmainJson.abbotresume }<span> </p>
+                    </div>
+                    <div class="tk">
+                        <p class="syzc">开放时间</p>
+                        <p class="xjq1">${clxjmainJson.opentime }</p>
+                    </div>
+                   <!--  <div class="tk">
+                        <p class="syzc">交通路线</p>
+                        <p class="xjq1">地铁4号线北宫门站，换乘346路公交车至终点凤凰岭下车至凤凰岭公园大门，往里约三百米，即到龙泉寺。</p>
+                    </div> -->
+                </div>
+                </c:if>
+                <p class="wzyzb">位置与周边</p>
+                <div class="mapdiv" id="mapditu"><div id="allmap"></div></div>
+                <p class="wzyzb">用户点评</p>
+                <div class="yhdp">
+                    <div class="yhdp-top">
+                        <p class="xqy-dc"><label onclick="selTable(4)" style="cursor: pointer;">全部点评<em id="c4" class="sszyyqx"></em>条</label></p>
+                        <p><label  onclick="selTable(0)" style="cursor: pointer;">推荐<em id="c0" class="sszyyqx"></em></label>条</p>  
+                        <p><label  onclick="selTable(2)" style="cursor: pointer;">不推荐<em id="c2" class="sszyyqx"></em>条</label></p>
+                        <div id="comment1" style="display: none; "><span onclick="pj()">+ 我来点评</span></div>
+                    </div>
+      					<div class="xxy-mian"> 
+      					
+      					<!-- 所有评论 -->
+                        <div class="xm-one"">  
+                            <div class="xm-top" id="commentAll" style="border:none;min-height:0px;font-size:15px;">
+                            </div>
+                        <div class="fenye1">
+                        <div id="pageNav"></div>  
+                    	</div>
+                        </div>
+                    </div>
+                    
+                    <div class="tab-jd">
+                    <div id="comment2" style="display: none; "> 
+                        <p class="cse">${clxjmainJson.name } <span><i>*</i>为必填选项</span></p>
+                        <form id="commentForm" action="<%=path %>/clxjcomment!saveComment.action" method="post" enctype="multipart/form-data">
+                        <input type="hidden" value="${sessionUser.id }" name="clxjcomment.uid"/> 
+                        <input type="hidden" value="${clxjmainJson.id }" name="clxjcomment.cid"/> 
+                        <input type="hidden" name="clxjUrl" value="clxjmain!selClxjOfId.action?clxjmain.id=${clxjmainJson.id }"/>
+                        <table>
+                            <tr> 
+                                <td class="lesd"><i>*</i>总体评价</td>
+                                <td><input type="radio" name="clxjcomment.cflag" value="0" checked="checked">&nbsp; 好评&nbsp;&nbsp;&nbsp;<input type="radio" name="clxjcomment.cflag" value="1">&nbsp; 中评&nbsp;&nbsp;&nbsp; <input type="radio" name="clxjcomment.cflag" value="2">&nbsp; 差评&nbsp;&nbsp;&nbsp;<span>给服务打分</span></td>
+                            </tr>
+
+                            <tr>
+                                <td class="lesd"><i>*</i>评价</td> 
+                                <td><textarea id="content" name="clxjcomment.content" id="content" placeholder="详细、客观、真实，130字以上为最佳！"></textarea><p>15-1000个字</p></td>
+                            </tr>
+                            <tr>
+                                <td class="lesd">上传照片</td>
+                                <td><input id="photo" type="file" name="commentfile.file"></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>
+                                	<c:if test="${sessionUser !=null}">
+                                		<input type="button" value="提交点评" onclick="subForm()">
+                                	</c:if>
+                                	<c:if test="${sessionUser ==null}" >
+                                		<input type="button" value="请先登录" onclick="Alllogin()">
+                                	</c:if>
+                                </td>
+                            </tr>
+                        </table>
+                        </form>
+                    </div>
+                    </div>
+                </div>
+            </div>
+            <div class="xqycon-right">
+                
+                <p class="zbxj"><img src="images/xxy1_03.jpg">周边<c:if test="${clxjmainJson.type2 == 1}">丛林</c:if><c:if test="${clxjmainJson.type2 == 0}">闲居</c:if></p>
+                <c:if test="${clxjmainJsons ==null}">周边暂时无推荐哦</c:if> 
+                <c:forEach items="${clxjmainJsons }"  var="clxj"  end="9">  
+                <div class="jd" >      
+                    <p><img style="cursor:pointer;" onclick="goOther(${clxj.id})" height="70" width="100" src="${clxjBackurl }${clxj.first_img_min}"> </p>
+                    <p class="js"><span>${clxj.name}</span><span class="jdy"></span></p>
+                    <p class="qian">￥<i><c:if test="${clxj.price==0}">随缘</c:if><c:if test="${clxj.price!=0}">${clxj.price}</c:if></i></p>
+                </div>      
+                </c:forEach>
+            </div>
+        </div>
+ <%@ include  file="bottom.jsp"%>
+    </div>
+<div class="tcc none">
+    <div class="cgxd1">
+        <div class="cgxd-main">
+            <p class="xdcg"><img src="images/xdcg.png">  <img src="images/14_01.png" class="close"></p>
+            <p class="ddbh">订单编号：<i>WO20121015141125</i> [请牢记您的订单编号]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;订单总价：<i>9800元</i> （该订单属于线下支付类型）</p>
+            <p class="fhdd">您可以：<a href="#" class="fh">返回我的订单</a><a href="#" class="jx">继续预定用车</a>（如有疑问请联系丛林闲居客服QQ:88888888）</p>
+            <p class="wxts"><i>*温馨提示：</i>IE6.0及更低版本浏览器用户请检查您的浏览器是否支持128位密钥长度，如果不支持，请升级您的浏览器（<span>查看如何检查和升级方案</span>）</p>
+        </div>
+    </div>
+</div>
+    <div class="tcc1 none">
+        <div class="cgxd2">
+            <div class="cgxd-main">
+                <p class="yzsj">
+                    	验证手机
+                </p>
+                <div>
+                    <p class="sjh"><input type="text" placeholder="手机号"></p>
+                    <p class="tpyxm"><input type="text" placeholder="图片验证码"><img src="images/yzm_03.png"> </p>
+                    <p class="tpyxm"><input type="text" placeholder="手机验证码"><a href="#">获取验证码</a> </p>
+                    <p><i><a href="#">收不到验证码？重新再发一次</a> </i></p>
+                    <p><input type="submit" value="确&nbsp;&nbsp;定"></p>
+                    <p class="dlc"><i><a  href="#">使用本站帐号登录</a></i></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="js/index.js"></script>
+
+
+<script type="text/javascript">
+    var address = '${clxjmainJson.address }';
+    var name = '${clxjmainJson.name }';
+	// 百度地图API功能
+	var map = new BMap.Map("allmap");
+	map.enableScrollWheelZoom(true);     //开启鼠标滚轮缩放 
+	var point = new BMap.Point(116.331398,39.897445);
+	map.centerAndZoom(point,12);
+	// 创建地址解析器实例
+	var myGeo = new BMap.Geocoder();
+	// 将地址解析结果显示在地图上,并调整地图视野
+	myGeo.getPoint(address, function(point){
+		if (point) {
+			map.centerAndZoom(point, 16);
+			var marker = new BMap.Marker(point);  // 创建标注
+			map.addOverlay(marker);               // 将标注添加到地图中
+			var label = new BMap.Label(name,{offset:new BMap.Size(20,-10)});
+			marker.setLabel(label);
+		}else{
+			alert("您选择地址没有解析到结果!");
+		}
+	}, "北京市");
+	function pj(){
+		document.getElementById("content").focus();
+		}
+	function fdtp(id){
+		id.height = 200;
+		id.width = 300;
+		} 
+	function sxtp(id){
+		id.height = 50;
+		id.width = 50;
+		}
+</script>
+<script type="text/javascript">  
+getCount();
+showComment();
+var countAll;
+var countOk;
+var countNo; 
+function getCount(){
+	$.ajax({  
+        type : "post",  
+         url : "<%=path%>/clxjcomment!SelClxjcommentCount.action",  
+         data: {"clxjcomment.cid":$("#cid").val()},
+         dataType: "json",
+         async : false,   
+         success : function(results){  
+        	 countAll = results.clxjcommentCount.count;   
+			 countOk = results.clxjcommentCount.ok;  
+			 countNo = results.clxjcommentCount.no;   
+			 document.getElementById("c4").innerHTML = countAll; 
+			 document.getElementById("c0").innerHTML = countOk; 
+			 document.getElementById("c2").innerHTML = countNo; 
+			 testPage(1); 
+         }  
+    });
+}        
+function InitTable(pageIndex,cflag) { 
+	document.getElementById("commentAll").innerHTML = ""; 
+	$.ajax({  
+        type : "post",  
+         url : "<%=path%>/clxjcomment!SelClxjcomment.action",   
+         data : {"clxjcomment.cid":$("#cid").val(),"pageIndexAll":+pageIndex,"cflag":+cflag},   
+         dataType: "json",   
+         async : false,   
+         success : function(results){ 
+             if(results.clxjcommentAll.length>0){
+               for(var i=0;i<results.clxjcommentAll.length;i++){
+            	   var img;
+            	   if(results.clxjcommentAll[i].photo!=null&&results.clxjcommentAll[i].photo!=""&&results.clxjcommentAll[i].photo!="<%=path%>null"){ 
+                	   img = "<p style='padding-left:60px;'><img height='50' width='50' src='"+results.clxjcommentAll[i].photo+"' onmouseover='fdtp(this)' onmouseout='sxtp(this)'>&nbsp;&nbsp;</p>"; 
+                   }else{
+					img = "";
+                       }  
+            	   document.getElementById("commentAll").innerHTML += "<div class='xm-right'> <div class='pl'><p class='pl-left'><i>"+results.clxjcommentAll[i].username+"</i> <span>"+results.clxjcommentAll[i].cflag+"</span>"+results.clxjcommentAll[i].commenttime+"</p></div> <p class='pl-wz'>"+results.clxjcommentAll[i].content+"</p> "+img+" </div>";
+               }   
+         }else{
+        	 document.getElementById("commentAll").innerHTML ="&nbsp;&nbsp;&nbsp;&nbsp;暂时无评论"; 
+             }   
+        } 
+    });     
+} 
+function selTable(sel){
+	switch (sel) {
+	case 4:
+		testPage(1);
+		break;
+	case 0:
+		testPage0(1);
+		break;
+	case 2: 
+		testPage2(1); 
+	break;
+	}
+}
+function testPage(curPage){ 
+        supage('pageNav','testPage','',curPage,countAll,5);   
+        InitTable(curPage,4); 
+}
+function testPage0(curPage){ 
+	if(countOk==0){
+		document.getElementById("pageNav").innerHTML="";
+		document.getElementById("commentAll").innerHTML="&nbsp;&nbsp;&nbsp;&nbsp;暂时无评论";
+	}else{
+    supage('pageNav','testPage0','',curPage,countOk,5);   
+    InitTable(curPage,0); }
+} 
+function testPage2(curPage){ 
+	if(countNo==0){
+		document.getElementById("pageNav").innerHTML="";
+		document.getElementById("commentAll").innerHTML="&nbsp;&nbsp;&nbsp;&nbsp;暂时无评论";
+	}else{
+    supage('pageNav','testPage2','',curPage,countNo,5);   
+    InitTable(curPage,2); }
+} 
+function deleteRows(tabid){
+	var tb = document.getElementById(tabid);
+    var rowNum=tb.rows.length;
+    for (i=0;i<rowNum;i++) 
+    {
+        tb.deleteRow(i);
+        rowNum=rowNum-1;
+        i=i-1;
+    }
+}
+/**  
+  
+ * @param {String} divName 分页导航渲染到的dom对象ID 
+ * @param {String} funName 点击页码需要执行后台查询数据的JS函数 
+ * @param {Object} params 后台查询数据函数的参数，参数顺序就是该对象的顺序，当前页面一定要设置在里面的 
+ * @param {String} total 后台返回的总记录数 
+ * @param {Boolean} pageSize 每页显示的记录数，默认是10 
+ */  
+ function supage(divId, funName, params, curPage, total, pageSize){  
+	    var output = '<div class="pagination" style="margin-top:0px;margin-left:-60px;width:320px;">';    
+	    var pageSize = parseInt(pageSize)>0 ? parseInt(pageSize) : 10;  
+	    if(parseInt(total) == 0 || parseInt(total) == 'NaN') return;  
+	    var totalPage = Math.ceil(total/pageSize);  
+	    var curPage = parseInt(curPage)>0 ? parseInt(curPage) : 1;  
+	      
+	    //从参数对象中解析出来各个参数  
+	    var param_str = '';  
+	    if(typeof params == 'object'){  
+	        for(o in params){  
+	            if(typeof params[o] == 'string'){  
+	               param_str += '\'' + params[o] + '\',';  
+	            }  
+	            else{  
+	               param_str += params[o] + ',';  
+	            }  
+	        }  
+	        //alert(111);  
+	    }  
+	    //设置起始页码  
+	    if (totalPage > 10) {  
+	        if ((curPage - 5) > 0 && curPage < totalPage - 5) {  
+	            var start = curPage - 5;  
+	            var end = curPage + 5;  
+	        }  
+	        else if (curPage >= (totalPage - 5)) {  
+	            var start = totalPage - 10;  
+	            var end = totalPage;  
+	        }  
+	        else {  
+	            var start = 1;  
+	            var end = 10;  
+	        }  
+	    }  
+	    else {  
+	        var start = 1;  
+	        var end = totalPage;  
+	    }  
+	      
+	    //首页控制  
+	    if(curPage>1){  
+	        output += '<a href="javascript:'+funName+'(' + param_str + '1);" title="第一页" class="page-first">«</a>';  
+	    }  
+	    else  
+	    {  
+	        output += '<span class="page-disabled">«</span> ';  
+	    }  
+	    //上一页菜单控制  
+	    if(curPage>1){  
+	        output += '<a href="javascript:'+funName+'(' + param_str + (curPage-1)+');" title="上一页" class="page-previous">‹</a>';  
+	    }  
+	    else{  
+	        output += '<span class="page-disabled">‹</span>';  
+	    }  
+	      
+	    //页码展示  
+	    for (i = start; i <= end; i++) {  
+	        if (i == curPage) {  
+	            output += '<a href="javascript:;" class="page-cur">' + curPage + '</a>';  
+	        }  
+	        else {  
+	            output += '<a href="javascript:'+funName+'(' + param_str + i + ');">' + i + '</a>';  
+	        }  
+	    }  
+	    //下一页菜单控制  
+	    if(totalPage>1 && curPage<totalPage){  
+	        output += '<a title="下一页" href="javascript:'+funName+'('+param_str + (curPage+1)+');" class="page-next">›</a>';  
+	    }  
+	    else{  
+	        output += '<span class="page-disabled">›</span>';  
+	    }  
+	    //最后页控制  
+	    if(curPage<totalPage){  
+	        output += '<a title="最后页" href="javascript:'+funName+'('+param_str + totalPage+');" class="page-end">»</a>';  
+	    }  
+	    else{  
+	        output += '<span class="page-disabled">»</span>';  
+	    }  
+	      
+	    output += '</div>';  
+	    //渲染到dom中  
+	    if(total<=5){
+	    	document.getElementById(divId).innerHTML = "";
+		 }else{
+	    	document.getElementById(divId).innerHTML = output;
+	    	}  
+};  
+function subForm(){
+	var content = document.getElementById("content");
+	var photo = $("#photo").val();; 
+	var extStart=photo.lastIndexOf("."); 
+	var ext=photo.substring(extStart,photo.length).toUpperCase();
+	if(content.value.length<15){  
+		content.style.border = "red solid 1px";
+		}else{    
+			content.style.border = "";
+			if(ext!=".BMP"&&ext!=".PNG"&&ext!=".GIF"&&ext!=".JPG"&&ext!=".JPEG"&&ext!=""){
+				alert("图片限于bmp,png,gif,jpeg,jpg格式");   
+				}else{   
+				document.getElementById("commentForm").submit(); }
+		}
+}
+function goList(){
+	var type1 = $('#type1').val();
+	var type2 = $('#type2').val();
+	var type = type1+type2; 
+	var url = "<%=path%>";
+	switch (type) {
+		case '11': 
+			url += "/clxjmain!selClOfPage.action?clxjmain.type1=true&clxjmain.type2=true";
+			break;
+		case '10':
+			url += "/clxjmain!selXjOfPage.action?clxjmain.type1=true&clxjmain.type2=false";
+			break;
+		case '01':  
+			url += "/clxjmain!selClOfPage.action?clxjmain.type1=false&clxjmain.type2=true";
+			break; 
+		case '00': 
+			url += "/clxjmain!selXjOfPage.action?clxjmain.type1=false&clxjmain.type2=false";
+			break;
+	} 
+	window.location.href = url;
+}
+function goOther(clxjid){
+	window.location.href = "<%=path%>/clxjmain!selClxjOfId.action?clxjmain.id="+clxjid;    
+}
+
+function showComment(){
+	$.ajax({  
+        type : "post",  
+         url : "<%=path%>/clxjcomment!showComment.action",   
+         data: {"clxjcomment.cid":$("#cid").val(),"clxjcomment.uid":"${sessionUser.id}"},
+         dataType: "json",
+         async : false,   
+         success : function(results){  
+        	 if(results.showComment){ 
+        		document.getElementById("comment1").style.display = "block"; 
+        		document.getElementById("comment2").style.display = "block"; 
+            }else{
+            	document.getElementById("comment1").style.display = "none";  
+        		document.getElementById("comment2").style.display = "none"; 
+             }
+         }  
+    });
+}
+</script>
+</body>
+</html>

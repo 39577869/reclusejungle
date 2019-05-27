@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+     <title>丛林闲居-基金会-救助页面</title>
+    <link rel="stylesheet" href="style/cy.css">
+    <link rel="stylesheet" href="style/style.css">
+</head>
+<body>
+<div>
+<script language="JavaScript">
+        javascript:window.history.forward(1); //我目前先用着这个
+</script>
+<!-- 下载中文文件start -->
+<script src="<%=path %>/sheet/js/download.js"></script>
+<!-- 下载中文文件stop -->
+    <!--首页TOP-->
+    <div class="yc-txdd1">
+        
+        <!--首页banner-->
+        <jsp:include  page="head.jsp" />   
+         <script type="text/javascript">
+function Alllogin(){
+	window.location.href = "login.jsp?returnurl=/FoundRescue.jsp"; 
+}
+function loginOut(){
+	window.location.href = "<%=path%>/reguser!loginOut.action?returnurl=/FoundRescue.jsp";
+}
+ </script>
+        <!--首页轮播图-->
+
+
+        <!--用车-填写订单-->
+        <div class="yc-txdd">
+            <div class="yc-mbx">
+                <p>当前位置：<a href="index.jsp" class="ll">丛林闲居网</a> > <a href="FoundIndex.jsp" class="ll">基金会</a> > <a href="#"
+                                                                                               class="xz">我要求助</a></p>
+            </div>
+            <div><img src="images/jjh_03.jpg"></div>
+            <div class="jjh-index">
+                <div class="jjh-index-left">
+                    <p class="fzym-p">求助流程</p>
+                    <ul class="only-one">
+                        <li><p class="yuan">1</p><p class="noyuan"><span><img src="images/arrow1_03.jpg"></span>个人申请：困难群众在本网下载的江西济缘慈善基金会救助（扶助）《申请表》和《审批表》</p></li> 
+                        <li><p class="yuan">2</p><p class="noyuan"><span><img src="images/arrow1_03.jpg"></span>调查核实：由基金会事业部将初审符合救助（扶助）条件的困难群众材料与上报居委会（村）、街道（镇）进行调查核实，<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;金额较大的申请再由基金会派员实地调查核实，并形成调查意见，最后报基金会理事会通过</p></li>
+                        <li><p class="yuan">3</p><p class="noyuan"><span><img src="images/arrow1_03.jpg"></span>社会公示：对申请并通过调查的救助对象由基金会采取网上公示等方式，广泛接受社会监督，如有举报、投诉情形的，再次<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;组织调查核实，以确保救助（扶助）工作的公开、公平和公正。公示时间一般为10个工作日</p></li>
+                        <li><p class="yuan">4</p><p class="noyuan"><span><img src="images/arrow1_03.jpg"></span>理事会审定：由理事会根据审核和公示情况，最后审定救助（扶助）对象和金额</p></li>   
+                        <li><p class="yuan">5</p><p class="noyuan"><span><img src="images/arrow1_03.jpg"></span>公开发放：根据慈善救助（扶助）的范围、对象、标准，组织救助（扶助）对象举行发放仪式，请捐资人（代表）直接向救<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;助（扶助）对象发放慈善救助（扶助）金</p></li> 
+                    </ul> 
+                    <div class="fzym-p1"> 
+                        <p class="fzym-p11">求助申请表格下载</p>
+                        <p class="fzym-p12"><span class="qzfz">救助</span><span>扶助</span></p>
+                    </div>
+                    <div class="qzsqb">
+                        <div class="qzsqb-one">
+                            <ul>
+                                <li><a href="javascript:void(0)" onclick="goDownload('江西济缘慈善基金会救助申请表.doc','4')">江西济缘慈善基金会救助申请表</a> </li>
+                                <li><a href="javascript:void(0)" onclick="goDownload('江西济缘慈善基金会救助扶助审批表.doc','4')">江西济缘慈善基金会救助扶助审批表</a> </li>
+                                <li><a href="javascript:void(0)" onclick="goDownload('申请江西济缘慈善基金会救助（扶助）须知.docx','4')">申请江西济缘慈善基金会救助（扶助）须知</a> </li>
+                            </ul><br/> 
+                            <div class="fzym-p2"> 
+                                <p class="fzym-p21">提交申请 </p><p><c:if test="${sessionUser ==null }"><em style="font-size: 10px;color: red;margin-left: 200px;">申请救助首先要登录哦，点击<a href="login.jsp?returnurl=/FoundRescue.jsp">登录</a></em></c:if> </p>
+								</div>
+                            <div class="fzym-table">
+                                <div class="fzymt-one">
+                                    <div class="fyt-top"><p></p><i>个人基本信息</i><span></span></div>
+                                    <div class="ft-table1">
+                                    <form action="<%=path%>/helpinfo!saveHelp.action" method="post" id="help0Form" enctype="multipart/form-data"> 
+                                    	<input type="hidden" id="uid0" value="${sessionUser.id}" name="helpinfo.uid"/>
+                                    	<input type="hidden" value="false" name="helpinfo.applytype"/> 
+                                        <p><input type="text" placeholder="申请人姓名（请填写真实姓名）" class="just-one" id="name0" name="helpinfo.name" onblur="checkName(0)"><i>*</i><input maxlength="3" type="text" placeholder="年龄（请填写真实年龄）" class="just-one" id="age0" name="helpinfo.age" onblur="checkAge(0)"><i>*</i> </p>
+                                        <p>性别：<input type="radio" name="helpinfo.sex" value="true" checked="checked">男<input type="radio" name="helpinfo.sex" value="false">女 </p>
+                                        <p><input type="text" placeholder="身份证号（填写18位二代身份证号码）" maxlength="18" class="just-one" id="idcard0" name="helpinfo.idcard" onblur="checkIdCard(0)"><i>*</i><input type="text" maxlength="11" placeholder="联系电话（请填写11位手机号码）" class="just-one" id="phonenum0" name="helpinfo.phonenum" onblur="checkPhoneNum(0)"><i>*</i> </p>
+                                        <p><input type="text" placeholder="联系邮箱" class="just-two" id="email0" name="helpinfo.email" onblur="checkEmail(0)"><i>*</i></p>
+                                        <p><input type="text" placeholder="住址或单位" class="just-two" id="address0" name="helpinfo.address" onblur="checkAddress(0)"><i>*</i></p>
+                                        <p>是否享受低保<input type="radio" name="helpinfo.basicliving" value="true" checked="checked">是<input type="radio" name="helpinfo.basicliving" value="false">否 </p>
+                                        <p><input type="text" placeholder="家庭年收入（元）" class="just-one" id="income0" name="helpinfo.income" onblur="checkInCome(0)"><i>*</i><input type="text" placeholder="拟申请救助金额（元）" class="just-one" id="applymoney0" name="helpinfo.applymoney" onblur="checkApplymoney(0)"><i>*</i> </p>
+                                        <p id="more0"><input type="file" id="file0"  name="helpinfoFileJson.file0" onchange="checkFile(0)"><input type="button" value="添加" onclick="addMore(0)"><i>*</i></p>
+                                        <p><textarea placeholder="请简要概述主要困难......" id="applycontent0" name="helpinfo.applycontent"></textarea> </p>  
+                                    </form>
+                                    </div>  
+
+                                    <div class="ft-table1" style="margin-top:20px;">
+                                        <p><button type="button" value="提交信息" onclick="subHelp0()">提交信息</button> </p>
+                                    </div>
+                                </div>
+                        </div>
+
+                    </div>
+                        <div class="qzsqb-one none">
+                            <ul>
+                                <li><a  href="javascript:void(0)" onclick="goDownload('江西济缘慈善基金会扶助申请表.doc','4')">江西济缘慈善基金会扶助申请表</a> </li>
+                            	 <li><a href="javascript:void(0)" onclick="goDownload('丛林闲居合作项目单位丛林建设补助资金申请表.docx','4')">丛林闲居合作项目单位丛林建设补助资金申请表</a> </li>
+                            </ul><br/>   
+                            <div class="fzym-p2">
+                                <p class="fzym-p21">提交申请<p><c:if test="${sessionUser ==null }"><em style="font-size: 10px;color: red;margin-left: 200px;">申请扶助首先要登录哦，点击<a href="login.jsp?returnurl=/FoundRescue.jsp">登录</a></em></c:if> </p></p>
+
+                            </div>
+                            <div class="fzym-table">
+                                <div class="fzymt-one">
+                                	<form  action="<%=path%>/helpinfo!saveHelp.action" method="post" id="help1Form" enctype="multipart/form-data">
+                                    <div class="fyt-top"><p></p><i>个人基本信息</i><span></span></div>
+                                    <div class="ft-table1">
+                                      <input type="hidden" id="uid1" value="${sessionUser.id}" name="helpinfo.uid"/>
+                                      <input type="hidden" value="true" name="helpinfo.applytype"/>
+                                        <p><input type="text" placeholder="申请人姓名（请填写真实姓名）" class="just-one" id="name1" name="helpinfo.name" onblur="checkName(1)"><i>*</i><input maxlength="3" type="text" placeholder="年龄（请填写真实年龄）" class="just-one" id="age1" name="helpinfo.age" onblur="checkAge(1)"><i>*</i> </p>
+                                        <p>性别：<input type="radio" name="helpinfo.sex" value="true" checked="checked">男<input type="radio" name="helpinfo.sex" value="false">女 </p>
+                                        <p><input type="text" placeholder="身份证号（填写18位二代身份证号码）" maxlength="18" class="just-one" id="idcard1" name="helpinfo.idcard" onblur="checkIdCard(1)"><i>*</i><input type="text" maxlength="11" placeholder="联系电话（请填写11位手机号码）" class="just-one" id="phonenum1" name="helpinfo.phonenum" onblur="checkPhoneNum(1)"><i>*</i> </p>
+                                        <p><input type="text" placeholder="联系邮箱" class="just-two" id="email1" name="helpinfo.email" onblur="checkEmail(1)"><i>*</i></p>
+                                        <p><input type="text" placeholder="住址或单位" class="just-two" id="address1" name="helpinfo.address" onblur="checkAddress(1)"><i>*</i></p>
+                                        <p>是否享受低保<input type="radio" name="helpinfo.basicliving" value="true" checked="checked">是<input type="radio" name="helpinfo.basicliving" value="false">否 </p>
+                                        <p><input type="text" placeholder="家庭年收入（元）" class="just-one" id="income1" name="helpinfo.income" onblur="checkInCome(1)"><i>*</i><input type="text" placeholder="拟申请救助金额（元）" class="just-one" id="applymoney1" name="helpinfo.applymoney" onblur="checkApplymoney(1)"><i>*</i> </p>
+                                        <p id="more1"><input type="file" id="file1"  name="helpinfoFileJson.file1" onchange="checkFile(1)"><input type="button" value="添加" onclick="addMore(1)"><i>*</i></p>
+                                        <p><textarea placeholder="请简要概述主要困难......" id="applycontent1" name="helpinfo.applycontent"></textarea> </p>  
+                                    </div>
+                                    <div class="fyt-top"><p></p><i>担保人信息</i><span></span></div>
+                                    <div class="ft-table1">
+                                        <p><input type="text" placeholder="担保人姓名（请填写真实姓名）" class="just-one" name="helpinfo.vouchname" id="vouchname" onblur="checkVouchName()"><i>*</i><input type="text" maxlength="18" placeholder="身份证号码（填写18位二代身份证号码）" class="just-one" id="vouchidcard" name="helpinfo.vouchidcard" onblur="checkVouchIdCard()"><i>*</i> </p>
+                                        <p><input type="text" placeholder="单位固定电话（xxxx-xxxxxxx）" class="just-one" id="vouchphonenum" name="helpinfo.vouchphonenum" onblur="checkVouchPhoneNum()"><i>*</i><input type="text" placeholder="个人联系电话（请填写11位手机号码）" maxlength="11" class="just-one" id="vouchmobile" name="helpinfo.vouchmobile" onblur="checkVouchmobile()"><i>*</i> </p>
+                                        <p><input type="text" placeholder="申请资金使用期限" class="just-two" id="applymoneyusertime" name="helpinfo.applymoneyusertime" onblur="checkApplymoneyusertime()"><i>*</i></p>
+                                        <p><input type="text" placeholder="地址" class="just-two" id="vouchaddress" name="helpinfo.vouchaddress" onblur="checkVouchAddress()"><i>*</i></p> 
+                                        <p><input type="text" placeholder="工作单位" class="just-two" id="vouchcompany" name="helpinfo.vouchcompany" onblur="checkVouchCompany()"><i>*</i></p>
+                                     	<p><button type="button" value="提交信息" onclick="subHelp1()">提交信息</button> </p>
+                                    </div>
+                                    </form>
+                                </div>   
+                            </div>  
+                        </div> 
+                        </div>
+                </div>
+                <div class="jjh-index-right">
+                    <a href="FoundRescue.jsp"><div>
+                        <img src="images/brower_03.jpg" class="enheng">
+                        <p>我要求助</p>
+                        <img src="images/brower_07.jpg" >
+                    </div></a>
+                    <a href="DonationLove.jsp"><div>
+                        <img src="images/brower_11.jpg" class="enheng">
+                        <p>我要查询</p>
+                        <img src="images/brower_07.jpg">
+                    </div></a>
+                    <a href="FoundDonations.jsp"><div>
+                        <img src="images/brower_15.jpg" class="enheng" style="margin-top: 15px;">
+                        <p>我要捐款</p>
+                        <img src="images/brower_07.jpg">
+                    </div></a>
+                    <a href="UserPquery.jsp"><div>
+                        <img src="images/brower_19.jpg" class="enheng" style="margin-top: 23px;">
+                        <p>求助进度</p>
+                        <img src="images/brower_07.jpg">
+                    </div></a>
+                    <a href="FoundJzfzlist.jsp"><div>
+                        <img src="images/brower_23.jpg" style="margin-top: 16px;">
+                        <p>公示列表</p>
+                    </div></a>
+                </div>
+
+
+
+            </div>
+
+
+        </div>
+         <%@ include  file="bottom.jsp"%>
+    </div>
+
+
+</div>
+<script src="js/jquery.js"></script>
+<script src="js/index.js"></script>
+<script type="text/javascript">
+$(function(){
+	if(!placeholderSupport()){   // 判断浏览器是否支持 placeholder
+	    $('[placeholder]').focus(function() {
+	        var input = $(this);
+	        if (input.val() == input.attr('placeholder')) {
+	            input.val('');
+	            input.removeClass('placeholder');
+	        }
+	    }).blur(function() {
+	        var input = $(this);
+	        if (input.val() == '' || input.val() == input.attr('placeholder')) {
+	            input.addClass('placeholder');
+	            input.val(input.attr('placeholder'));
+	        }
+	    }).blur();
+	};
+	})
+	function placeholderSupport() {
+	    return 'placeholder' in document.createElement('input');
+	} 
+</script>
+<!-- 表单异步提交start -->
+<script src="<%=path%>/libs/js/form/form.js" type="text/javascript"></script>
+<!-- 表单异步提交end -->
+<script type="text/javascript">
+var checks = false;
+//提交救助
+function subHelp0(){
+	var uid = document.getElementById("uid0").value;
+	if(uid==null||uid==""){
+		alert("请先登录"); 
+		checks = false;
+	}else{
+		checks = true;
+	}
+	if(checks){
+	checkName(0);
+	}
+	if(checks){
+		checkAge(0);
+		if(checks){
+			checkIdCard(0);
+			if(checks){
+				checkPhoneNum(0);
+				if(checks){
+					checkEmail(0);
+					if(checks){
+						checkAddress(0);
+						if(checks){
+							checkInCome(0);
+							if(checks){
+								checkApplymoney(0);
+								if(checks){
+									checkFile(0);
+									if(checks){
+										document.getElementById("help0Form").submit();
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+//提交求助
+function subHelp1(){
+	var uid = document.getElementById("uid1").value;
+	if(uid==null||uid==""){
+		alert("请先登录"); 
+		checks = false;
+	}else{
+		checks = true;
+	}
+	if(checks){
+	checkName(1);
+	}
+	if(checks){
+		checkAge(1);
+		if(checks){
+			checkIdCard(1);
+			if(checks){
+				checkPhoneNum(1);
+				if(checks){
+					checkEmail(1);
+					if(checks){
+						checkAddress(1);
+						if(checks){
+							checkInCome(1);
+							if(checks){
+								checkApplymoney(1);
+								if(checks){
+									checkFile(1);
+									if(checks){
+										checkVouchName();
+										if(checks){
+											checkVouchIdCard();
+											if(checks){
+												checkVouchPhoneNum();
+												if(checks){
+													checkVouchmobile();
+													if(checks){
+														checkApplymoneyusertime();
+														if(checks){
+															checkVouchAddress();
+															if(checks){  
+																checkVouchCompany();
+																if(checks){
+																	document.getElementById("help1Form").submit();
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+//检查用户名
+function checkName(i){
+	var name = /^[\u4E00-\u9FA5]{2,4}$/; //中文名字
+	var namei =document.getElementById("name"+i);
+	var nameCheck = !!(namei.value).match(name); 
+	checks=nameCheck?true:false; 
+	if(!checks){
+		namei.style.border="1px red solid";
+	}else{
+		namei.style.border=""
+	}
+}
+//检查年龄
+function checkAge(i){
+	var age = /^(?:[1-9][0-9]?|1[01][0-9]|120)$/; //年龄0-120 
+	var agei=document.getElementById("age"+i); 
+	var ageCheck = !!(agei.value).match(age); 
+	checks=ageCheck?true:false;
+	if(!checks){
+		agei.style.border="1px red solid";
+	}else{
+		agei.style.border=""
+	}
+}
+//检查身份证号码
+function checkIdCard(i){
+	var idCard = /^(\d{15}$|^\d{18}$|^\d{17}(\d|X|x))$/;//身份证号码
+	var idCardi=document.getElementById("idcard"+i); 
+	var idCardCheck = !!(idCardi.value).match(idCard); 
+	checks=idCardCheck?true:false;
+	if(!checks){
+		idCardi.style.border="1px red solid";
+	}else{
+		idCardi.style.border=""
+	}
+}
+//检查手机号码
+function checkPhoneNum(i){
+	var phoneNum = /^(0|86|17951)?(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$/; //手机号码
+	var phoneNumi=document.getElementById("phonenum"+i); 
+	var phoneNumCheck = !!(phoneNumi.value).match(phoneNum); 
+	checks=phoneNumCheck?true:false;
+	if(!checks){
+		phoneNumi.style.border="1px red solid";
+	}else{
+		phoneNumi.style.border=""
+	}
+}
+//检查邮箱
+function checkEmail(i){
+	var email = /[\w!#$%&'*+/=?^_`{|}~-]+(?:\.[\w!#$%&'*+/=?^_`{|}~-]+)*@(?:[\w](?:[\w-]*[\w])?\.)+[\w](?:[\w-]*[\w])?/;//电子邮箱
+	var emaili=document.getElementById("email"+i); 
+	var emailCheck = !!(emaili.value).match(email); 
+	checks=emailCheck?true:false;
+	if(!checks){
+		emaili.style.border="1px red solid";
+	}else{
+		emaili.style.border=""
+	}
+}
+//检查住址/单位是否为空
+function checkAddress(i){
+	var address =/\S/;//不为空  
+	var addressi=document.getElementById("address"+i); 
+	var addressCheck = !!(addressi.value).match(address); 
+	checks=addressCheck?true:false;
+	if(!checks){
+		addressi.style.border="1px red solid";
+	}else{
+		addressi.style.border=""
+	}
+}
+//检查家庭年收入
+function checkInCome(i){
+	var inCome=/^(([1-9]\d{0,9})|0)(\.\d{1,2})?$/; //金钱
+	var inComei=document.getElementById("income"+i); 
+	var inComeCheck = !!(inComei.value).match(inCome); 
+	checks=inComeCheck?true:false;
+	if(!checks){
+		inComei.style.border="1px red solid";
+	}else{
+		inComei.style.border=""
+	}
+}
+//检查申请救助金额
+function checkApplymoney(i){
+	var inCome=/^(([1-9]\d{0,9})|0)(\.\d{1,2})?$/; //金钱
+	var applymoneyi=document.getElementById("applymoney"+i); 
+	var applymoneyCheck = !!(applymoneyi.value).match(inCome); 
+	checks=applymoneyCheck?true:false;
+	if(!checks){
+		applymoneyi.style.border="1px red solid";
+	}else{
+		applymoneyi.style.border=""
+	}
+}
+//检查担保人名字
+function checkVouchName(){
+	var name = /^[\u4E00-\u9FA5]{2,4}$/; //中文名字
+	var vouchname=document.getElementById("vouchname"); 
+	var vouchnameCheck = !!(vouchname.value).match(name);   
+	checks=vouchnameCheck?true:false;
+	if(!checks){
+		vouchname.style.border="1px red solid";
+	}else{
+		vouchname.style.border=""
+	}
+}
+//检查担保人身份证
+function checkVouchIdCard(){
+	var idCard = /^(\d{15}$|^\d{18}$|^\d{17}(\d|X|x))$/;//身份证号码
+	var vouchidcard=document.getElementById("vouchidcard");   
+	var vouchidcardCheck = !!(vouchidcard.value).match(idCard);   
+	checks=vouchidcardCheck?true:false;
+	if(!checks){
+		vouchidcard.style.border="1px red solid";
+	}else{
+		vouchidcard.style.border=""
+	}
+}
+//检查担保人单位固定电话
+function checkVouchPhoneNum(){
+	var phone = /(\d{2,5}-\d{7,8}(-\d{1,})?)|(13\d{9})|(159\d{8})/; //固定电话
+	var vouchphonenum=document.getElementById("vouchphonenum");   
+	var vouchPhoneNumCheck = !!(vouchphonenum.value).match(phone);   
+	checks=vouchPhoneNumCheck?true:false;
+	if(!checks){
+		vouchphonenum.style.border="1px red solid";
+	}else{
+		vouchphonenum.style.border=""
+	}
+}
+//检查担保人手机号码
+function checkVouchmobile(){
+	var phoneNum = /^(0|86|17951)?(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$/; //手机号码
+	var vouchmobile=document.getElementById("vouchmobile"); 
+	var vouchmobileCheck = !!(vouchmobile.value).match(phoneNum); 
+	checks=vouchmobileCheck?true:false;
+	if(!checks){
+		vouchmobile.style.border="1px red solid";
+	}else{
+		vouchmobile.style.border=""
+	}
+}
+//检查担保人地址是否为空
+function checkVouchAddress(){
+	var address =/\S/;//不为空  
+	var vouchaddress=document.getElementById("vouchaddress"); 
+	var vouchaddressCheck = !!(vouchaddress.value).match(address); 
+	checks=vouchaddressCheck?true:false;
+	if(!checks){
+		vouchaddress.style.border="1px red solid";
+	}else{
+		vouchaddress.style.border=""
+	}
+}
+//检查担保人工作单位是否为空
+function checkVouchCompany(){
+	var address =/\S/;//不为空  
+	var vouchcompany=document.getElementById("vouchcompany"); 
+	var vouchcompanyCheck = !!(vouchcompany.value).match(address); 
+	checks=vouchcompanyCheck?true:false;
+	if(!checks){
+		vouchcompany.style.border="1px red solid";    
+	}else{
+		vouchcompany.style.border=""
+	}
+}
+//检查资金使用期限
+function checkApplymoneyusertime(){
+	var address =/\S/;//不为空  
+	var applymoneyusertime=document.getElementById("applymoneyusertime"); 
+	var applymoneyusertimeCheck = !!(applymoneyusertime.value).match(address); 
+	checks=applymoneyusertimeCheck?true:false;
+	if(!checks){
+		applymoneyusertime.style.border="1px red solid";    
+	}else{
+		applymoneyusertime.style.border="" 
+	}
+}
+//判断上传文件不是空的
+function checkFile(i){
+	var filei = document.getElementById("file"+i).value;
+	if(filei ==""){
+		alert("请添加所需要的表格，如有多个点击添加");
+		checks = false;
+	}else checks = true;
+}
+//增加和移除一个上传文件
+function addMore(type){
+	     var p = document.getElementById("more"+type);	     
+	     var br = document.createElement("br");
+	     var input = document.createElement("input");
+	     var button = document.createElement("input");
+	     input.type = "file";
+	     input.name = "helpinfoFileJson.file"+type;          
+	     button.type = "button";
+	     button.value = "移除";     
+	     button.onclick = function()
+	     {
+	         p.removeChild(br);
+	         p.removeChild(input);
+	         p.removeChild(button);  
+	     };
+	     p.appendChild(br);
+	     p.appendChild(input);
+	     p.appendChild(button);
+	 }
+</script>
+</body>
+</html>

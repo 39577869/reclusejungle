@@ -8,9 +8,9 @@
     <script  th:src="@{before/js/laydate.js}"></script>
     <link rel="stylesheet" th:href="@{before/style/laydate.css}">
     <link rel="stylesheet" th:href="@{before/js/skins/molv/laydate.css}">
-    <script th:src="@{webjars/jquery/3.0.0/jquery.js}"></script><!--
-    <script type='text/javascript' src='js/citylist.js'></script>
-    --><script type='text/javascript' th:src='@{before/js/querycity.js}'></script>
+    <script th:src="@{webjars/jquery/3.0.0/jquery.js}"></script>
+    <script type='text/javascript' th:src='@{before/js/citylist.js}'></script>
+    <script type='text/javascript' th:src='@{before/js/querycity.js}'></script>
     <link th:href='@{before/style/cityquery.css}' rel="stylesheet" type="text/css" />
 </head>
 
@@ -19,8 +19,7 @@
 
 <!--首页banner-->
 <!--<jsp:include  page="head.jsp" />-->
-<div th:insert="~{head::top1}"></div>
-<div th:insert="~{head::top2}"></div>
+<div th:replace="head::html"></div>
 <script type="text/javascript">
     function Alllogin(){
         window.location.href = "login.jsp?returnurl=/clxjmain!Homepage.action";
@@ -33,13 +32,12 @@
 <div class="index-lbt">
     <div id="scrollPics">
         <ul class="slider">
-
             <li><img th:src="@{before/images/lbt1.jpg}" class="lower" width="100%" height="380px"/>
             </li>
             <li><img th:src="@{before/images/lbt2.jpg}" width="100%" height="380px"/></li>
             <li><img th:src="@{before/images/lbt3.png}" width="100%" height="380px"/></li>
-            <!--<li><img th:src="@{before/images/lbt4.png}" width="100%" height="380px"/></li>-->
-            <!--<li><img th:src="@{before/images/lbt5.png}" width="100%" height="380px"/></li>-->
+            <li><img th:src="@{before/images/1.jpg}" width="100%" height="380px"/></li>
+            <li><img th:src="@{before/images/ch_07.jpg}" width="100%" height="380px"/></li>
         </ul>
         <ul class="num">
             <li class="on"></li>
@@ -157,7 +155,7 @@
                                         <tr>
                                             <td></td>
                                             <td class="ses sec"><input type="submit" value="搜索" > <!-- <a
-                                                href="#"><img src="images/06.png">所有闲居</a> --></td>
+                                                href="#"><img th:src="@{before/images/06.png}">所有闲居</a> --></td>
                                         </tr>
                                     </table>
                                 </form>
@@ -177,7 +175,7 @@
                                             <td>入住</td>
                                             <td><p><input name="startTime" class="laydate-icon ts" id="demo3" value="2019-2-12"> </p>
 
-                                                <p>退房：<input name="endTime" name="startTime" class="laydate-icon" id="demo4" value="2019-9-12"> </p></td>
+                                                <p>退房：<input name="endTime" class="laydate-icon" id="demo4" value="2019-9-12"> </p></td>
                                         </tr>
                                         <tr>
                                             <td>关键词</td>
@@ -186,7 +184,7 @@
                                         <tr>
                                             <td></td>
                                             <td class="ses sec"><input type="submit" value="搜索" ><!-- <a
-                                                href="#"><img src="images/06.png">所有闲居</a></td>-->
+                                                href="#"><img th:src="@{before/images/06.png}">所有闲居</a></td>-->
                                         </tr>
                                     </table>
                                 </form>
@@ -204,29 +202,30 @@
 
         <div class="taq1">
             <div>
-                <a href="<%=path%>/clxjmain!selClxjOfId.action?clxjmain.id=${topid1}"><img width="466" height="320" src="${clxjBackurl }${top1 }"></a>
+                <a href="<%=path%>/clxjmain!selClxjOfId.action?clxjmain.id=${topid1}"><img width="466" height="320" th:src="@{{url}(url=${'before/images/'+popular.get(0)})}"></a>
             </div>
             <span></span><span class="mfcy"><a href="<%=path%>/clxjmain!selClxjOfId.action?clxjmain.id=${topid1}">${topname1 }</a> </span>
         </div>
         <div class="taq1 spec">
             <div>
-                <a href="<%=path%>/clxjmain!selClxjOfId.action?clxjmain.id=${topid2}"> <img width="467" height="320" src="${clxjBackurl }${top2 }"></a>
+                <a href="<%=path%>/clxjmain!selClxjOfId.action?clxjmain.id=${topid2}"> <img width="467" height="320" th:src="@{{url}(url=${'before/images/'+popular.get(1)})}"></a>
             </div>
             <span></span><span class="mfcy"><a href="<%=path%>/clxjmain!selClxjOfId.action?clxjmain.id=${topid2}">${topname2 }</a> </span>
         </div>
         <div class="taq2 spec">
             <div>
                 <div>
-                    <a href="<%=path%>/clxjmain!selClxjOfId.action?clxjmain.id=${topid3}"><img width="224" height="141" src="${clxjBackurl }${top3 }"></a>
+                    <a href="<%=path%>/clxjmain!selClxjOfId.action?clxjmain.id=${topid3}"><img width="224" height="141" th:src="@{{url}(url=${'before/images/'+popular.get(2)})}"></a>
                     <span></span><span class="mfcy"><a href="<%=path%>/clxjmain!selClxjOfId.action?clxjmain.id=${topid3}">${topname3 }</a> </span>
                 </div>
                 <div class="spec2">
-                    <a href="<%=path%>/clxjmain!selClxjOfId.action?clxjmain.id=${topid4}"><img width="224" height="141" src="${clxjBackurl }${top4 }"></a>
+                    <a href="<%=path%>/clxjmain!selClxjOfId.action?clxjmain.id=${topid4}"><img width="224" height="141" th:src="@{{url}(url=${'before/images/'+popular.get(3)})}"></a>
                     <span></span><span class="mfcy"><a href="<%=path%>/clxjmain!selClxjOfId.action?clxjmain.id=${topid4}">${topname4 }</a> </span>
                 </div>
             </div>
         </div>
     </div>
+    <!-- 国内 -->
     <div id="a2" class="index-domestic">
         <div class="rmtj">
             <div class="rmtj1">国内<i>明月松间照，清泉石上流</i></div>
@@ -243,28 +242,28 @@
                         <!--</c:forEach>-->
                     </ul>
                 </div>
-                <div class="one-con">
-                    <a href="<%=path%>/clxjmain!selClxjOfId.action?clxjmain.id=${type11id1}"><img width="467" height="320" src="${clxjBackurl }${type111 }"></a>
+                <div class="one-con">                                                        <!-- th:value="${cn.get(0)}" -->
+                    <a href="<%=path%>/clxjmain!selClxjOfId.action?clxjmain.id=${type11id1}"><img width="467" height="320" th:src="@{{url}(url=${'before/images/'+cn.get(0)})}"></a>
                     <a href="<%=path%>/clxjmain!selClxjOfId.action?clxjmain.id=${type11id1}"><span>${type11name1 }</span></a>
                 </div>
                 <div class="one-right">
                     <div class="or-one">
                         <div>
-                            <a href="<%=path%>/clxjmain!selClxjOfId.action?clxjmain.id=${type11id2}"> <img width="223" height="142" src="${clxjBackurl }${type112 }"></a>
+                            <a href="<%=path%>/clxjmain!selClxjOfId.action?clxjmain.id=${type11id2}"> <img width="223" height="142" th:src="@{{url}(url=${'before/images/'+cn.get(1)})}"></a>
                             <a href="<%=path%>/clxjmain!selClxjOfId.action?clxjmain.id=${type11id2}"><span>${type11name2 }</span></a>
                         </div>
                         <div>
-                            <a href="<%=path%>/clxjmain!selClxjOfId.action?clxjmain.id=${type11id3}"><img width="223" height="141" src="${clxjBackurl }${type113 }"></a>
+                            <a href="<%=path%>/clxjmain!selClxjOfId.action?clxjmain.id=${type11id3}"><img width="223" height="141" th:src="@{{url}(url=${'before/images/'+cn.get(2)})}"></a>
                             <a href="<%=path%>/clxjmain!selClxjOfId.action?clxjmain.id=${type11id3}"><span>${type11name3 }</span></a>
                         </div>
                     </div>
                     <div class="or-two">
                         <div>
-                            <a href="<%=path%>/clxjmain!selClxjOfId.action?clxjmain.id=${type11id4}"><img width="224" height="142" src="${clxjBackurl }${type114 }"></a>
+                            <a href="<%=path%>/clxjmain!selClxjOfId.action?clxjmain.id=${type11id4}"><img width="224" height="142" th:src="@{{url}(url=${'before/images/'+cn.get(3)})}"></a>
                             <a href="<%=path%>/clxjmain!selClxjOfId.action?clxjmain.id=${type11id4}"><span>${type11name4 }</span></a>
                         </div>
                         <div>
-                            <a href="<%=path%>/clxjmain!selClxjOfId.action?clxjmain.id=${type11id5}"><img  width="224" height="141" src="${clxjBackurl }${type115 }"></a>
+                            <a href="<%=path%>/clxjmain!selClxjOfId.action?clxjmain.id=${type11id5}"><img  width="224" height="141" th:src="@{{url}(url=${'before/images/'+cn.get(4)})}"></a>
                             <a href="<%=path%>/clxjmain!selClxjOfId.action?clxjmain.id=${type11id5}"><span>${type11name5 }</span></a>
                         </div>
                     </div>
@@ -280,28 +279,27 @@
                     </ul>
                 </div>
                 <div class="one-con">
-                    <a href="
-                   /clxjmain!selClxjOfId.action?clxjmain.id=${type10id1}"><img width="467" height="320" src="${clxjBackurl }${type101 }"></a>
-                    <a href=">/clxjmain!selClxjOfId.action?clxjmain.id=${type10id1}"><span>${type10name1 }</span></a>
+                    <a href="clxjmain!selClxjOfId.action?clxjmain.id=${type10id1}"><img width="467" height="320" th:src="@{{url}(url=${'before/images/'+cn_home.get(0)})}"></a>
+                    <a href="/clxjmain!selClxjOfId.action?clxjmain.id=${type10id1}"><span>${type10name1 }</span></a>
                 </div>
                 <div class="one-right">
                     <div class="or-one">
                         <div>
-                            <a href="/clxjmain!selClxjOfId.action?clxjmain.id=${type10id2}"><img  width="223" height="142"  src="${clxjBackurl }${type102 }"></a>
+                            <a href="/clxjmain!selClxjOfId.action?clxjmain.id=${type10id2}"><img  width="223" height="142"  th:src="@{{url}(url=${'before/images/'+cn_home.get(1)})}"></a>
                             <a href="/clxjmain!selClxjOfId.action?clxjmain.id=${type10id2}"><span>${type10name2 }</span></a>
                         </div>
                         <div>
-                            <a href="clxjmain!selClxjOfId.action?clxjmain.id=${type10id3}"><img width="223" height="141"   src="${clxjBackurl }${type103 }"></a>
+                            <a href="clxjmain!selClxjOfId.action?clxjmain.id=${type10id3}"><img width="223" height="141"   th:src="@{{url}(url=${'before/images/'+cn_home.get(2)})}"></a>
                             <a href="/clxjmain!selClxjOfId.action?clxjmain.id=${type10id3}"><span>${type10name3 }</span></a>
                         </div>
                     </div>
                     <div class="or-two">
                         <div>
-                            <a href="/clxjmain!selClxjOfId.action?clxjmain.id=${type10id4}"><img  width="224" height="142" src="${clxjBackurl }${type104 }"></a>
+                            <a href="/clxjmain!selClxjOfId.action?clxjmain.id=${type10id4}"><img  width="224" height="142" th:src="@{{url}(url=${'before/images/'+cn_home.get(3)})}"></a>
                             <a href="/clxjmain!selClxjOfId.action?clxjmain.id=${type10id4}"> <span>${type10name4 }</span></a>
                         </div>
                         <div>
-                            <a href="/clxjmain!selClxjOfId.action?clxjmain.id=${type10id5}"><img  width="224" height="141" src="${clxjBackurl }${type105 }"></a>
+                            <a href="/clxjmain!selClxjOfId.action?clxjmain.id=${type10id5}"><img  width="224" height="141" th:src="@{{url}(url=${'before/images/'+cn_home.get(4)})}"></a>
                             <a href="/clxjmain!selClxjOfId.action?clxjmain.id=${type10id5}"><span>${type10name5 }</span></a>
                         </div>
                     </div>
@@ -309,6 +307,7 @@
             </div>
         </div>
     </div>
+    <!-- 境外 -->
     <div id="a3" class="index-abroad">
         <div class="rmtj">
             <div class="rmtj1">境外<i>明月松间照，清泉石上流</i></div>
@@ -326,27 +325,27 @@
                     </ul>
                 </div>
                 <div class="one-con">
-                    <a href="/clxjmain!selClxjOfId.action?clxjmain.id=${type01id1}"><img width="465"  height="320" src="${clxjBackurl }${type011 }"></a>
+                    <a href="/clxjmain!selClxjOfId.action?clxjmain.id=${type01id1}"><img width="465"  height="320" th:src="@{{url}(url=${'before/images/'+vn.get(0)})}"></a>
                     <a href="/clxjmain!selClxjOfId.action?clxjmain.id=${type01id1}"><span>${type01name1 }</span></a>
                 </div>
                 <div class="one-right">
                     <div class="or-one">
                         <div>
-                            <a href="/clxjmain!selClxjOfId.action?clxjmain.id=${type01id2}"><img width="223" height="142" src="${clxjBackurl }${type012 }"></a>
-                            <a href="/clxjmain!selClxjOfId.action?clxjmain.id=${type01id2}"><span>${type01name2 }</span></a>
+                            <a href="/clxjmain!selClxjOfId.action?clxjmain.id=${type01id2}"><img width="223" height="142" th:src="@{{url}(url=${'before/images/'+vn.get(1)})}"></a>
+                            <a href="/clxjmain!selClxjOfId.action?clxjmain.id=${type01id2}"><span th:text="${vn.get(1)}"></span></a>
                         </div>
                         <div>
-                            <a href="/clxjmain!selClxjOfId.action?clxjmain.id=${type01id3}"> <img width="225" height="141" src="${clxjBackurl }${type013 }"></a>
+                            <a href="/clxjmain!selClxjOfId.action?clxjmain.id=${type01id3}"> <img width="225" height="141" th:src="@{{url}(url=${'before/images/'+vn.get(2)})}"></a>
                             <a href="/clxjmain!selClxjOfId.action?clxjmain.id=${type01id3}"><span>${type01name3 }</span></a>
                         </div>
                     </div>
                     <div class="or-two">
                         <div>
-                            <a href="/clxjmain!selClxjOfId.action?clxjmain.id=${type01id4}"> <img width="224" height="142" src="${clxjBackurl }${type014 }"></a>
+                            <a href="/clxjmain!selClxjOfId.action?clxjmain.id=${type01id4}"> <img width="224" height="142" th:src="@{{url}(url=${'before/images/'+vn.get(3)})}"></a>
                             <a href="/clxjmain!selClxjOfId.action?clxjmain.id=${type01id4}"><span>${type01name4 }</span></a>
                         </div>
                         <div>
-                            <a href="/clxjmain!selClxjOfId.action?clxjmain.id=${type01id5}"> <img width="224" height="141" src="${clxjBackurl }${type015 }"></a>
+                            <a href="/clxjmain!selClxjOfId.action?clxjmain.id=${type01id5}"> <img width="224" height="141" th:src="@{{url}(url=${'before/images/'+vn.get(4)})}"></a>
                             <a href="/clxjmain!selClxjOfId.action?clxjmain.id=${type01id5}"><span>${type01name5 }</span></a>
                         </div>
                     </div>
@@ -362,27 +361,27 @@
                     </ul>
                 </div>
                 <div class="one-con">
-                    <a href=/clxjmain!selClxjOfId.action?clxjmain.id=${type00id1}"><img width="465"  height="320" src="${clxjBackurl }${type001 }"></a>
-                    <a href="/clxjmain!selClxjOfId.action?clxjmain.id=${type00id1}"> <span>${type00name1 }</span></a>
+                    <a href="#"><img width="465"  height="320" th:src="@{{url}(url=${'before/images/'+vn_home.get(0)})}"></a>
+                    <a href="#"> <span>aaa</span></a>
                 </div>
                 <div class="one-right">
                     <div class="or-one">
                         <div>
-                            <a href="<%=path%>/clxjmain!selClxjOfId.action?clxjmain.id=${type00id2}"><img width="223" height="142" src="${clxjBackurl }${type002 }"></a>
-                            <a href="<%=path%>/clxjmain!selClxjOfId.action?clxjmain.id=${type00id2}"><span>${type00name2 }</span></a>
+                            <a href="#"><img width="223" height="142" th:src="@{{url}(url=${'before/images/'+vn_home.get(1)})}"></a>
+                            <a href="#"><span>${type00name2 }</span></a>
                         </div>
                         <div>
-                            <a href="<%=path%>/clxjmain!selClxjOfId.action?clxjmain.id=${type00id3}"><img width="225" height="141" src="${clxjBackurl }${type003 }"></a>
+                            <a href="<%=path%>/clxjmain!selClxjOfId.action?clxjmain.id=${type00id3}"><img width="225" height="141" th:src="@{{url}(url=${'before/images/'+vn_home.get(2)})}"></a>
                             <a href="<%=path%>/clxjmain!selClxjOfId.action?clxjmain.id=${type00id3}"><span>${type00name3 }</span></a>
                         </div>
                     </div>
                     <div class="or-two">
                         <div>
-                            <a href="<%=path%>/clxjmain!selClxjOfId.action?clxjmain.id=${type00id4}"><img width="224" height="142" src="${clxjBackurl }${type004 }"></a>
+                            <a href="<%=path%>/clxjmain!selClxjOfId.action?clxjmain.id=${type00id4}"><img width="224" height="142" th:src="@{{url}(url=${'before/images/'+vn_home.get(3)})}"></a>
                             <a href="<%=path%>/clxjmain!selClxjOfId.action?clxjmain.id=${type00id4}"><span>${type00name4 }</span></a>
                         </div>
                         <div>
-                            <a href="<%=path%>/clxjmain!selClxjOfId.action?clxjmain.id=${type00id5}"> <img width="224" height="141" src="${clxjBackurl }${type005 }"></a>
+                            <a href="<%=path%>/clxjmain!selClxjOfId.action?clxjmain.id=${type00id5}"> <img width="224" height="141" th:src="@{{url}(url=${'before/images/'+vn_home.get(4)})}"></a>
                             <a href="<%=path%>/clxjmain!selClxjOfId.action?clxjmain.id=${type00id5}"><span>${type00name5 }</span></a>
                         </div>
                     </div>
@@ -390,6 +389,7 @@
             </div>
         </div>
     </div>
+    <!-- 慈善 -->
     <div id="a4" class="index-charity">
         <div class="rmtj">
             <div class="rmtj1">慈善<i>明月松间照，清泉石上流</i></div><!--
@@ -412,9 +412,9 @@
             </form>
         </div>
         <div class="ic-con">
-            <p class="ckax"><img src="images/07.png">实时查看基金会总爱心金额</p>
+            <p class="ckax"><img th:src="@{before/images/07.png}">实时查看基金会总爱心金额</p>
             <p class="money">${moneyCountStr }</p>
-            <p><img src="images/jk_03.jpg"></p>
+            <p><img th:src="@{before/images/jk_03.jpg}"></p>
             <p class="xz"><span class="one"><a href="PLpublicity.jsp">捐款支出细则</a> </span><span class="two"><a href="FoundIndex.jsp">基金会简介</a> </span></p>
         </div>
         <div class="ic-right">
@@ -443,10 +443,10 @@
 
 <!--<%@ include  file="bottom.jsp"%>-->
 
-<script src="<%=path%>/js/index.js"></script>
-<script src="<%=path%>/clxj/js/scorll.js"></script>
+<script th:src="@{before/js/index.js}"></script>
+<script th:src="@{before/js/scorll.js}"></script>
 <script type="text/javascript">
-    function(){
+    !function(){
         laydate.skin('molv');//切换皮肤，请查看skins下面皮肤库
         laydate({elem: '#demo1'});//绑定元素
         laydate({elem: '#demo2'});//绑定元素

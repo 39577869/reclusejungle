@@ -3,16 +3,16 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <title>丛林闲居-闲居加盟</title>
-    <link rel="stylesheet" href="style/cy.css">
-    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" th:href="@{before/style/cy.css}">
+    <link rel="stylesheet" th:href="@{before/style/style.css}">
 <!-- 表单验证start -->
-<script src="<%=path %>/js/jquery.js"></script>
-<script src="<%=path %>/js/jquery.validate.js"></script>
-<script src="<%=path%>/js/jquery.metadata.js"></script>
-<script type="text/javascript" src="<%=path%>/js/messagesx_cn.js"></script>
+<script th:src="@{before/js/jquery.js}"></script>
+<script th:src="@{before/js/jquery.validate.js}"></script>
+<script th:src="@{before/js/jquery.metadata.js}"></script>
+<script type="text/javascript" th:src="@{before/js/messagesx_cn.js}"></script>
 <!-- 表单验证stop -->
 <!-- 下载中文文件start -->
-<script src="<%=path %>/sheet/js/download.js"></script>
+<script th:src="@{before/sheet/js/download.js}"></script>
 <!-- 下载中文文件stop -->
 </head>
 
@@ -47,7 +47,8 @@ $(function(){
     <div class="yc-txdd1">
          
         <!--首页banner-->
-         <jsp:include  page="head.jsp" />
+        <div th:replace="head::html"></div>
+         <!--<jsp:include  page="head.jsp" />-->
         <script type="text/javascript">
 function Alllogin(){
 	window.location.href = "login.jsp?returnurl=/joinxj.jsp";
@@ -62,13 +63,13 @@ function loginOut(){
 <!--用车-填写订单-->
 <div class="yc-txdd">
     <div class="yc-mbx">
-        <p>当前位置：<a href="index.jsp" class="ll">丛林闲居网</a> > <a href="#" class="xz">加盟</a></p>
+        <p>当前位置：<a href="index.html" class="ll">丛林闲居网</a> > <a href="#" class="xz">加盟</a></p>
     </div>
-    <div><img src="images/jm_03.jpg"></div>
+    <div><img th:src="@{before/images/jm_03.jpg}"></div>
     <div class="jm">
     <div class="kwff-p1">
           <p class="kwff-p11">加盟列表</p>
-           <p class="kwff-p12"><a href="joincl.jsp"><span>丛林加盟</span></a><span class="qzfze">闲居加盟</span><a href="joincar.jsp"> <span>车辆加盟</span> </a> </p>
+           <p class="kwff-p12"><a href="joincl.html"><span>丛林加盟</span></a><span class="qzfze">闲居加盟</span><a href="joincar.html"> <span>车辆加盟</span> </a> </p>
      </div>  
      <div class="qzsqb">
      <div class="qzsqb-one">
@@ -79,8 +80,8 @@ function loginOut(){
       </div>   
         <div class="jm-left">  
             <p class="xx">
-            	<c:if test="${sessionUser ==null }"><em style="font-size: 10px;color: red">加盟首先要登录哦，点击<a href="login.jsp?returnurl=/joinxj.jsp">登录</a><br/></em></c:if>
-            	<img src="images/09.png">请填写加盟信息：
+            	<em th:if="${sessionUser ==null }" style="font-size: 10px;color: red">加盟首先要登录哦，点击<a href="login.jsp?returnurl=/joinxj.jsp">登录</a><br/></em>
+            	<img th:src="@{before/images/09.png}">请填写加盟信息：
             	</p>
             <span class="rxxx">如果您是闲居，想加盟丛林闲居网，请填写如下信息（<i>* 为必填项</i>）</span>
            <form method="post" action="<%=path %>/joinxj!addJoinxj.action" id="joinxjForm" enctype="multipart/form-data">
@@ -92,18 +93,18 @@ function loginOut(){
                <p><input type="text" value="${joinxj.address }" name="joinxj.address" id="address" placeholder="地 址" class="lxr "><i>*</i><span class="status" style="color: red" id="td3"></span></p>
                <p><input type="text" value="${joinxj.postcode }" name="joinxj.postcode" id="postcode"  placeholder="邮编" class="lxr "><i>*</i><span class="status" style="color: red" id="td4"></span></p>
                <p><input type="text" value="${joinxj.houseidcard }" name="joinxj.houseidcard" id="houseidcard" placeholder="户主身份证号" class="lxr "><i>*</i><span class="status" style="color: red" id="td5"></span></p>
-               <c:if test="${joinxj ==null}">
+               <i th:if="${joinxj ==null}">
                <p><input type="text" maxlength="11" name="joinxj.housephone" id="housephone"  placeholder="手机号（11位手机号码，作为后台管理员登录帐号）" class="lxr "  onblur="checkHousephone()"><i>*</i><span class="status" style="color: red" id="td6"></span></p>
                <p><input type="text"  id="mobileYZM"   placeholder="验证码" maxlength="6"  onblur="checkYZM()" class="yzm"> <button type="button" id="hqyzmbutton" onclick="getNumRandom()">获取验证码</button><i>*</i>
                		<span class="status" style="color: red" id="td11"></span></p>   
                		<input type="hidden" name="update" value="" id="update"/>  
-               </c:if> 
-               <c:if test="${joinxj !=null}">
+               </i>
+               <i th:if="${joinxj !=null}">
                		<input type="hidden" name="joinxj.housephone" value="${joinxj.housephone }" id="housephone"/>
                 	<input type="hidden" name="joinxj.id" value="${joinxj.id }"/>  
                 	<input type="hidden" name="joinxj.jointime" value="${joinxj.jointime}" id="jointime"/>
                		<input type="hidden" name="update" value="1" id="update"/> 
-               </c:if>
+               </i>
                <p><input type="text" value="${joinxj.housemobile }" name="joinxj.housemobile" id="housemobile"  placeholder="固定电话" class="lxr "><i>*</i><span class="status" style="color: red" id="td7"></span></p>
                <p><input type="text" value="${joinxj.houseperson }" name="joinxj.houseperson" id="houseperson" placeholder="房屋共有人名字" class="lxr "><i>*</i><span class="status" style="color: red" id="td8"></span></p>
                <p><input type="text" value="${joinxj.idcard }" name="joinxj.idcard" id="idcard" placeholder="身份证号" class="lxr "><i>*</i><span class="status" style="color: red" id="td9"></span></p>
@@ -113,12 +114,12 @@ function loginOut(){
                <p style="margin-top:20px;"><input type="button" id="sub" value="提交信息"></p>  
             </div> 
             </form>
-            <p class="xx"><img src="images/09.png">要求及流程说明</p>
+            <p class="xx"><img th:src="@{before/images/09.png}">要求及流程说明</p>
             <p class="ln">本着双赢的理念，丛林闲居已建立了一个遍及全国的完善代理商网络。无论是个人还是企业，只要符合丛林闲居的要求，都可
                 以成为丛林闲居的代理商，代理丛林闲居的国内、国外闲居预订的业务。 代理商将获得强大的品牌支持，良好的售后服务体系
                 同时获得丰厚的利润回报。</p>
             <div class="liucheng">
-                <img src="images/one_03.jpg">
+                <img th:src="@{before/images/one_03.jpg}">
             </div>
         </div>
         <!--<div class="jm-right">
@@ -139,23 +140,22 @@ function loginOut(){
 
 
 </div>
- <%@ include  file="bottom.jsp"%>
+ <div th:replace="bottom::html"></div>
+ <!--<%@ include  file="bottom.jsp"%>-->
     </div>
 </div>
-<c:if test="${show !=null}"> 
-<div class="tcc2">     
+<div th:if="${show !=null}" class="tcc2">
     <div class="tx-ydm" style="margin-top: 300px;">  
             <p class="tx-sm"><span class="one"><img src="images/tx.png">提示</span><span class="two"><img src="images/14_01.png" class="close6"></span></p><br/><br/><br/>
             <p align="center"> 
-            	<c:if test="${isOk ==true}">加盟成功，你的临时密码为${pwd }</c:if> 
-            	<c:if test="${isOk ==false }">加盟失败</c:if></p><br/><br/><br/> 
+            	</i>加盟成功，你的临时密码为${pwd }
+            	</i>加盟失败</p><br/><br/><br/>
             <p align="center">      
-            	<c:if test="${isOk ==true }">点击<a href="<%=path %>/UserJPquery.jsp">查看</a>加盟进度</c:if>
-            	<c:if test="${isOk ==false }">点击<a href="<%=path %>/joinxj.jsp">加盟</a>重新加盟</c:if> <br/><br/><br/> 
+            	<i th:if="${isOk ==true}"></i>点击<a href="<%=path %>/UserJPquery.jsp">查看</a>加盟进度
+            	<i th:if="${isOk ==false}"></i>点击<a href="<%=path %>/joinxj.jsp">加盟</a>重新加盟 <br/><br/><br/>
             </p>
     </div>
 </div>     
-</c:if>
 <script src="js/index.js"></script>
 <script type="text/javascript"> 
 var wait=120;//倒计时获取验证码时间

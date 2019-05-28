@@ -41,7 +41,61 @@ height:22px;line-height:22px;margin:0 3px 0 0;text-align:center;vertical-align:m
 	}
    </script>
     <!--首页轮播图-->
+    <div class="personal-content">
+        <div><img src="images/ayw_03.gif"></div>
+        <div class="per-cont-left">
+            <ul class="left-top">
+                <li class="top-one">
+                    <ul class="lf one-i">
+                       <!-- <li><img th:if="${session.user.sex}" th:src="@{before/images/touxiagn.png}"/>
+                            <img th:if="!${session.user.sex}" th:src="@{before/images/touxiagnv.jpg}"/>
+                        </li>-->
+                    </ul>
+                    <ul class="lf one-ii">
+                        <li> </li>
+                        <li>尊敬的会员！<input type="hidden" id="uid" value="${sessionUser.id }"/></li>
+                        <li class="quit"><em onclick="loginOut()">[退出]</em></li>
+                    </ul>
+                </li>
+                <li class="top-two cf">手机：${sessionUser.mobile }</li>
+                <li class="top-two">邮箱：${sessionUser.email }</li>
+            </ul>
+            <ul class="grzl-banner">
+                <li> <a href="UserPersonal.jsp"><p class="grzl"></p>个人资料</a></li>
+                <li> <a href="UserCPassword.jsp"><p class="xgmm"></p>密码修改</a></li>
+                <li  class="yhzxsp yhzxs"> <a href="javascript:void(0)"> <p class="clxjdd"></p>丛林闲居订单</a></li>
+                <li> <a href="UserCarOrder.jsp"><p class="ycdd"></p>我的用车订单</a></li>
+                <li> <a href="UserPquery.jsp"><p class="qzjd"></p>求助进度查询</a></li>
+                <li > <a href="UserJPquery.jsp"><p class="jmcx"></p>加盟进度查询</a></li>
+            </ul>
+        </div>
 
+        <div class="per-cont-right">
+            <div class="yhzx-jmjdcx">
+                <div class="jmjdcx-top">
+                    <span class="dywr" onclick="selTable(0)">所有订单(<em id="countAll"></em>)</span> |<span onclick="selTable(1)">未完成(<em id="countNo"></em>)</span> |<span onclick="selTable(2)">已完成(<em id="countOk"></em>)</span>
+                </div>
+                <div class="jmjdcx-nr">
+                    <div class="jmjdx-one">
+                        <div class="clxjdd-top">
+                            <p class="one">酒店</p>
+                            <p class="two">入住时间</p>
+                            <p class="two">订单状态</p>
+                            <p class="two">订单操作</p>
+                        </div>
+                        <div class="clxjdd-bot" id="tab">
+
+                        </div>
+                        <div class="fenye4" style="width: 100%">
+                            <div id="pageNav"  align="center"></div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
     <div th:insert="~{bottom::bot1}"></div>
     <div th:insert="~{bottom::bot2}"></div>
 </div>

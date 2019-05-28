@@ -1,7 +1,5 @@
 package com.elcusejungle.controller;
 
-import lombok.extern.log4j.Log4j;
-import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
@@ -24,8 +22,13 @@ public class demoController {
     @ResponseBody
     @RequestMapping(value = "hello")
     public String hello(){
-        stringRedisTemplate.opsForValue().set("resisTemplate2","https://blog.csdn.net/qq_16605855/article/details/79528535");
-        System.out.println(stringRedisTemplate.opsForValue().get("resisTemplate2"));
+
+        stringRedisTemplate.opsForList().rightPushAll("popular","Popular_1.jpeg","Popular_2.jpg","Popular_3.jpg","Popular_4.jpg");
+        //stringRedisTemplate.opsForList().rightPushAll("vn","vn_1.jpg","vn_2.jpeg","vn_3.jpg","vn_4.jpg","vn_5.jpg");
+        List<String> list = stringRedisTemplate.opsForList().range("popular",0,-1);
+        for (String s : list) {
+            System.out.println(s);
+        }
         return "你好，封颖鹏";
     }
 

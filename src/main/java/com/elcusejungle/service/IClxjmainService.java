@@ -3,6 +3,8 @@ package com.elcusejungle.service;
 import com.elcusejungle.entity.Clxjmain;
 import com.baomidou.mybatisplus.extension.service.IService;
 
+import javax.servlet.http.HttpServletRequest;
+
 /**
  * <p>
  *  服务类
@@ -13,4 +15,8 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface IClxjmainService extends IService<Clxjmain> {
 
+    /**
+     * 获取index页面现实图片地址
+     */
+    public void show(HttpServletRequest request);
 }

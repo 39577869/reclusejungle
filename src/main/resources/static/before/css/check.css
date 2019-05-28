@@ -1,0 +1,119 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+} 
+/*body{background-color: #252525}*/
+.white {
+    color: #606060;
+    border: solid 1px #b7b7b7;
+    background: #fff;
+    background: -webkit-gradient(linear,left top,left bottom,from(#fff),to(#ededed));
+    background: -moz-linear-gradient(top,#fff,#ededed);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff',endColorstr='#ededed');
+}
+.bigrounded {
+    -webkit-border-radius: 2em;
+    -moz-border-radius: 2em;
+    border-radius: 2em;
+}
+.button {
+    display: inline-block;
+    outline: none;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    font: 16px/100% 'Microsoft yahei',Arial,Helvetica,sans-serif;
+    padding: .4em 2em .55em;
+    text-shadow: 0 1px 1px rgba(0,0,0,.3);
+    -webkit-border-radius: .5em;
+    -moz-border-radius: .5em;
+    border-radius: .5em;
+    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.2);
+    -moz-box-shadow: 0 1px 2px rgba(0,0,0,.2);
+    box-shadow: 0 1px 2px rgba(0,0,0,.2);
+    margin-left:50px;
+}
+
+.outer {
+    position: relative;
+    /*margin: 20px auto;*/
+    width: 250px;
+    height: 30px;
+    line-height: 28px;
+    border: 1px solid #ccc;
+    background: #ccc9c9;
+    font-size: 12px;    
+    margin:auto; 
+    float:left;
+} 
+
+    .outer span, .filter-box, .inner {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    .outer span {
+        display: block;
+        padding: 0 0 0 36px;
+        width: 100%;
+        height: 100%;
+        color: #fff;
+        text-align: center;
+    }
+
+.txtRoll {
+    background-image: linear-gradient(to right,black,black, white,black,black, white,black);
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    -webkit-background-size: 200% 100%;
+    animation: bgp 3s infinite linear;
+}
+
+@-webkit-keyframes bgp {
+    0% {
+        background-position: 0 0;
+    }
+
+    100% {
+        background-position: -100% 0;
+    }
+}
+
+.filter-box {
+    width: 0;
+    height: 100%;
+    background: green;
+    z-index: 9;
+}
+
+.outer.act span {
+    padding: 0 36px 0 0;
+}
+
+.inner {
+    width: 36px;
+    height: 28px;
+    text-align: center;
+    background: #fff;
+    cursor: pointer;
+    font-family: "宋体";
+    z-index: 10;
+    font-weight: bold;
+    color: #929292;
+}
+
+.outer.act .inner {
+    color: green;
+}
+
+.outer.act span {
+    z-index: 99;
+}

@@ -2,6 +2,7 @@ package com.elcusejungle.mapper;
 
 import com.elcusejungle.entity.Reguser;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.apache.ibatis.annotations.Select;
 
 /**
  * <p>
@@ -12,5 +13,6 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * @since 2019-05-23
  */
 public interface ReguserMapper extends BaseMapper<Reguser> {
-
+    @Select("select * from reguser where email=#{username}")
+    Reguser selectByName(String username);
 }

@@ -32,7 +32,7 @@ public class Test {
         return "UserPersonal";
     }
 
-    @RequestMapping("/login")
+    @RequestMapping("/login2")
     public String login(){
         return "login";
     }

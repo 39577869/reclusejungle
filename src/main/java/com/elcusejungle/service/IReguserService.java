@@ -8,9 +8,16 @@ import com.baomidou.mybatisplus.extension.service.IService;
  *  服务类
  * </p>
  *
- * @author jobob
  * @since 2019-05-23
  */
 public interface IReguserService extends IService<Reguser> {
 
+    /**
+     * 用户登录
+     * @param username 登录账号
+     * @param password 登录密码
+     * @return
+     * @throws Exception
+     */
+    Reguser reguserLogin(String username,String password) throws Exception;
 }

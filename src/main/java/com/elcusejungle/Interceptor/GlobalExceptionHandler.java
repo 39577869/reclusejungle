@@ -20,7 +20,7 @@ public class GlobalExceptionHandler {
     @ResponseBody
     @ExceptionHandler(value = Exception.class)
     public Map<String,Object> exceptionHandler(Exception ex){
-        ex.printStackTrace();
+        //ex.printStackTrace();
         Map<String,Object> map  = new HashMap<>();
         if(ex instanceof LoginException){
             log.error("登录错误");

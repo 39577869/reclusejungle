@@ -5,18 +5,21 @@
      <title>丛林闲居</title>
     <link rel="stylesheet" th:href="@{before/style/cy.css}">
     <link rel="stylesheet" th:href="@{before/style/style.css}">
+    <link rel="stylesheet" th:href="@{before/css/check.css}">
+    <link rel="stylesheet" th:href="@{webjars/layui/2.3.0/css/layui.css}">
     <script type="text/javascript" th:src="@{webjars/jquery/3.0.0/jquery.js}"></script>
+    <script type="text/javascript" th:src="@{webjars/layui/2.3.0/layui.js}"></script>
 </head>
-<script language="javascript">
-   function enterkey() {   
-   if (event.keyCode == 13){
-	   login();  
-    }
-   }
-</script>
-<body onkeydown="enterkey()"> 
-<!--登录页TOP-->   
-
+<!--<script language="javascript">-->
+   <!--function enterkey() {   -->
+   <!--if (event.keyCode == 13){-->
+	   <!--login();  -->
+    <!--}-->
+   <!--}-->
+<!--</script>-->
+<!--<body onkeydown="enterkey()"> -->
+<!--登录页TOP-->
+<body>
 <div class="index-top1">
     <div class="left">
         <span class="one"><a href="#"><img th:src="@{before/images/logo1.png}" height="64px" width="158px"></a></span>
@@ -30,39 +33,53 @@
             </ul>
         </div>
     </div>
-</div> 
-<div class="login-main">
-    <div class="login-xf">   
-        <div class="lx-nei">   
-           <ul> 
-               <li class="yhdl1">用户登录<input id="error" type="text" style="border: none;color: red;margin-left: 30px;width: 180px;background-color:#fff;"value="" disabled="true"/></li>
-               <li class="yhm"><input id="username" maxlength="11"  type="text" placeholder="手机号" onblur="checkUsername()"><span></span> </li>
-               <li class="yhm1"><input id="pwd" type="password" placeholder="密码" onblur="checkPwd()"> <span></span></li>
-               <li class="yzmtr"> <input id="yzm" type="text" maxlength="4" size="30" placeholder="验证码" onblur="checkYZM()"><img id="yzmImg" width="101"  height="36" src="<%=path%>/reguser!exyzmStr.action"><a href="#" onclick="changeYzm()">换一换</a></li>
+</div>
+<form class="layui-form" action="#">
+<div class="login-main" style="background: #0f70ed">
+    <div class="login-xf">
+        <div class="lx-nei">
+           <ul>
+               <li >用户登录<span id="error" style="margin-left: 30px;color: red"></span></li>
+               <li>
+                   <div>
+                       <input type="text" name="email" required lay-verify="required" placeholder="请输入邮箱" autocomplete="off" class="layui-input">
+                   </div>
+               </li>
+               <li>
+                   <div style="margin-top: 20px">
+                       <input type="password" name="password" required lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input ">
+                   </div>
+               </li>
+               <li>
+                   <div style="margin-top: 20px">
+                       <div class="outer" id="outer">
+                           <input type="hidden" id="CaptchaID" value="0" />
+                           <div class="filter-box"></div>
+                           <span class="txtRoll">
+                                按住滑块，拖拽到最右边
+                            </span>
+                           <div class="inner">&gt;&gt;</div>
+                       </div>
+                   </div>
+               </li>
                <li class="mouth1"><span class="one"><a href="RetrievePassword.jsp">忘记密码</a> </span><span class="one" style="margin-left: 200px;"><a href="register.jsp">注册</a> </span></li>
-               <li class="dl"><input type="button" value="登录" onclick="login()"></li>  
-           </ul> 
-        </div> 
+               <li class="dl" th:align="center"><button class="layui-btn layui-btn-normal  layui-btn-fluid" lay-submit lay-filter="formDemo">登录</button></li>
+           </ul>
+        </div>
     </div>
 </div>
+</form>
 <input type="hidden" id="url"/>
 <div class="success"  id="show">    
- <div > 
- 
+ <div >
     <div class="cgxd3">
         <div class="cgxd-main" style="padding-top:30px;"> 
             <p class="xdcg"><img th:src="@{before/images/dlcg.png}">  </p>
             <p class="ddbh"><em id="em"></em></p>
         </div>  
     </div>
-    
-   
-		
 	</div>
- 
-  </div>
-	
-
+</div>
 <footer>
     <ul>
         <li>江西省丛林闲居投资有限公司，工业和信息化部网站备案许可证编号：赣ICP备15010915号</li>
@@ -71,142 +88,231 @@
     <p><a href="#"><img th:src="@{before/images/index_48.jpg}"></a><a href="#"><img th:src="@{before/images/index_50.jpg}"></a><a href="#"><img th:src="@{before/images/index_52.jpg}"></a> <a href="#"><img th:src="@{before/images/index_54.jpg}"></a><a href="#"><img th:src="@{before/images/index_56.jpg}"></a> <a href="#"><img th:src="@{before/images/index_58.jpg}"></a>    </p>
 </footer>
 <script type="text/javascript">
-var checks = false;
-var error = document.getElementById("error");
-var username  = document.getElementById("username");
-var pwd  = document.getElementById("pwd");
-var yzm = document.getElementById("yzm");
-function changeYzm(){
-	$("#yzmImg").attr("src","<%=path%>/reguser!exyzmStr.action?x=" + Math.random());
-		}
-function checkYZM(){
-	if(yzm.value==""){
-		error.value = "验证码不能为空";
-		checks = false;
-	}else{ 
-		$.post("<%=path %>/reguser!checkLoginYZM.action",
-				  {"YZM":yzm.value},
-				  function(result){
-					  if(result == null){
-						  error.value = "验证码错误";
-						  checks = false;
-					  }
-					  if(result.status=="true"||result.status==true){ 
-						  error.value = "";
-						  checks = true;
-					  }else{
-						  error.value = "验证码错误";
-						  checks = false;
-					  }
-				  },"json");
-	}
-}  
-function checkUsername(){
-	var phoneNum = /^(0|86|17951)?(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$/; //手机号码
-	var phoneNumCheck = !!(username.value).match(phoneNum);
-	if(!phoneNumCheck){ 
-		error.value = "用户名输入有误";
-		checks = false;
-	}else{
-		error.value = "";
-		checks = true; 
-	}
-}
-function checkPwd(){
-	if(pwd.value==""||pwd.value.length<6){ 
-		error.value = "密码输入有误";
-		checks = false;
-	}else{
-		error.value = "";
-		checks = true; 
-	}
-}
-//获取地址栏
-function GetRequest() {
-	  var url = location.search; //获取url中"?"符后的字串
-	   var theRequest = new Object();
-	   if (url.indexOf("?") != -1) {
-	      var str = url.substr(1);
-	      strs = str.split("&");
-	      for(var i = 0; i < strs.length; i ++) {
-	         theRequest[strs[i].split("=")[0]]=(strs[i].split("=")[1]); 
-	      }
-	   }
-	   return theRequest;
-	}
-function login(){
-	checkUsername();
-	if(checks){
-		checkPwd();
-		if(checks){
-			if(yzm.value==""){
-				error.value = "验证码不能为空";
-				checks = false;
-			}else{ 
-				$.post("<%=path %>/reguser!checkLoginYZM.action",
-						  {"YZM":yzm.value},
-						  function(result){
-							  if(result == null){
-								  error.value = "验证码错误";
-								  checks = false;
-							  }
-							  if(result.status=="true"||result.status==true){ 
-								  var Request = new Object();
-									Request = GetRequest();
-									var returnUrl;
-									returnUrl = Request['returnurl'];
-									if(Request['clxjmain.id']!=null){
-										returnUrl+="?clxjmain.id="+Request['clxjmain.id'];
-									}
-									if(Request['helpinfo.id']!=null){ 
-										returnUrl+="?helpinfo.id="+Request['helpinfo.id'];   
-									}
-								   $.post("<%=path %>/reguser!login.action",
-										  {"reguser.username":username.value,"reguser.pwd":pwd.value,"returnUrl":returnUrl},
-										  function(result){
-											  if(result == null){
-												  error.value = result.message;
-											  }
-											  if(result.status=="true"||result.status==true){
-												  var url = "";
-												  if(result.message ==null){
-													  url = "/clxjmain!Homepage.action";
-												  }else{
-													  url = result.message;
-												  }
-												  url ="<%=path %>"+url; 
-												  document.getElementById("url").value = url; 
-												  divshow(5); 
-												  //countDown(3,url);   
-											  }else{
-												  error.value = result.message;
-											  }
-										  },"json");
-							  }else{
-								  error.value = "验证码错误";
-								  checks = false;
-							  }
-						  },"json");
-			}
-		}
-	}
-}
-function countDown(secs,surl){
-	 var loginok = document.getElementById("em");  
-	 loginok.innerHTML ="";
-	 loginok.innerHTML="登录成功！"+secs+"后将跳转到原网页,<a href='javascript:void(0)'  onclick='divshow(0)' style='color: red;'>立即跳转</a>";      
-	 if(--secs>0){       
-	     setTimeout("countDown("+secs+",'"+surl+"')",1000);     
-	     }     
-	 else{       
-	     location.href=surl;      
-	     }     
-	 } 
-function divshow(time){    
-	var url = $("#url").val();
-	document.getElementById("show").style.display="block";
-	countDown(time,url);
-}   
+    var check=false;
+    layui.use(['form','layer'], function(){
+        var form = layui.form;
+        var layer = layui.layer;
+        var $ = layui.$
+        //监听提交
+        form.on('submit(formDemo)', function(data){
+            if(!check){
+                layer.msg('请进行滑块验证', {icon: 2});
+            }else {
+                $.ajax({
+                    url: "/login",
+                    type: "post",
+                    async: true,
+                    data: {
+                        username: $("input[name='email']").val(),
+                        pwd: $("input[name='password']").val()
+                    },
+                    success: function (data) {
+                        if (data == true) {
+                            window.location.href = "/";
+                        } else {
+                            $("#error").text(data.msg);
+                        }
+                    },
+                    error: function () {
+                    }
+                })
+            }
+            return false;
+        });
+    });
+
+    $(function () {
+        //拖动验证
+        $(".inner").mousedown(function (e) {
+            var dx, os = $(".inner").offset(), _differ = $(".outer").width() - $(".inner").width();
+            $(document).mousemove(function (e) {
+                dx = e.pageX - os.left;
+                if (dx < 0) {
+                    dx = 0;
+                } else if (dx > _differ) {
+                    dx = _differ;
+                }
+                $(".filter-box").css('width', dx);
+                $(".inner").css("left", dx);
+            });
+            $(document).mouseup(function (e) {
+                $(document).off('mousemove');
+                $(document).off('mouseup');
+                dx = e.pageX - os.left;
+                if (dx < _differ) {
+
+                    SlideCheckFail();
+                } else if (dx >= _differ) {
+                    SlideCheckSuccess(_differ);
+                }
+
+            })
+        })
+
+        $("input[type=button]").click(function () {
+            SlideCheckFail();
+        });
+
+    });
+
+    //初始验证
+    function SlideCheckFail() {
+        $(".outer").removeClass("act");
+        $(".inner").css("left", 0);
+        $(".inner").html("&gt;&gt;");
+        $(".filter-box").css('width', 0);
+        $(".outer>span").html("按住滑块，拖拽到最右边");
+
+        $("#CaptchaID").val("0");
+        $(".outer span").addClass("txtRoll");
+    }
+    //验证成功
+    function SlideCheckSuccess(dx) {
+        $(".outer").addClass("act");
+        $(".outer>span").html("验证通过！");
+        $(".inner").html('&radic;');
+        $(".inner").css("left", dx);
+        $(".filter-box").css('width', dx);
+        $("#CaptchaID").val("1");
+        $(".outer span").removeClass("txtRoll");
+        check=true;
+    }
+// var checks = false;
+// var error = document.getElementById("error");
+// var username  = document.getElementById("username");
+// var pwd  = document.getElementById("pwd");
+// var yzm = document.getElementById("yzm");
+// function changeYzm(){
+// 	$("#yzmImg").attr("src","<%=path%>/reguser!exyzmStr.action?x=" + Math.random());
+// 		}
+// function checkYZM(){
+// 	if(yzm.value==""){
+// 		error.value = "验证码不能为空";
+// 		checks = false;
+// 	}else{
+// 		$.post("<%=path %>/reguser!checkLoginYZM.action",
+// 				  {"YZM":yzm.value},
+// 				  function(result){
+// 					  if(result == null){
+// 						  error.value = "验证码错误";
+// 						  checks = false;
+// 					  }
+// 					  if(result.status=="true"||result.status==true){
+// 						  error.value = "";
+// 						  checks = true;
+// 					  }else{
+// 						  error.value = "验证码错误";
+// 						  checks = false;
+// 					  }
+// 				  },"json");
+// 	}
+// }
+// function checkUsername(){
+// 	var phoneNum = /^(0|86|17951)?(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$/; //手机号码
+// 	var phoneNumCheck = !!(username.value).match(phoneNum);
+// 	if(!phoneNumCheck){
+// 		error.value = "用户名输入有误";
+// 		checks = false;
+// 	}else{
+// 		error.value = "";
+// 		checks = true;
+// 	}
+// }
+// function checkPwd(){
+// 	if(pwd.value==""||pwd.value.length<6){
+// 		error.value = "密码输入有误";
+// 		checks = false;
+// 	}else{
+// 		error.value = "";
+// 		checks = true;
+// 	}
+// }
+// //获取地址栏
+// function GetRequest() {
+// 	  var url = location.search; //获取url中"?"符后的字串
+// 	   var theRequest = new Object();
+// 	   if (url.indexOf("?") != -1) {
+// 	      var str = url.substr(1);
+// 	      strs = str.split("&");
+// 	      for(var i = 0; i < strs.length; i ++) {
+// 	         theRequest[strs[i].split("=")[0]]=(strs[i].split("=")[1]);
+// 	      }
+// 	   }
+// 	   return theRequest;
+// 	}
+// function login(){
+// 	checkUsername();
+// 	if(checks){
+// 		checkPwd();
+// 		if(checks){
+// 			if(yzm.value==""){
+// 				error.value = "验证码不能为空";
+// 				checks = false;
+// 			}else{
+// 				$.post("<%=path %>/reguser!checkLoginYZM.action",
+// 						  {"YZM":yzm.value},
+// 						  function(result){
+// 							  if(result == null){
+// 								  error.value = "验证码错误";
+// 								  checks = false;
+// 							  }
+// 							  if(result.status=="true"||result.status==true){
+// 								  var Request = new Object();
+// 									Request = GetRequest();
+// 									var returnUrl;
+// 									returnUrl = Request['returnurl'];
+// 									if(Request['clxjmain.id']!=null){
+// 										returnUrl+="?clxjmain.id="+Request['clxjmain.id'];
+// 									}
+// 									if(Request['helpinfo.id']!=null){
+// 										returnUrl+="?helpinfo.id="+Request['helpinfo.id'];
+// 									}
+// 								   $.post("<%=path %>/reguser!login.action",
+// 										  {"reguser.username":username.value,"reguser.pwd":pwd.value,"returnUrl":returnUrl},
+// 										  function(result){
+// 											  if(result == null){
+// 												  error.value = result.message;
+// 											  }
+// 											  if(result.status=="true"||result.status==true){
+// 												  var url = "";
+// 												  if(result.message ==null){
+// 													  url = "/clxjmain!Homepage.action";
+// 												  }else{
+// 													  url = result.message;
+// 												  }
+// 												  url ="<%=path %>"+url;
+// 												  document.getElementById("url").value = url;
+// 												  divshow(5);
+// 												  //countDown(3,url);
+// 											  }else{
+// 												  error.value = result.message;
+// 											  }
+// 										  },"json");
+// 							  }else{
+// 								  error.value = "验证码错误";
+// 								  checks = false;
+// 							  }
+// 						  },"json");
+// 			}
+// 		}
+// 	}
+// }
+// function countDown(secs,surl){
+// 	 var loginok = document.getElementById("em");
+// 	 loginok.innerHTML ="";
+// 	 loginok.innerHTML="登录成功！"+secs+"后将跳转到原网页,<a href='javascript:void(0)'  onclick='divshow(0)' style='color: red;'>立即跳转</a>";
+// 	 if(--secs>0){
+// 	     setTimeout("countDown("+secs+",'"+surl+"')",1000);
+// 	     }
+// 	 else{
+// 	     location.href=surl;
+// 	     }
+// 	 }
+// function divshow(time){
+// 	var url = $("#url").val();
+// 	document.getElementById("show").style.display="block";
+// 	countDown(time,url);
+// }
 </script>
 </body>
 </html>

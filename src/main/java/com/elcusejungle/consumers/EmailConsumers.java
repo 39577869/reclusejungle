@@ -1,6 +1,7 @@
 package com.elcusejungle.consumers;
 
 import com.elcusejungle.entity.Reguser;
+import com.elcusejungle.util.EmailUtil;
 import com.elcusejungle.util.SerializationUtils;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
@@ -30,27 +31,23 @@ public class EmailConsumers implements MessageListener{
 
     @Override
     public void onMessage(Message message, byte[] bytes){
-        RedisSerializer<String> valueSerializer = redisTemplate.getValueSerializer();
-        String email = valueSerializer.deserialize(message.getBody());
+        RedisSerializer<EmailUtil> valueSerializer = redisTemplate.getValueSerializer();
+        EmailUtil email = valueSerializer.deserialize(message.getBody());
         log.info("发送邮件:"+email);
         //邮件发送
         SimpleMailMessage mailMessage = new SimpleMailMessage();
         mailMessage.setFrom("15607050601@163.com");
-        mailMessage.setTo(email);
+        mailMessage.setTo(email.getAddress());
         mailMessage.setSubject("验证码");
-        Integer code=this.myRandom();
-        String text = code.toString();
-        mailMessage.setText(text);
+        mailMessage.setText(email.getCode());
         try {
             mailSender.send(mailMessage);
         }catch (Exception e){
+            e.printStackTrace();
             log.error("邮箱发送失败");
         }
+
+        //redisTemplate.opsForHash().put("","","");
     }
 
-    public int myRandom(){
-        int ran2 = (int)Math.floor(Math.random()*10000);
-        System.out.println(ran2);
-        return ran2;
-    }
 }

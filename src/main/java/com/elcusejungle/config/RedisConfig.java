@@ -1,6 +1,5 @@
 package com.elcusejungle.config;
 
-import com.elcusejungle.consumers.EmailConsumers;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -33,19 +32,6 @@ public class RedisConfig {
         redisTemplate.setValueSerializer(jackson2JsonRedisSerializer);
         redisTemplate.afterPropertiesSet();
         return redisTemplate;
-    }
-    @Bean
-    RedisMessageListenerContainer container2(RedisConnectionFactory connectionFactory, MessageListenerAdapter emailListenerAdapter){
-        RedisMessageListenerContainer container = new RedisMessageListenerContainer();
-        container.setConnectionFactory(connectionFactory);
-        //监听频道
-        container.addMessageListener(emailListenerAdapter,new PatternTopic("email"));
-        return container;
-    }
-
-    @Bean
-    MessageListenerAdapter emailListenerAdapter(EmailConsumers receiver){
-        return new MessageListenerAdapter(receiver);
     }
 
 

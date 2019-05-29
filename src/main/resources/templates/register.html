@@ -5,8 +5,10 @@
       <title>丛林闲居-注册</title>
     <link rel="stylesheet" th:href="@{before/style/cy.css}">
     <link rel="stylesheet" th:href="@{before/style/style.css}">
+    <link rel="stylesheet" th:href="@{webjars/layui/2.3.0/css/layui.css}">
 <!-- 表单验证start -->
 <script th:src="@{before/js/jquery.js}"></script>
+    <script type="text/javascript" th:src="@{webjars/layui/2.3.0/layui.js}"></script>
 <script th:src="@{before/js/jquery.validate.js}"></script>
 <script th:src="@{before/js/jquery.metadata.js}"></script>
 <!-- 表单验证stop -->
@@ -30,66 +32,139 @@
 <div class="reg">
     <div class="reg-main">
         <p class="top"><img th:src="@{before/images/09.png}">注册新用户 <i>已有帐号？去<a href="login.html">登录</a> > </i></p>
-        <form action="<%=path %>/reguser!saveReguser.action" id="reguserForm">
-        <table> 
-            <tr>  
-                <td class="with">手机号</td> 
-                <td colspan="2"><input type="text" id="mobile"  name="mobile" size="32" maxlength="11" placeholder="请输入11位手机号码"  onblur="checkMobile()"><i>*</i></td>
-				<td  class="status" style="color: red" id="td1"></td>
-            </tr>
-            <tr>
-                <td class="with">短信验证码</td>
-                <td>
-                    <input id="mobileYZM" type="text" maxlength="6" size="28" placeholder="请输入6位短信验证码" onblur="checkYZM()"><i>*</i>
-                </td> 
-                <td><!-- <a href="#" class="hqyzm" onclick="getNumRandom()">获取验证码</a> -->
-                	<button type="button" id="hqyzmbutton" onclick="getNumRandom()">获取验证码</button> 
-                </td>
-				<td class="status" style="color: red" id="td2"></td>
-            </tr>
-            <tr>
-                <td class="with">邮箱</td>
-                <td colspan="2">
-                    <input name="email" id="email" type="text" size="70" placeholder="请输入邮箱地址" class="required email"><i>*</i>
-                </td>
-                <td class="status" style="color: red"></td>
-            </tr>
-            <tr>
-                <td class="with">密码</td>
-                <td colspan="2">
-                    <input type="password"  size="70"  placeholder="请输入原始密码" name="password" id="password" class="{required:true,minlength:6}" maxlength="16"><i>*</i>
-                </td>
-                <td class="status" style="color: red"></td>
+        <!--<form action="<%=path %>/reguser!saveReguser.action" id="reguserForm">-->
+        <!--<table> -->
+            <!--<tr>  -->
+                <!--<td class="with">手机号</td> -->
+                <!--<td colspan="2"><input type="text" id="mobile"  name="mobile" size="32" maxlength="11" placeholder="请输入11位手机号码"  onblur="checkMobile()"><i>*</i></td>-->
+				<!--<td  class="status" style="color: red" id="td1"></td>-->
+            <!--</tr>-->
+            <!--<tr>-->
+                <!--<td class="with">短信验证码</td>-->
+                <!--<td>-->
+                    <!--<input id="mobileYZM" type="text" maxlength="6" size="28" placeholder="请输入6位短信验证码" onblur="checkYZM()"><i>*</i>-->
+                <!--</td> -->
+                <!--<td>&lt;!&ndash; <a href="#" class="hqyzm" onclick="getNumRandom()">获取验证码</a> &ndash;&gt;-->
+                	<!--<button type="button" id="hqyzmbutton" onclick="getNumRandom()">获取验证码</button> -->
+                <!--</td>-->
+				<!--<td class="status" style="color: red" id="td2"></td>-->
+            <!--</tr>-->
+            <!--<tr>-->
+                <!--<td class="with">邮箱</td>-->
+                <!--<td colspan="2">-->
+                    <!--<input name="email" id="email" type="text" size="70" placeholder="请输入邮箱地址" class="required email"><i>*</i>-->
+                <!--</td>-->
+                <!--<td class="status" style="color: red"></td>-->
+            <!--</tr>-->
+            <!--<tr>-->
+                <!--<td class="with">密码</td>-->
+                <!--<td colspan="2">-->
+                    <!--<input type="password"  size="70"  placeholder="请输入原始密码" name="password" id="password" class="{required:true,minlength:6}" maxlength="16"><i>*</i>-->
+                <!--</td>-->
+                <!--<td class="status" style="color: red"></td>-->
 
-            </tr>
-            <!-- 没必要 -->
-            <!-- <tr>
-                <td></td>
-                <td colspan="3">
-                    <p class="one">弱</p><p class="two">中</p><p class="two">强</p>
-                </td>
-            </tr> -->
-            <tr>
-                <td  class="with" >确认密码</td> 
-                <td colspan="2">
-                    <input type="password" size="70" name="repassword"  placeholder="请再次输入原始密码"  class="{required:true,minlength:6,equalTo:'#password'}" maxlength="16"><i>*</i>
-                </td>
-                <td class="status" style="color: red"></td>
-            </tr>
-            <!-- 不需要了 -->
-           <!--  <tr>
-                <td></td>
-                <td colspan="2" class="xy">
-                    <input type="checkbox">同意接受丛林闲居发送的促销信息
-                </td>
-            </tr> -->
-            <tr>
-                <td></td>
-                <td colspan="2">
-                    <input type="button" value="马上注册" class="mszc" onclick="subForm()">
-                </td>
-            </tr>
-        </table>
+            <!--</tr>-->
+            <!--&lt;!&ndash; 没必要 &ndash;&gt;-->
+            <!--&lt;!&ndash; <tr>-->
+                <!--<td></td>-->
+                <!--<td colspan="3">-->
+                    <!--<p class="one">弱</p><p class="two">中</p><p class="two">强</p>-->
+                <!--</td>-->
+            <!--</tr> &ndash;&gt;-->
+            <!--<tr>-->
+                <!--<td  class="with" >确认密码</td> -->
+                <!--<td colspan="2">-->
+                    <!--<input type="password" size="70" name="repassword"  placeholder="请再次输入原始密码"  class="{required:true,minlength:6,equalTo:'#password'}" maxlength="16"><i>*</i>-->
+                <!--</td>-->
+                <!--<td class="status" style="color: red"></td>-->
+            <!--</tr>-->
+            <!--&lt;!&ndash; 不需要了 &ndash;&gt;-->
+           <!--&lt;!&ndash;  <tr>-->
+                <!--<td></td>-->
+                <!--<td colspan="2" class="xy">-->
+                    <!--<input type="checkbox">同意接受丛林闲居发送的促销信息-->
+                <!--</td>-->
+            <!--</tr> &ndash;&gt;-->
+            <!--<tr>-->
+                <!--<td></td>-->
+                <!--<td colspan="2">-->
+                    <!--<input type="button" value="马上注册" class="mszc" onclick="subForm()">-->
+                <!--</td>-->
+            <!--</tr>-->
+        <!--</table>-->
+        <!--</form>-->
+        <form class="layui-form layui-form-pane" action="">
+            <div class="layui-form-item" style="margin-left: 130px;margin-top: 50px;margin-right: 400px;">
+                <label class="layui-form-label" style="background: #4eadf2">邮箱</label>
+                <div class="layui-input-block">
+                    <input type="text" name="title" required  lay-verify="required" placeholder="请输入邮箱" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item" style="margin-left: 130px;margin-top: 50px;margin-right: 400px;">
+                <label class="layui-form-label" style="background: #4eadf2">验证码</label>
+                <div class="layui-input-block">
+                    <input type="text" name="title" required  lay-verify="required" placeholder="请输入验证码" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item" style="margin-left: 130px;margin-left: 130px;">
+                <label class="layui-form-label">密码</label>
+                <div class="layui-input-inline">
+                    <input type="password" name="password" required lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input">
+                </div>
+                <div class="layui-form-mid layui-word-aux">辅助文字</div>
+            </div>
+            <div class="layui-form-item" style="margin-left: 130px;margin-left: 130px;">
+                <label class="layui-form-label">确认密码</label>
+                <div class="layui-input-inline">
+                    <input type="password" name="password" required lay-verify="required" placeholder="请确认密码" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <!--<div class="layui-form-item" style="margin-left: 130px;margin-left: 130px;">-->
+                <!--<label class="layui-form-label">选择框</label>-->
+                <!--<div class="layui-input-block">-->
+                    <!--<select name="city" lay-verify="required" style="margin-left: 130px;">-->
+                        <!--<option value=""></option>-->
+                        <!--<option value="0">北京</option>-->
+                        <!--<option value="1">上海</option>-->
+                        <!--<option value="2">广州</option>-->
+                        <!--<option value="3">深圳</option>-->
+                        <!--<option value="4">杭州</option>-->
+                    <!--</select>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="layui-form-item" style="margin-left: 130px;margin-left: 130px;">-->
+                <!--<label class="layui-form-label" style="background: #0f70ed">复选框</label>-->
+                <!--<div class="layui-input-block">-->
+                    <!--<input type="checkbox" name="like[write]" title="写作">-->
+                    <!--<input type="checkbox" name="like[read]" title="阅读" checked>-->
+                    <!--<input type="checkbox" name="like[dai]" title="发呆">-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="layui-form-item" style="margin-left: 130px;margin-left: 130px;">-->
+                <!--<label class="layui-form-label">开关</label>-->
+                <!--<div class="layui-input-block">-->
+                    <!--<input type="checkbox" name="switch" lay-skin="switch">-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="layui-form-item" style="margin-left: 130px;margin-left: 130px;">-->
+                <!--<label class="layui-form-label">单选框</label>-->
+                <!--<div class="layui-input-block">-->
+                    <!--<input type="radio" name="sex" value="男" title="男">-->
+                    <!--<input type="radio" name="sex" value="女" title="女" checked>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="layui-form-item layui-form-text" style="margin-left: 130px;margin-left: 130px;">-->
+                <!--<label class="layui-form-label">文本域</label>-->
+                <!--<div class="layui-input-block">-->
+                    <!--<textarea name="desc" placeholder="请输入内容" class="layui-textarea"></textarea>-->
+                <!--</div>-->
+            <!--</div>-->
+            <div class="layui-form-item" style="margin-left: 130px;margin-left: 130px;">
+                <div class="layui-input-block">
+                    <button class="layui-btn" lay-submit lay-filter="formDemo">马上注册</button>
+                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                </div>
+            </div>
         </form>
     </div>
 </div>
@@ -115,190 +190,199 @@
     <p><a href="#"><img th:src="@{before/images/index_48.jpg}"></a><a href="#"><img th:src="@{before/images/index_50.jpg}"></a><a href="#"><img th:src="@{before/images/index_52.jpg}"></a> <a href="#"><img th:src="@{before/images/index_54.jpg}"></a><a href="#"><img th:src="@{before/images/index_56.jpg}"></a> <a href="#"><img th:src="@{before/images/index_58.jpg}"></a>    </p>
 </footer>
 <script type="text/javascript">
-var checks = 0; //一个全局变量，用来最终判断表单是否可以提交
-var wait=120;//倒计时获取验证码时间
-$(document).ready(function(){
-	$("#reguserForm").validate({
-		errorPlacement: function(error,element) {
-        if ( element.is(":radio") )
-            error.appendTo( element.parent().next().next() );
-        else if ( element.is(":checkbox") )
-            error.appendTo ( element.next() );
-        else
-            error.appendTo( element.parent().next() );
-    	}
-	});
-	jQuery.extend(jQuery.validator.messages, {
-	    required: "&nbsp;&nbsp;该字段不能为空",
-		email: "&nbsp;&nbsp;请输入正确格式的电子邮件",
-		minlength: jQuery.validator.format("&nbsp;&nbsp;请输入一个长度最少是 {0} 的字符串"),
-		equalTo:"&nbsp;&nbsp;两次输入密码不一致"
-	});
-	$(".close").click(function(){
-	    $(".tcc").css("display","none");
-	    window.location.href="<%=path%>/register.jsp";
-	});
-});
-//检验手机号码是否已经被注册
-function checkMobile(){
-	var mobile = document.getElementById("mobile").value;
-	var check = !!mobile.match(/^(0|86|17951)?(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$/);
-	var td1 = document.getElementById("td1");
-	if(mobile==""){
-		td1.innerHTML="&nbsp;&nbsp;手机号不能为空";
-		checks = 0; 
-	}else if(check==false){
-		td1.innerHTML="&nbsp;&nbsp;请正确填写您的手机号码";
-		checks = 0;
-	}else{
-		$.post("<%=path %>/reguser!checkMobile.action",
-				  {"reguser.username":mobile},
-				  function(result){
-					  if(result == null){
-						  checks = 0;
-						  td1.innerHTML = "&nbsp;&nbsp该号码无法注册,请更换";
-					  }
-					  if(result.status=="true"||result.status==true){    
-						  checks = 1;
-						  td1.innerHTML = result.message;
-					  }else{
-						  checks = 0;
-						  td1.innerHTML = result.message;
-					  }
-				  },"json");
-	}
-}
-//获取手机验证码
-function getNumRandom(){
-	var mobile = document.getElementById("mobile").value;
-	var check = !!mobile.match(/^(0|86|17951)?(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$/);
-	var td1 = document.getElementById("td1");
-	var button = document.getElementById("hqyzmbutton");
-	var td2 = document.getElementById("td2");
-	if(mobile==""){
-		td1.innerHTML="&nbsp;&nbsp;手机号不能为空";
-		checks = 0;
-	}else if(check==false){
-		td1.innerHTML="&nbsp;&nbsp;请正确填写您的手机号码";
-		checks = 0;
-	}else{
-		checkMobile();
-		if(checks){
-			time(button);
-			$.post("<%=path %>/reguser!checkMobile.action",
-					  {"reguser.username":mobile},
-					  function(result){
-						  if(result == null){
-							  checks = 0;
-							  td1.innerHTML = "&nbsp;&nbsp该号码无法注册,请更换";
-						  }
-						  if(result.status=="true"||result.status==true){    
-							  $.post("<%=path %>/reguser!getNumRandom.action",
-										{"reguser.username":mobile},  
-										  function(result){
-											  if(result == null){
-												  td2.innerHTML = "服务器发生了点小意外，请刷新页面试试";
-												  checks = 0;
-											  }
-											  if(result.status=="true"||result.status==true){
-												  td2.innerHTML = result.message;
-												  checks = 1;
-											  }else{
-												  td2.innerHTML = result.message;
-												  checks = 0;
-											  }
-										  },"json");
-						  }else{
-							  checks = 0;
-							  td1.innerHTML = result.message;
-						  }
-					  },"json");
-			}
-	}
-}
-//倒计时按钮
-function time(o) {
-        if (wait == 0) {
-            o.removeAttribute("disabled");            
-            o.innerHTML="免费获取验证码";
-            wait = 120;
-        } else {
-            o.setAttribute("disabled", true);
-            o.innerHTML="重新发送(" + wait + ")";
-            wait--;
-            setTimeout(function() {
-                time(o)
-            },
-            1000)
-     	}
-	}
-//检验验证码是否正确
-function checkYZM(){
-	var mobile = document.getElementById("mobile").value;
-	var mobileYZM = document.getElementById("mobileYZM").value;
-	var check = !!mobileYZM.match(/^\d{6}$/);
-	var td2 = document.getElementById("td2");
-	if(mobileYZM==""){
-		td2.innerHTML="&nbsp;&nbsp;验证码不能为空";
-		checks = 0;
-	}else if(check==false){
-		td2.innerHTML="&nbsp;&nbsp;请正确输入6位纯数字验证码";
-		checks = 0;
-	}else{
-		$.post("<%=path %>/reguser!checkYZM.action",
-				  {"mobileYZM":mobileYZM,"reguser.username":mobile},
-				  function(result){
-					  if(result == null){
-						  td2.innerHTML = "&nbsp;&nbsp验证出错，请重试";
-						  checks = 0;
-					  }
-					  if(result.status=="true"||result.status==true){
-						  td2.innerHTML = result.message;
-						  checks = 1;
-					  }else{
-						  td2.innerHTML = result.message;
-						  checks = 0;
-					  }
-				  },"json");
-	}
-}
-//提交表单
-function subForm(){
-	checkMobile();
-	if(checks==1){
-	checkYZM();
-	}else{
-	var valid = $("#reguserForm").valid();
-	if(checks==1){
-		if(valid){
-			var mobile = document.getElementById("mobile").value;
-			var email = document.getElementById("email").value;
-			var pwd = document.getElementById("password").value;
-			$.post("<%=path %>/reguser!saveReguser.action",
-					   {"reguser.username":mobile,"reguser.email":email,"reguser.pwd":pwd},
-					  function(result){
-						  if(result == null){
-							  registerNo();
-						  }
-						  if(result.status=="true"||result.status==true){
-							  registerOk();
-						  }else{
-							  registerNo();
-						  }
-					  },"json");
-			} 
-		}
-	}
-}
-//注册成功
-function registerOk(){
-	var show = document.getElementById("show");
-	show.style.display="block";
-}
-function registerNo(){
-	var show2 = document.getElementById("show2");
-	show2.style.display="block";
-}
+    layui.use('form', function(){
+        var form = layui.form;
+
+        //监听提交
+        form.on('submit(formDemo)', function(data){
+            layer.msg(JSON.stringify(data.field));
+            return false;
+        });
+    });
+// var checks = 0; //一个全局变量，用来最终判断表单是否可以提交
+// var wait=120;//倒计时获取验证码时间
+// $(document).ready(function(){
+// 	$("#reguserForm").validate({
+// 		errorPlacement: function(error,element) {
+//         if ( element.is(":radio") )
+//             error.appendTo( element.parent().next().next() );
+//         else if ( element.is(":checkbox") )
+//             error.appendTo ( element.next() );
+//         else
+//             error.appendTo( element.parent().next() );
+//     	}
+// 	});
+// 	jQuery.extend(jQuery.validator.messages, {
+// 	    required: "&nbsp;&nbsp;该字段不能为空",
+// 		email: "&nbsp;&nbsp;请输入正确格式的电子邮件",
+// 		minlength: jQuery.validator.format("&nbsp;&nbsp;请输入一个长度最少是 {0} 的字符串"),
+// 		equalTo:"&nbsp;&nbsp;两次输入密码不一致"
+// 	});
+// 	$(".close").click(function(){
+// 	    $(".tcc").css("display","none");
+// 	    window.location.href="<%=path%>/register.jsp";
+// 	});
+// });
+// //检验手机号码是否已经被注册
+// function checkMobile(){
+// 	var mobile = document.getElementById("mobile").value;
+// 	var check = !!mobile.match(/^(0|86|17951)?(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$/);
+// 	var td1 = document.getElementById("td1");
+// 	if(mobile==""){
+// 		td1.innerHTML="&nbsp;&nbsp;手机号不能为空";
+// 		checks = 0;
+// 	}else if(check==false){
+// 		td1.innerHTML="&nbsp;&nbsp;请正确填写您的手机号码";
+// 		checks = 0;
+// 	}else{
+// 		$.post("<%=path %>/reguser!checkMobile.action",
+// 				  {"reguser.username":mobile},
+// 				  function(result){
+// 					  if(result == null){
+// 						  checks = 0;
+// 						  td1.innerHTML = "&nbsp;&nbsp该号码无法注册,请更换";
+// 					  }
+// 					  if(result.status=="true"||result.status==true){
+// 						  checks = 1;
+// 						  td1.innerHTML = result.message;
+// 					  }else{
+// 						  checks = 0;
+// 						  td1.innerHTML = result.message;
+// 					  }
+// 				  },"json");
+// 	}
+// }
+// //获取手机验证码
+// function getNumRandom(){
+// 	var mobile = document.getElementById("mobile").value;
+// 	var check = !!mobile.match(/^(0|86|17951)?(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$/);
+// 	var td1 = document.getElementById("td1");
+// 	var button = document.getElementById("hqyzmbutton");
+// 	var td2 = document.getElementById("td2");
+// 	if(mobile==""){
+// 		td1.innerHTML="&nbsp;&nbsp;手机号不能为空";
+// 		checks = 0;
+// 	}else if(check==false){
+// 		td1.innerHTML="&nbsp;&nbsp;请正确填写您的手机号码";
+// 		checks = 0;
+// 	}else{
+// 		checkMobile();
+// 		if(checks){
+// 			time(button);
+// 			$.post("<%=path %>/reguser!checkMobile.action",
+// 					  {"reguser.username":mobile},
+// 					  function(result){
+// 						  if(result == null){
+// 							  checks = 0;
+// 							  td1.innerHTML = "&nbsp;&nbsp该号码无法注册,请更换";
+// 						  }
+// 						  if(result.status=="true"||result.status==true){
+// 							  $.post("<%=path %>/reguser!getNumRandom.action",
+// 										{"reguser.username":mobile},
+// 										  function(result){
+// 											  if(result == null){
+// 												  td2.innerHTML = "服务器发生了点小意外，请刷新页面试试";
+// 												  checks = 0;
+// 											  }
+// 											  if(result.status=="true"||result.status==true){
+// 												  td2.innerHTML = result.message;
+// 												  checks = 1;
+// 											  }else{
+// 												  td2.innerHTML = result.message;
+// 												  checks = 0;
+// 											  }
+// 										  },"json");
+// 						  }else{
+// 							  checks = 0;
+// 							  td1.innerHTML = result.message;
+// 						  }
+// 					  },"json");
+// 			}
+// 	}
+// }
+// //倒计时按钮
+// function time(o) {
+//         if (wait == 0) {
+//             o.removeAttribute("disabled");
+//             o.innerHTML="免费获取验证码";
+//             wait = 120;
+//         } else {
+//             o.setAttribute("disabled", true);
+//             o.innerHTML="重新发送(" + wait + ")";
+//             wait--;
+//             setTimeout(function() {
+//                 time(o)
+//             },
+//             1000)
+//      	}
+// 	}
+// //检验验证码是否正确
+// function checkYZM(){
+// 	var mobile = document.getElementById("mobile").value;
+// 	var mobileYZM = document.getElementById("mobileYZM").value;
+// 	var check = !!mobileYZM.match(/^\d{6}$/);
+// 	var td2 = document.getElementById("td2");
+// 	if(mobileYZM==""){
+// 		td2.innerHTML="&nbsp;&nbsp;验证码不能为空";
+// 		checks = 0;
+// 	}else if(check==false){
+// 		td2.innerHTML="&nbsp;&nbsp;请正确输入6位纯数字验证码";
+// 		checks = 0;
+// 	}else{
+// 		$.post("<%=path %>/reguser!checkYZM.action",
+// 				  {"mobileYZM":mobileYZM,"reguser.username":mobile},
+// 				  function(result){
+// 					  if(result == null){
+// 						  td2.innerHTML = "&nbsp;&nbsp验证出错，请重试";
+// 						  checks = 0;
+// 					  }
+// 					  if(result.status=="true"||result.status==true){
+// 						  td2.innerHTML = result.message;
+// 						  checks = 1;
+// 					  }else{
+// 						  td2.innerHTML = result.message;
+// 						  checks = 0;
+// 					  }
+// 				  },"json");
+// 	}
+// }
+// //提交表单
+// function subForm(){
+// 	checkMobile();
+// 	if(checks==1){
+// 	checkYZM();
+// 	}else{
+// 	var valid = $("#reguserForm").valid();
+// 	if(checks==1){
+// 		if(valid){
+// 			var mobile = document.getElementById("mobile").value;
+// 			var email = document.getElementById("email").value;
+// 			var pwd = document.getElementById("password").value;
+// 			$.post("<%=path %>/reguser!saveReguser.action",
+// 					   {"reguser.username":mobile,"reguser.email":email,"reguser.pwd":pwd},
+// 					  function(result){
+// 						  if(result == null){
+// 							  registerNo();
+// 						  }
+// 						  if(result.status=="true"||result.status==true){
+// 							  registerOk();
+// 						  }else{
+// 							  registerNo();
+// 						  }
+// 					  },"json");
+// 			}
+// 		}
+// 	}
+// }
+// //注册成功
+// function registerOk(){
+// 	var show = document.getElementById("show");
+// 	show.style.display="block";
+// }
+// function registerNo(){
+// 	var show2 = document.getElementById("show2");
+// 	show2.style.display="block";
+// }
 </script>
 </body>
 </html>

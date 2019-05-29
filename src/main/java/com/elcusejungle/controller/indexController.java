@@ -15,8 +15,8 @@ public class indexController {
     @Autowired
     IClxjmainService mainService;
 
-    @RequestMapping(value = "index",method = RequestMethod.GET)
-    public String toIndex(Model model, HttpServletRequest request){
+    @RequestMapping(value = {"/","/index","/index.html"},method = RequestMethod.GET)
+    public String toIndex(Model model, HttpServletRequest request)throws Exception{
         mainService.show(request);    //将图片地址存入request
         return "index";
     }

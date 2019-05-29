@@ -20,4 +20,12 @@ public interface IReguserService extends IService<Reguser> {
      * @throws Exception
      */
     Reguser reguserLogin(String username,String password) throws Exception;
+
+    /**
+     * 用户注册
+     * @param reguser 注册信息
+     * @return
+     * @throws Exception
+     */
+    boolean reguserRegister(Reguser reguser)throws Exception;
 }

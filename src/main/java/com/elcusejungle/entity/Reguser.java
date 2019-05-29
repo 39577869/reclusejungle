@@ -9,6 +9,7 @@ package com.elcusejungle.entity;
     import lombok.Data;
     import lombok.EqualsAndHashCode;
     import lombok.experimental.Accessors;
+    import org.springframework.beans.factory.annotation.Value;
 
 /**
 * @since 2019-05-23

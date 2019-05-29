@@ -1,5 +1,6 @@
 package com.elcusejungle.Interceptor;
 
+import com.elcusejungle.exception.ExistException;
 import com.elcusejungle.exception.LoginException;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -21,6 +22,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(value = Exception.class)
     public Map<String,Object> exceptionHandler(Exception ex){
         //ex.printStackTrace();
+        log.error(ex.getMessage());
         Map<String,Object> map  = new HashMap<>();
         if(ex instanceof LoginException){
             log.error("登录错误");

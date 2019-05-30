@@ -7,6 +7,8 @@ import com.elcusejungle.exception.RegisterException;
 import com.elcusejungle.mapper.ReguserMapper;
 import com.elcusejungle.service.IReguserService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
@@ -23,6 +25,9 @@ import java.util.Date;
  */
 @Service
 public class ReguserServiceImpl extends ServiceImpl<ReguserMapper, Reguser> implements IReguserService {
+
+    @Autowired
+    private RedisTemplate redisTemplate;
 
     /**
      * 登录
@@ -53,6 +58,9 @@ public class ReguserServiceImpl extends ServiceImpl<ReguserMapper, Reguser> impl
     public boolean reguserRegister(Reguser reguser) throws Exception {
         Assert.notNull(reguser.getEmail(),"邮箱为空");
         Assert.notNull(reguser.getPwd(),"密码为空");
+        String code =(String) redisTemplate.opsForValue().get(reguser.getEmail());
+        Assert.notNull(code,"验证码已失效,请重新发送");
+        //if(code.)
         if(baseMapper.selectByName(reguser.getEmail())!=null){
             throw new ExistException("账号已注册");
         }

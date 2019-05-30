@@ -1,6 +1,5 @@
 package com.elcusejungle.controller;
 
-import com.elcusejungle.consumers.EmailConsumers;
 import com.elcusejungle.entity.Reguser;
 import com.elcusejungle.service.IReguserService;
 import com.elcusejungle.util.DigestUtils;
@@ -23,6 +22,7 @@ import javax.servlet.http.HttpSession;
 @Log4j2
 @Controller
 public class AccountNumberController {
+
     @Autowired
     private  IReguserService reguserService;
 
@@ -38,6 +38,7 @@ public class AccountNumberController {
      * @param request
      * @return
      * @throws Exception
+     *
      */
     @ResponseBody
     @PostMapping("/login")
@@ -94,7 +95,7 @@ public class AccountNumberController {
         String verifyCode = DigestUtils.randomDigitNumber(4);
         emailUtil.setCode(verifyCode);
         session.setAttribute("verifyCode",verifyCode);
-        redisTemplate.convertAndSend("email",emailUtil);
+        redisTemplate.convertAndSend("mail",emailUtil);
         return true;
     }
 

@@ -41,4 +41,9 @@ public class Test {
     public String JungleList(){
         return "JungleList";
     }
+
+    @RequestMapping("/AtList")
+    public String AtList(){
+        return "AtList";
+    }
 }

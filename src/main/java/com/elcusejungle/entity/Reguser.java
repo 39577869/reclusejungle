@@ -24,6 +24,7 @@ package com.elcusejungle.entity;
             @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
 
+
     private String username;
 
     private String mobile;

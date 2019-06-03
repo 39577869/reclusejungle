@@ -76,8 +76,8 @@ public class AccountNumberController {
      */
     @ResponseBody
     @PostMapping("/register")
-    public boolean register(Reguser reguser) throws Exception{
-        reguserService.reguserRegister(reguser);
+    public boolean register(Reguser reguser,String code) throws Exception{
+        reguserService.reguserRegister(reguser,code);
         return true;
     }
 
@@ -100,18 +100,23 @@ public class AccountNumberController {
     }
 
     /**
-     * 验证码比较
+     * 进入忘记密码页面
+     * @return
+     */
+    @GetMapping("/RetrievePassword")
+    public String retrievePasswor(){
+        return "RetrievePassword";
+    }
+
+    /**
+     * 忘记密码
+     * @param reguser
      * @return
      */
     @ResponseBody
-    @PostMapping("/compare/{verifyCode}")
-    public boolean compare(@PathVariable("verifyCode")String verifyCode,HttpSession session){
-        String sysverifyCode = (String) session.getAttribute("verifyCode");
-        Assert.notNull(verifyCode,"验证码为空");
-        Assert.notNull(sysverifyCode,"原验证码不存在");
-        if(sysverifyCode.equals(verifyCode)){
-            return true;
-        }
-        return false;
+    @PutMapping("/RetrievePassword")
+    public boolean retrievePasswor(Reguser reguser,@RequestParam("code") String code)throws Exception{
+        reguserService.reguserRetrievePassword(reguser,code);
+        return true;
     }
 }

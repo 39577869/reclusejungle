@@ -31,7 +31,7 @@
 </div>
 <div class="reg">
     <div class="reg-main">
-        <p class="top"><img th:src="@{before/images/09.png}">注册新用户 <i>已有帐号？去<a href="login.html">登录</a> > </i></p>
+        <p class="top"><img th:src="@{before/images/09.png}">注册新用户 <i>已有帐号？去<a th:href="@{/login}">登录</a> > </i></p>
         <!--<form action="<%=path %>/reguser!saveReguser.action" id="reguserForm">-->
         <!--<table> -->
             <!--<tr>  -->
@@ -104,23 +104,23 @@
                 <div class="layui-inline" >
                     <label class="layui-form-label" style="background: #4eadf2">验证码</label>
                     <div class="layui-input-inline">
-                        <input type="text" name="ver"   class="layui-input" placeholder="请输入验证码">
+                        <input type="text" name="code" id="code"  class="layui-input" placeholder="请输入验证码">
                     </div>
                 </div>
                 <div class="layui-inline" style="margin-left: 58px;">
-                <input type="button" onclick="sendEmail()" id="email" class="layui-btn layui-btn-radius layui-btn-normal" value="发送验证码"/>
+                <input type="button" onclick="sendEmail(this)" id="email" class="layui-btn layui-btn-radius layui-btn-normal" value="发送验证码"/>
                 </div>
             </div>
             <div class="layui-form-item" style="margin-left: 130px;margin-right: 400px;">
                 <label class="layui-form-label" style="background: #4eadf2">密码</label>
                 <div class="layui-input-block">
-                    <input type="password" name="password" required lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input">
+                    <input type="password" name="pwd" required lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input">
                 </div>
             </div>
             <div class="layui-form-item" style="margin-left: 130px;margin-right: 400px;">
                 <label class="layui-form-label" style="background: #4eadf2">确认密码</label>
                 <div class="layui-input-block">
-                    <input type="password" name="password" required lay-verify="required" placeholder="请确认密码" autocomplete="off" class="layui-input">
+                    <input type="password" name="pwd2" required lay-verify="required" placeholder="请确认密码" autocomplete="off" class="layui-input">
                 </div>
             </div>
             <div class="layui-form-item" style="margin-left: 130px;margin-left: 130px;">
@@ -132,20 +132,20 @@
         </form>
     </div>
 </div>
-<div id="show" class="tcc12 none" style="display: none;">
-    <div class="tx-ydm">
-            <p class="tx-sm"><span class="one"><img th:src="@{before/images/tx.png}">提示</span><span class="two"><img th:src="@{before/images/14_01.png}" class="close"></span></p><br/><br/><br/>
-            <p align="center">恭喜你，注册成功</p><br/><br/><br/>
-            <p align="center">点击<a href="login.html">登录</a>进入登录页面</p>
-    </div>
-</div>
-<div id="show2" class="tcc12"   style="display: none;">  
-    <div class="tx-ydm" style="margin-top:250px;">
-            <p class="tx-sm"><span class="one"><img th:src="@{before/images/tx.png}">提示</span><span class="two"><img th:src="@{before/images/14_01.png}" class="close"></span></p><br/><br/><br/>
-            <p align="center">哦。。。发生了点小意外，不好意思</p><br/><br/><br/>
-            <p align="center">点击<a href="register.html">注册</a>刷新页面</p>
-    </div>
-</div>
+<!--<div id="show" class="tcc12 none" style="display: none;">-->
+    <!--<div class="tx-ydm">-->
+            <!--<p class="tx-sm"><span class="one"><img th:src="@{before/images/tx.png}">提示</span><span class="two"><img th:src="@{before/images/14_01.png}" class="close"></span></p><br/><br/><br/>-->
+            <!--<p align="center">恭喜你，注册成功</p><br/><br/><br/>-->
+            <!--<p align="center">点击<a href="login">登录</a>进入登录页面</p>-->
+    <!--</div>-->
+<!--</div>-->
+<!--<div id="show2" class="tcc12"   style="display: none;">  -->
+    <!--<div class="tx-ydm" style="margin-top:250px;">-->
+            <!--<p class="tx-sm"><span class="one"><img th:src="@{before/images/tx.png}">提示</span><span class="two"><img th:src="@{before/images/14_01.png}" class="close"></span></p><br/><br/><br/>-->
+            <!--<p align="center">哦。。。发生了点小意外，不好意思</p><br/><br/><br/>-->
+            <!--<p align="center">点击<a href="register.html">注册</a>刷新页面</p>-->
+    <!--</div>-->
+<!--</div>-->
 <footer style="margin-bottom: 10px">
     <ul>
         <li>江西省丛林闲居投资有限公司，工业和信息化部网站备案许可证编号：赣ICP备15010915号</li>
@@ -154,17 +154,46 @@
     <p><a href="#"><img th:src="@{before/images/index_48.jpg}"></a><a href="#"><img th:src="@{before/images/index_50.jpg}"></a><a href="#"><img th:src="@{before/images/index_52.jpg}"></a> <a href="#"><img th:src="@{before/images/index_54.jpg}"></a><a href="#"><img th:src="@{before/images/index_56.jpg}"></a> <a href="#"><img th:src="@{before/images/index_58.jpg}"></a>    </p>
 </footer>
 <script type="text/javascript">
+    var wait=120;
     layui.use('form', function(){
         var form = layui.form;
-
         //监听提交
         form.on('submit(formDemo)', function(data){
-            layer.msg(JSON.stringify(data.field));
+            var msg = JSON.stringify(data.field);
+            if(data.field.pwd!=data.field.pwd2){
+                layer.msg("两次密码输入不一致");
+                return false;
+            }
+            $.ajax({
+                url: "/register",
+                type: "post",
+                async: true,
+                data:{
+                    email:data.field.email,
+                    pwd:data.field.pwd,
+                    code:data.field.code
+                },
+                success: function (data) {
+                    if(data==true){
+                        layer.msg("注册成功", {icon: 1});
+                    }else {
+                        layer.msg(data.msg, {icon: 5});
+                    }
+                },
+                error: function () {
+                }
+            })
             return false;
         });
+
     });
-    function sendEmail() {
-        var email =$("#email").val();
+    function sendEmail(o) {
+        var email =$("input[name='email']").val();
+        if(email==null||email==""){
+            layer.msg("请输入邮箱");
+            return false;
+        }
+
         $.ajax({
             url: "/email/"+email,
             type: "post",
@@ -175,9 +204,27 @@
             error: function () {
             }
         })
+        time(o);
+    }
+    //倒计时按钮
+    function time(o) {
+        if (wait == 0) {
+            o.removeAttribute("disabled");
+            //o.innerHTML="免费获取验证码";
+            $("#email").val("发送验证码");
+            wait = 120;
+        } else {
+            o.setAttribute("disabled", true);
+            //o.innerHTML="重新发送(" + wait + ")";
+            $("#email").val("重新发送(" + wait + ")");
+            wait--;
+            setTimeout(function() {
+                    time(o)
+                }, 1000)
+        }
     }
 // var checks = 0; //一个全局变量，用来最终判断表单是否可以提交
- var wait=120;//倒计时获取验证码时间
+ //var wait=120;//倒计时获取验证码时间
 // $(document).ready(function(){
 // 	$("#reguserForm").validate({
 // 		errorPlacement: function(error,element) {
@@ -277,23 +324,7 @@
 // 			}
 // 	}
 // }
-//倒计时按钮
-function time(o) {
-        if (wait == 0) {
-            //o.removeAttribute("disabled");
-            //o.innerHTML="免费获取验证码";
-            wait = 120;
-        } else {
-            //o.setAttribute("disabled", true);
-            //o.innerHTML="重新发送(" + wait + ")";
-            $("#email").val("重新发送(" + wait + ")");
-            wait--;
-            setTimeout(function() {
-                time(o)
-            },
-            1000)
-     	}
-	}
+
 // //检验验证码是否正确
 // function checkYZM(){
 // 	var mobile = document.getElementById("mobile").value;

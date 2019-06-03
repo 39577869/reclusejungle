@@ -1,5 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.elcusejungle.mapper.ReguserMapper">
-
+<update id="updateByEmail" parameterType="com.elcusejungle.entity.Reguser">
+    update reguser
+    <set>
+        <if test="mobile!=null">
+            mobile=#{mobile}
+        </if>
+        <if test="pwd!=null">
+            pwd=#{pwd}
+        </if>
+        <if test="sex!=null">
+            sex=#{sex}
+        </if>
+        <if test="realname!=null">
+            realname=#{realname}
+        </if>
+        <if test="idcard!=null">
+            idcard=#{idcard}
+        </if>
+        <if test="city!=null">
+            city=#{city}
+        </if>
+    </set>
+    <where>
+        email=#{email}
+    </where>
+</update>
 </mapper>

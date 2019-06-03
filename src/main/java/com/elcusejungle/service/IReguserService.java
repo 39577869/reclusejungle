@@ -27,5 +27,21 @@ public interface IReguserService extends IService<Reguser> {
      * @return
      * @throws Exception
      */
-    boolean reguserRegister(Reguser reguser)throws Exception;
+    boolean reguserRegister(Reguser reguser,String code)throws Exception;
+
+    /**
+     * 验证 验证码
+     * @param email
+     * @param code
+     * @throws Exception
+     */
+    void validation(String email,String code)throws Exception;
+
+    /**
+     * 忘记密码
+     * @param reguser
+     * @param code
+     * @return
+     */
+    boolean reguserRetrievePassword(Reguser reguser,String code)throws Exception;
 }

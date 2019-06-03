@@ -1,8 +1,10 @@
 package com.elcusejungle.config;
 
 import com.elcusejungle.componet.HandlerIntercepter;
+import com.elcusejungle.utils.DateConventer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.format.FormatterRegistry;
 import org.springframework.web.servlet.config.annotation.*;
 
 /**
@@ -33,5 +35,11 @@ public class WebConfig implements WebMvcConfigurer {
             }
         };
         return adapter;
+    }
+
+    // 配置转换器
+    @Override
+    public void addFormatters(FormatterRegistry registry) {
+        registry.addConverter(new DateConventer());
     }
 }

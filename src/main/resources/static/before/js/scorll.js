@@ -8,7 +8,7 @@ $(function(){
            $("#nav").css("top", ms+20);
        }
         //Ϊҳ�����ҳ����������¼�
-        var nav=$("#nav li").size();
+        var nav=$("#nav li").length;
         var wst =  $(window).scrollTop(); //���������붥��ֵ
         for (i=1; i<nav+1; i++){             //��ѭ��
             if($("#a"+i).offset().top<=wst){ //�жϹ�����λ��

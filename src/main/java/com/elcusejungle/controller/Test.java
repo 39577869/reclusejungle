@@ -29,7 +29,7 @@ public class Test {
     @RequestMapping("/head")
     public String head(HttpSession session){
         //return "Confession/play-record";
-        return "joinxj";
+        return "AtList";
     }
 
     @RequestMapping("/login")

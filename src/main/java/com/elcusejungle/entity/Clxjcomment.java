@@ -2,6 +2,8 @@ package com.elcusejungle.entity;
 
     import com.baomidou.mybatisplus.annotation.IdType;
     import com.baomidou.mybatisplus.annotation.TableId;
+
+    import java.sql.Timestamp;
     import java.time.LocalDateTime;
     import java.io.Serializable;
     import lombok.Data;
@@ -31,7 +33,7 @@ package com.elcusejungle.entity;
 
     private String photo;
 
-    private LocalDateTime commenttime;
+    private Timestamp commenttime;
 
 
 }

@@ -3,6 +3,8 @@ package com.elcusejungle.entity;
     import java.math.BigDecimal;
     import com.baomidou.mybatisplus.annotation.IdType;
     import com.baomidou.mybatisplus.annotation.TableId;
+
+    import java.sql.Timestamp;
     import java.time.LocalDateTime;
     import com.baomidou.mybatisplus.annotation.TableField;
     import java.io.Serializable;
@@ -60,9 +62,9 @@ package com.elcusejungle.entity;
 
     private String abbotresume;
 
-    private LocalDateTime opentime;
+    private Timestamp opentime;
 
-    private LocalDateTime createtime;
+    private Timestamp createtime;
 
     private String mobile;
 

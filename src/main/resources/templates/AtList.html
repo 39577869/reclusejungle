@@ -3,18 +3,18 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>丛林闲居-丛林-列表页</title>
-    <link rel="stylesheet" th:href="@{before/style/cy.css}">
-    <link rel="stylesheet" th:href="@{before/style/style.css}">
-    <script src="js/laydate.js"></script>
-    <link rel="stylesheet" th:href="@{before/style/laydate.css}">
-    <link rel="stylesheet" th:href="@{before/style/laydate.css}">
-    <script src="js/jquery.min.js"></script>
-    <!--<script type='text/javascript' src='js/citylist.js'></script>-->
-    <script type='text/javascript' th:src='@{before/js/jquerycity1.js}'></script>
-    <link th:href='@{before/style/cityquery.css}' rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" th:href="@{/before/style/cy.css}">
+    <link rel="stylesheet" th:href="@{/before/style/style.css}">
+    <script th:src="@{/before/js/laydate.js}"></script>
+    <link rel="stylesheet" th:href="@{/webjars/layui/2.3.0/css/layui.css}">
+    <script  th:src="@{/webjars/layui/2.3.0/layui.js}"></script>
+    <link rel="stylesheet" th:href="@{/before/js/need/laydate.css}">
+    <script type="text/javascript" th:src="@{/webjars/jquery/3.0.0/jquery.js}"></script>
+    <link th:href='@{/before/style/cityquery.css}' rel="stylesheet" type="text/css" />
 </head>
 <body>
-<jsp:include  page="head.jsp" />
+<div th:replace="head::html"></div>
+<!--<jsp:include  page="head.jsp" />-->
 <script type="text/javascript">
     function Alllogin(){
         window.location.href = "login.jsp?returnurl=/clxjmain!selClOfPage.action";
@@ -26,13 +26,8 @@
 <!--首页轮播图-->
 <div class="index-lbt">
     <div id="scrollPics">
-        <ul class="slider">
-            <li><img th:src="@{before/images/lbt1.png}" class="lower" width="100%" height="380px"/>
-            </li>
-            <li><img th:src="@{before/images/lbt2.png}" width="100%" height="380px"/></li>
-            <li><img th:src="@{before/images/lbt3.png}" width="100%" height="380px"/></li>
-            <li><img th:src="@{before/images/lbt4.png}" width="100%" height="380px"/></li>
-            <li><img th:src="@{before/images/lbt5.png}" width="100%" height="380px"/></li>
+        <ul class="slider" th:replace="~{index::scro}">
+
         </ul>
         <ul class="num">
             <li class="on"></li>
@@ -47,30 +42,27 @@
 
             <div class="lbttj">
                 <div class="tj-top">
-                    <span <c:if test="${citytype ==true}"> class="gnxjac"</c:if> <c:if test="${citytype ==null}"> class="gnxjac"</c:if>>国内丛林</span><span <c:if test="${citytype ==false}"> class="gnxjac"</c:if>>国际丛林</span>
+                    <span th:class="${clxjmainVo.clxjmain.type1 == true || clxjmainVo.clxjmain.type1 ==null}?'gnxjac' : ''">国内丛林</span><span th:class="${clxjmainVo.clxjmain.type1 ==false}?'gnxjac' : ''">国际丛林</span>
                 </div>
                 <div class="tj-bottom">
-                    <div <c:if test="${citytype ==true}">class="xj"</c:if><c:if test="${citytype ==false}">class="xj none"</c:if> <c:if test="${citytype ==null}"> class="xj"</c:if>>
-                    <form action="<%=path %>/clxjmain!selClOfPage.action" method="post" onsubmit="getCity('11',whs1)">
+                    <div th:class="${clxjmainVo.clxjmain.type1 == false}?'xj none' : 'xj'">
+                    <form action="#" method="post" onsubmit="return find1()">
                         <table>
                             <tr>
                                 <td>目的地</td>
-                                <td class="sec"><input type="text" <c:if test="${cityzw!=null }">value="${cityzw }"</c:if>  <c:if test="${citypy!=null }"> data-wholename="${citypy }"</c:if><c:if test="${citypy==null }"> data-wholename=""</c:if> xaceholder="武汉市" id="whs1"  data-wholename=""></td>
-                                <input type="hidden" name="clxjmain.belong_city" id="city11"/>
-                                <input type="hidden" name="clxjmain.type1" value="true"/>
-                                <input type="hidden" name="clxjmain.type2" value="true"/>
+                                <td class="sec"><input id="belongCity" type="text" th:attr="value=${clxjmainVo.clxjmain.belongCity!=null}? ''+${clxjmainVo.clxjmain.belongCity }+'' : '', data-wholename=${clxjmainVo.clxjmain.belongCity!=null}? ''+${clxjmainVo.clxjmain.belongCity }+'' :'' " xaceholder="武汉市"  data-wholename=""></td>
                             </tr>
                             <tr>
                                 <td>入住</td>
-                                <td><p><input name="startTime" class="laydate-icon" id="demo1" <c:if test="${startTime !=null}">value="${startTime }"</c:if><c:if test="${startTime ==null}">value="2019-1-22"</c:if>>
+                                <td><p><input name="startTime" class="laydate-icon" id="demo1" th:attr="value=${clxjmainVo.startTime !=null}? ''+${clxjmainVo.startTime }+'' : ''">
                                 </p>
 
-                                    <p>退房<input name="endTime" class="laydate-icon" id="demo2" <c:if test="${endTime !=null}">value="${endTime }"</c:if><c:if test="${endTime ==null}">value="2019-4-16"</c:if>>
+                                    <p>退房<input name="endTime" class="laydate-icon" id="demo2" th:attr="value=${clxjmainVo.endTime != null }? ''+${clxjmainVo.endTime}+'' : ''">
                                     </p></td>
                             </tr>
                             <tr>
                                 <td>关键词</td>
-                                <td class="sec"><input type="text" name="clxjmain.name" <c:if test="${cityname==null }">placeholder="请输入地标/商圈/景点"</c:if> <c:if test="${cityname!=null }">value="${cityname }"</c:if>  id="gnclkey" ></td>
+                                <td class="sec"><input id="name" type="text" name="clxjmain.name" th:attr="placeholder=${clxjmainVo.clxjmain.name==null }? '请输入地标/商圈/景点' : '', value=${clxjmainVo.clxjmain.name != null}? ''+${clxjmainVo.clxjmain.name}+'' : ''" ></td>
                             </tr>
                             <tr>
                                 <td></td>
@@ -79,27 +71,24 @@
                         </table>
                     </form>
                 </div>
-                <div <c:if test="${citytype ==true}">class="xj none"</c:if> <c:if test="${citytype ==false}">class="xj"</c:if> <c:if test="${citytype ==null}"> class="xj none"</c:if>>
-                <form action="<%=path %>/clxjmain!selClOfPage.action" method="post" onsubmit="getCity('01',whs2)">
+                <div th:class="${clxjmainVo.clxjmain.type1 ==false}? 'xj' : 'xj none'">
+                <form action="#" method="post" onsubmit="return find2()">
                     <table>
                         <tr>
                             <td>目的地</td>
-                            <td class="sec"><input type="text" <c:if test="${cityzw!=null }">value="${cityzw }"</c:if>  <c:if test="${citypy!=null }"> data-wholename="${citypy }"</c:if><c:if test="${citypy==null }"> data-wholename=""</c:if> xaceholder="武汉市" id="whs2"   data-wholename=""></td>
-                            <input type="hidden" name="clxjmain.belong_city" id="city01"/>
-                            <input type="hidden" name="clxjmain.type1" value="false"/>
-                            <input type="hidden" name="clxjmain.type2" value="true"/>
+                            <td class="sec"><input type="text" th:attr="value=${clxjmainVo.clxjmain.belongCity!=null }? ''+${clxjmainVo.clxjmain.belongCity }+'' : '', data-wholename=${clxjmainVo.clxjmain.belongCity!=null }? ''+${clxjmainVo.clxjmain.belongCity }+'' :''" xaceholder="武汉市" id="whs2"></td>
                         </tr>
                         <tr>
                             <td>入住</td>
-                            <td><p><input name="startTime" class="laydate-icon" id="demo3" <c:if test="${startTime !=null}">value="${startTime }"</c:if><c:if test="${startTime ==null}">value="2018-3-12"</c:if>>
+                            <td><p><input name="startTime" class="laydate-icon" id="demo3" th:attr="value=${clxjmainVo.startTime !=null}? ''+${clxjmainVo.startTime }+'' : ''">
                             </p>
 
-                                <p>退房<input name="endTime" class="laydate-icon" id="demo4" <c:if test="${endTime !=null}">value="${endTime }"</c:if><c:if test="${endTime ==null}">value="2018-8-25"</c:if>>
+                                <p>退房<input name="endTime" class="laydate-icon" id="demo4" th:attr="value=${clxjmainVo.endTime !=null}? ''+${clxjmainVo.endTime }+'' : ''">
                                 </p></td>
                         </tr>
                         <tr>
                             <td>关键词</td>
-                            <td class="sec"><input type="text" name="clxjmain.name" <c:if test="${cityname==null }">placeholder="请输入地标/商圈/景点"</c:if> <c:if test="${cityname!=null }">value="${cityname }"</c:if>  id="gjclkey" ></td>
+                            <td class="sec"><input type="text" name="clxjmain.name" th:attr="placeholder=${clxjmainVo.clxjmain.name==null }? '请输入地标/商圈/景点' : '', value=${clxjmainVo.clxjmain.name!=null }? ''+${clxjmainVo.clxjmain.name }+'' : ''"  id="gjclkey" ></td>
                         </tr>
                         <tr>
                             <td></td>
@@ -114,52 +103,106 @@
 </div>
 </div>
 <!--列表页-->
-<div class="lby">
-    <c:forEach items="${page.list}" var="x">
-        <div class="lby-xy">
-            <div class="lby-left">
-                <a href="<%=path%>/clxjmain!selClxjOfId.action?clxjmain.id=${x.id}"><img width="296" height="188" src=${clxjBackurl }${x.first_img_min }></a>
-            </div>
-            <div class="lby-right">
-                <p class="title"><a href="<%=path%>/clxjmain!selClxjOfId.action?clxjmain.id=${x.id}">${x.name }</a></p>
-                <p class="con">${x.introduction }</p>
-                <p class="address">位  置:${x.address }</p>
-            </div>
-            <div class="lby-pos">
-                <div>
-                    <p class="one">
-                        <span><i>${x.ccount }</i></span>
-                        <span>丛林评价</span>
-                    </p>
-                    <p class="two">
-                        <span><i>${x.hpl }</i></span>
-                        <span>好评/10分</span>
-                    </p>
-                    <p class="yd">
-                        <!--<span class="mony">${x.price }<i>/晚</i></span>-->
-                        <span class="mony">随缘</span>
-                        <a href="<%=path%>/clxjmain!selClxjOfId.action?clxjmain.id=${x.id}"><span class="dj">预定</span></a>
-                    </p>
-                </div>
-            </div>
-        </div>
-    </c:forEach>
+<div id="list" class="lby">
+
 </div>
 <form action="<%=path%>/clxjmain!selClOfPage.action" method="post" id="clForm">
     <input type="hidden" id="offset" name="offset" value="${offset }">
-    <c:if test="${citytype !=null}"> <input type="hidden" name="clxjmain.type1" value="${citytype }"/></c:if>
+    <input type="hidden" th:if="${clxjmainVo.clxjmain.belongCity !=null}" name="clxjmain.type1" value="${citytype }"/>
     <input type="hidden" name="clxjmain.type2" value="${citytype2 }"/>
     <input type="hidden" name="clxjmain.name" value="${cityname }"/>
     <input type="hidden" name="clxjmain.belong_city" value="${belong_city }"/>
 </form>
-<div class="fenye">
-    ${page.navigation }
+<div class="fenye" align="center" id="page">
+
 </div>
-<%@ include  file="bottom.jsp"%>
+<div th:replace="bottom::html"></div>
+<!--<%@ include  file="bottom.jsp"%>-->
 
 
-<script src="js/index.js"></script>
+<script th:src="@{/before/js/index.js}"></script>
 <script type="text/javascript">
+    onload = find1();
+    function find1(){ // 国内丛林搜索
+        var belongCity=$("#belongCity").val(),
+            startTime=$("#demo1").val(),
+            endTime=$("#demo2").val(),
+            name=$("#name").val();
+        page(1,belongCity,startTime,endTime,name,1);
+        return false;
+    }
+    function find2(){ // 国际丛林搜索
+        var belongCity=$("#whs2").val(),
+            startTime=$("#demo3").val(),
+            endTime=$("#demo4").val(),
+            name=$("#gjclkey").val();
+        page(1,belongCity,startTime,endTime,name,2);
+        return false;
+    }
+    function page(page,belongCity,startTime,endTime,name,type){ // 分页
+        $.ajax({
+            type : "get",
+            url : "/clxj/clxjFind",
+            data: {
+                belongCity:belongCity,
+                startTime:startTime,
+                endTime:endTime,
+                name:name,
+                page:page,
+                limit:5
+            },
+            async : true,
+            success: function (data) {
+                var ht = "";
+                var li = "";
+                for (var i = 0; i < data.data.length; i++){
+                    var img = data.data[i].clxjmain.firstImgBig;    // 图片URL
+                    ht += '<div class="lby-xy">\n' +
+                        '            <div class="lby-left">\n' +
+                        '                <a href="<%=path%>/clxjmain!selClxjOfId.action?clxjmain.id=${x.id}"><img width="296" height="188" src='+img+'></a>\n' +
+                        '            </div>\n' +
+                        '            <div class="lby-right">\n' +
+                        '                <p class="title"><a href="<%=path%>/clxjmain!selClxjOfId.action?clxjmain.id=${x.id}" text="'+data.data[i].clxjmain.name+'"></a></p>\n' +
+                        '                <p class="con" text="'+data.data[i].clxjmain.introduction+'"></p>\n' +
+                        '                <p class="address" th:text="位  置:'+data.data[i].clxjmain.address+'"></p>\n' +
+                        '            </div>\n' +
+                        '            <div class="lby-pos">\n' +
+                        '                <div>\n' +
+                        '                    <p class="one">\n' +
+                        '                        <span><i>'+data.data[i].count+'</i></span>\n' +
+                        '                        <span>丛林评价</span>\n' +
+                        '                    </p>\n' +
+                        '                    <p class="two">\n' +
+                        '                        <span><i>'+data.data[i].avg+'</i></span>\n' +
+                        '                        <span>好评/10分</span>\n' +
+                        '                    </p>\n' +
+                        '                    <p class="yd">\n';
+                    if (data.data[i].clxjmain.price != 0){
+                        ht += '<span class="mony">'+data.data[i].clxjmain.price+'<i>/晚</i></span>\n';
+                    }else{
+                        ht += '<span class="mony">随缘</span>\n';
+                    }
+                    ht += '                        <a href="<%=path%>/clxjmain!selClxjOfId.action?clxjmain.id=${x.id}"><span class="dj">预定</span></a>\n' +
+                        '                    </p>\n' +
+                        '                </div>\n' +
+                        '            </div>\n' +
+                        '        </div>';
+                }
+                var page = parseInt((data.count+4)/5);
+                if(page < 1){
+                    page = 1;
+                }
+                for (var i=1;i<=page;i++){
+                    li+='<a href="javascript:;" onclick="find'+type+'('+i+')"><span>'+i+'</span></a>'
+                }
+                $("#page").html(li);
+                $("#list").html(ht);
+            },
+            error: function () {
+                alert("系统异常");
+            }
+        })
+    }
     !function () {
         laydate.skin('molv');//切换皮肤，请查看skins下面皮肤库
         laydate({elem: '#demo1'});//绑定元素
@@ -167,6 +210,9 @@
         laydate({elem: '#demo3'});//绑定元素
         laydate({elem: '#demo4'});//绑定元素
     }();
+</script>
+<script type="text/javascript">
+
 
     //var labelFromcity = new Array(); 
     //labelFromcity ['热门城市'] = new Array(2,41,54,119,25,50,187,182,77,122,42,196,106,136,188,17,22,16,37,67,88,159,143,176,14,58,136,73);  

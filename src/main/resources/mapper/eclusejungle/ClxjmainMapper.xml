@@ -1,5 +1,76 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.elcusejungle.mapper.ClxjmainMapper">
-
+    <resultMap id="clxjmainvo_mapper" type="com.elcusejungle.vo.ClxjmainVo">
+        <id column="id" property="clxjmain.id" jdbcType="INTEGER" />
+        <result column="cc" property="count" jdbcType="INTEGER" />
+        <result column="avg" property="avg" jdbcType="INTEGER" />
+        <association property="clxjmain" javaType="com.elcusejungle.entity.Clxjmain">
+            <id column="mid" property="id" jdbcType="INTEGER" />
+            <result column="name" property="name" jdbcType="VARCHAR" />
+            <result column="type1" property="type1" jdbcType="BIT" />
+            <result column="type2" property="type2" jdbcType="BIT" />
+            <result column="belong_city" property="belongCity" jdbcType="VARCHAR" />
+            <result column="first_img_big" property="firstImgBig" jdbcType="VARCHAR" />
+            <result column="first_img_min" property="firstImgMin" jdbcType="VARCHAR" />
+            <result column="carousel_img" property="carouselImg" jdbcType="VARCHAR" />
+            <result column="price" property="price" jdbcType="DECIMAL" />
+            <result column="address" property="address" jdbcType="VARCHAR" />
+            <result column="longitude" property="longitude" jdbcType="VARCHAR" />
+            <result column="latitude" property="latitude" jdbcType="VARCHAR" />
+            <result column="reserve_num" property="reserveNum" jdbcType="INTEGER" />
+            <result column="recommend" property="recommend" jdbcType="BIT" />
+            <result column="joinid" property="joinid" jdbcType="INTEGER" />
+            <result column="checkStatus" property="checkStatus" jdbcType="INTEGER" />
+            <result column="abbot" property="abbot" jdbcType="VARCHAR" />
+            <result column="opentime" property="opentime" jdbcType="TIMESTAMP" />
+            <result column="createtime" property="createtime" jdbcType="TIMESTAMP" />
+            <result column="mobile" property="mobile" jdbcType="VARCHAR" />
+        </association>
+        <association property="clxjcomment" javaType="com.elcusejungle.entity.Clxjcomment">
+            <id column="tid" property="id" jdbcType="INTEGER" />
+            <result column="cid" property="cid" jdbcType="INTEGER" />
+            <result column="uid" property="uid" jdbcType="INTEGER" />
+            <result column="cflag" property="cflag" jdbcType="INTEGER" />
+            <result column="content" property="content" jdbcType="VARCHAR" />
+            <result column="photo" property="photo" jdbcType="VARCHAR" />
+            <result column="commenttime" property="commenttime" jdbcType="TIMESTAMP" />
+        </association>
+    </resultMap>
+    <sql id="clxgmain_sql">
+        id, type1, type2, name, belong_city, first_img_big, first_img_min, carousel_img,
+        price, address, longitude, latitude, reserve_num, recommend, joinid, checkStatus,
+        abbot, opentime, createtime, mobile
+    </sql>
+    <sql id="clxjmain_clxjcommit_sql">
+        select  m.id mid, type1, type2, name, belong_city, first_img_big, first_img_min, carousel_img,
+        price, address, longitude, latitude, reserve_num, recommend, joinid, checkStatus,
+        abbot, opentime, createtime, mobile, t.id tid, cid, uid, cflag, content, photo, commenttime,
+				(select count(id) from clxjcomment where cid = m.id) cc,
+				(case
+				 when (select avg(cflag) from clxjcomment where cid = m.id) IS NULL then 0
+				 else (select avg(cflag) from clxjcomment where cid = m.id)
+				 end
+				)avg
+				from clxjmain m left join clxjcomment t on m.id = t.cid
+    </sql>
+<select id="selectByfind" parameterType="com.elcusejungle.vo.ClxjmainVo" resultMap="clxjmainvo_mapper">
+    <include refid="clxjmain_clxjcommit_sql" />
+    <where>
+        <if test="clxjmain != null">
+            <if test="clxjmain.type1 != null">
+                and type1 = #{clxjmain.type1}
+            </if>
+            <if test="clxjmain.type2 != null">
+                and type2 = #{clxjmain.type2}
+            </if>
+            <if test="clxjmain.belongCity != null">
+                and belong_city like '%${clxjmain.belongCity}%'
+            </if>
+            <if test="clxjmain.name != null">
+                and name like '%${clxjmain.name}%'
+            </if>
+        </if>
+    </where>
+</select>
 </mapper>

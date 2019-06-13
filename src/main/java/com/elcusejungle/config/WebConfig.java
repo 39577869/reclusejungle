@@ -25,12 +25,12 @@ public class WebConfig implements WebMvcConfigurer {
     }*/
 
     //配置试图解析器
-    public WebMvcConfigurer webMvcConfigurerAdapter(){
+    public WebMvcConfigurer webMvcConfigurerAdapter()throws Exception{
         WebMvcConfigurer adapter = new WebMvcConfigurer() {
             @Override
             public void addViewControllers(ViewControllerRegistry registry) {
-                registry.addViewController("/").setViewName("index");
-                registry.addViewController("/index.html").setViewName("index");
+//                registry.addViewController("/").setViewName("index");
+//                registry.addViewController("/index.html").setViewName("index");
                 //registry.addViewController("/login.html").setViewName("login");
             }
         };

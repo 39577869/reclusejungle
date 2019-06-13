@@ -6,6 +6,8 @@ import com.elcusejungle.vo.ClxjmainVo;
 
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 /**
  * <p>
  *  服务类
@@ -30,4 +32,8 @@ public interface IClxjmainService extends IService<Clxjmain> {
      */
     public ClxjmainVo selectById(Integer id);
 
+    /**
+     * 获取index页面现实图片地址
+     */
+    public void show(HttpServletRequest request);
 }

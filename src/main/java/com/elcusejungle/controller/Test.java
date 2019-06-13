@@ -29,10 +29,10 @@ public class Test {
     @RequestMapping("/head")
     public String head(HttpSession session){
         //return "Confession/play-record";
-        return "AtList";
+        return "index";
     }
 
-    @RequestMapping("/login")
+    @RequestMapping("/login2")
     public String login(){
         return "login";
     }
@@ -40,5 +40,10 @@ public class Test {
     @RequestMapping("/JungleList")
     public String JungleList(){
         return "JungleList";
+    }
+
+    @RequestMapping("/AtList")
+    public String AtList(){
+        return "AtList";
     }
 }

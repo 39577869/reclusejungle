@@ -2,11 +2,14 @@ package com.elcusejungle.entity;
 
     import com.baomidou.mybatisplus.annotation.IdType;
     import com.baomidou.mybatisplus.annotation.TableId;
+
+    import java.sql.Timestamp;
     import java.time.LocalDateTime;
     import java.io.Serializable;
     import lombok.Data;
     import lombok.EqualsAndHashCode;
     import lombok.experimental.Accessors;
+    import org.springframework.beans.factory.annotation.Value;
 
 /**
 * @since 2019-05-23
@@ -20,6 +23,7 @@ package com.elcusejungle.entity;
 
             @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
+
 
     private String username;
 
@@ -37,7 +41,7 @@ package com.elcusejungle.entity;
 
     private Integer city;
 
-    private LocalDateTime regtime;
+    private Timestamp regtime;
 
     private Boolean enableflag;
 

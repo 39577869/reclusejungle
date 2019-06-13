@@ -70,22 +70,22 @@
                                     <table>
                                         <tr>
                                             <td>目的地</td>
-                                            <td class="sec"><input type="text" name="clxjmain.belongCity" placeholder="请输入城市名" id="yyqx" data-wholename=""></td>
-                                            <input type="hidden" name="clxjmain.type1" value="true"/>
-                                            <input type="hidden" name="clxjmain.type2" value="true"/>
+                                            <td class="sec"><input type="text" name="belongCity" autocomplete="off" placeholder="请输入城市名" id="yyqx" data-wholename=""></td>
+                                            <input type="hidden" name="type1" value="true"/>
+                                            <input type="hidden" name="type2" value="true"/>
                                             <input type="hidden" name="page" value="1"/>
                                             <input type="hidden" name="limit" value="5"/>
                                         </tr>
                                         <tr>
                                             <td>入住</td>
-                                            <td><p><input type="text" readonly name="startTime" class="laydate-icon ts demo" placeholder="请输入日期" /> </p>
+                                            <td><p><input type="text" readonly name="startTime" class="laydate-icon ts demo" autocomplete="off" placeholder="请输入日期" /> </p>
 
-                                                <p>退房：<input type="text" readonly name="endTime" class="laydate-icon demo" placeholder="请输入日期" /> </p></td>
+                                                <p>退房：<input type="text" readonly name="endTime" class="laydate-icon demo" autocomplete="off" placeholder="请输入日期" /> </p></td>
 
                                         </tr>
                                         <tr>
                                             <td>关键词</td>
-                                            <td class="sec"><input  type="text" name="clxjmain.name" placeholder="请输入地标/商圈/景点" id="gnclkey"></td>
+                                            <td class="sec"><input  type="text" name="name" autocomplete="off" placeholder="请输入地标/商圈/景点" id="gnclkey"></td>
                                         </tr>
                                         <tr>
                                             <td></td>
@@ -100,21 +100,21 @@
                                     <table>
                                         <tr>
                                             <td>目的地</td>
-                                            <td class="sec"><input type="text" name="clxjmain.belongCity" placeholder="请输入城市名" id="jackson" data-wholename=""></td>
-                                            <input type="hidden" name="clxjmain.type1" value="false"/>
-                                            <input type="hidden" name="clxjmain.type2" value="true"/>
+                                            <td class="sec"><input type="text" name="belongCity" autocomplete="off" placeholder="请输入城市名" id="jackson" data-wholename=""></td>
+                                            <input type="hidden" name="type1" value="false"/>
+                                            <input type="hidden" name="type2" value="true"/>
                                             <input type="hidden" name="page" value="1"/>
                                             <input type="hidden" name="limit" value="5"/>
                                         </tr>
                                         <tr>
                                             <td>入住</td>
-                                            <td><p><input name="startTime" type="text" readonly  class="laydate-icon ts demo" placeholder="请输入日期"> </p>
+                                            <td><p><input name="startTime" type="text" readonly  class="laydate-icon ts demo" autocomplete="off" placeholder="请输入日期"> </p>
 
-                                                <p>退房：<input name="endTime" type="text" readonly  class="laydate-icon demo" placeholder="请输入日期"> </p></td>
+                                                <p>退房：<input name="endTime" type="text" readonly  class="laydate-icon demo" autocomplete="off" placeholder="请输入日期"> </p></td>
                                         </tr>
                                         <tr>
                                             <td>关键词</td>
-                                            <td class="sec"><input type="text" name="clxjmain.name" placeholder="请输入地标/商圈/景点" id="gjclkey"></td>
+                                            <td class="sec"><input type="text" name="name" autocomplete="off" placeholder="请输入地标/商圈/景点" id="gjclkey"></td>
                                         </tr>
                                         <tr>
                                             <td></td>
@@ -134,26 +134,25 @@
                         <div class="tj-bottom tj-bottom1">
                             <div class="xj">
                                 <!-- 国内闲居 -->
-                                <form action="<%=path %>/clxjmain!selXjOfPage.action" method="post" onsubmit="getCity('10',zmx)">
+                                <form action="/clxj/clxj" method="get" onsubmit="getCity('10',zmx)">
                                     <table>
                                         <tr>
                                             <td>目的地</td>
                                             <td class="sec ">
-                                                <input type="text"  placeholder="请输入城市名" id="zmx" data-wholename="">
-                                                <input type="hidden" name="clxjmain.belong_city" id="city10"/>
-                                                <input type="hidden" name="clxjmain.type1" value="true"/>
-                                                <input type="hidden" name="clxjmain.type2" value="false"/>
+                                                <input type="text" name="belongCity" placeholder="请输入城市名" id="zmx" autocomplete="off" data-wholename="">
+                                                <input type="hidden" name="type1" value="true"/>
+                                                <input type="hidden" name="type2" value="false"/>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>入住</td>
-                                            <td><p><input name="startTime" type="text" readonly class="laydate-icon ts demo" placeholder="请输入日期"> </p>
+                                            <td><p><input name="startTime" type="text" readonly class="laydate-icon ts demo" autocomplete="off" placeholder="请输入日期"> </p>
 
-                                                <p>退房：<input name="endTime" type="text" readonly class="laydate-icon demo" placeholder="请输入日期"> </p></td>
+                                                <p>退房：<input name="endTime" type="text" readonly class="laydate-icon demo" autocomplete="off" placeholder="请输入日期"> </p></td>
                                         </tr>
                                         <tr>
                                             <td>关键词</td>
-                                            <td class="sec"><input type="text" name="clxjmain.name"  placeholder="请输入地标/商圈/景点" id="gnxjkey" ></td>
+                                            <td class="sec"><input type="text" name="name" autocomplete="off" placeholder="请输入地标/商圈/景点" id="gnxjkey" ></td>
                                         </tr>
                                         <tr>
                                             <td></td>
@@ -165,24 +164,23 @@
                             </div>
                             <div class="xj none">
                                 <!-- 国外闲居 -->
-                                <form action="<%=path %>/clxjmain!selXjOfPage.action" method="post" onsubmit="getCity('00',fromcity)">
+                                <form action="/clxj/clxj" method="get" onsubmit="getCity('00',fromcity)">
                                     <table>
                                         <tr>
                                             <td>目的地</td>
-                                            <td class="sec"><input type="text" placeholder="请输入城市名" id='fromcity' data-wholename=""></td>
-                                            <input type="hidden" name="clxjmain.belong_city" id="city00"/>
-                                            <input type="hidden" name="clxjmain.type1" value="false"/>
-                                            <input type="hidden" name="clxjmain.type2" value="false"/>
+                                            <td class="sec"><input type="text" name="belongCity" placeholder="请输入城市名" id='fromcity' autocomplete="off" data-wholename=""></td>
+                                            <input type="hidden" name="type1" value="false"/>
+                                            <input type="hidden" name="type2" value="false"/>
                                         </tr>
                                         <tr>
                                             <td>入住</td>
-                                            <td><p><input name="startTime" type="text" readonly class="laydate-icon ts demo" placeholder="请输入日期"> </p>
+                                            <td><p><input name="startTime" type="text" readonly class="laydate-icon ts demo" autocomplete="off" placeholder="请输入日期"> </p>
 
-                                                <p>退房：<input name="endTime" type="text" readonly class="laydate-icon demo" placeholder="请输入日期"> </p></td>
+                                                <p>退房：<input name="endTime" type="text" readonly class="laydate-icon demo" autocomplete="off" placeholder="请输入日期"> </p></td>
                                         </tr>
                                         <tr>
                                             <td>关键词</td>
-                                            <td class="sec"><input name="clxjmain.name" type="text"  placeholder="请输入地标/商圈/景点" id="gjxjkey"></td>
+                                            <td class="sec"><input name="name" type="text" autocomplete="off" placeholder="请输入地标/商圈/景点" id="gjxjkey"></td>
                                         </tr>
                                         <tr>
                                             <td></td>

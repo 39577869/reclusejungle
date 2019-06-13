@@ -24,12 +24,30 @@ public class ClxjController {
     // 判断搜索类型
     @RequestMapping(value = "/clxj", method = RequestMethod.GET)
     public String clxj(Model model, ClxjmainVo clxjmainVo){
+        if (clxjmainVo.getPage() == null || clxjmainVo.getLimit() == null){
+            clxjmainVo.setLimit(new Long(5));
+            clxjmainVo.setPage(new Long(1));
+        }
         model.addAttribute("clxjmainVo", clxjmainVo);
-        if(clxjmainVo.getClxjmain().getType2()){    // 丛林
+        if(clxjmainVo.getType2()){    // 丛林
             return "AtList";
         }else{  // 闲居
             return "JungleList";
         }
+    }
+
+    // 查看丛林详细信息
+    @RequestMapping(value = "/cl", method = RequestMethod.GET)
+    public String cl(Model model, Integer id){
+        model.addAttribute("ClxjmainVo", iClxjmainService.selectById(id));
+        return "JungleDetails";
+    }
+
+    // 查看闲居详细信息
+    @RequestMapping(value = "/xj", method = RequestMethod.GET)
+    public String xj(Model model, Integer id){
+        model.addAttribute("ClxjmainVo", iClxjmainService.selectById(id));
+        return "AtDetails";
     }
 
     // 搜索

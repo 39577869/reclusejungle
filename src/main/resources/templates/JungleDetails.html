@@ -5,23 +5,23 @@
 	<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=6ckv1PGt7okn9XhxK6ris4IB"></script>
      <title>丛林闲居</title>
 
-    <script type="text/javascript" th:src="@{before/js/jquery.min.js}"></script>
-    <script type="text/javascript" th:src="@{before/js/jquery.ad-gallery.js}"></script>
-    <script type="text/javascript" th:src="@{before/js/zzsc.js}"></script>
-    <link rel="stylesheet" th:href="@{before/style/cy.css}">
-    <link rel="stylesheet" th:href="@{before/style/style.css}">
-    <link rel="stylesheet" type="text/css" th:href="@{before/style/jquery.ad-gallery.css}">
+    <script type="text/javascript" th:src="@{/before/js/jquery.min.js}"></script>
+    <script type="text/javascript" th:src="@{/before/js/jquery.ad-gallery.js}"></script>
+    <script type="text/javascript" th:src="@{/before/js/zzsc.js}"></script>
+    <link rel="stylesheet" th:href="@{/before/style/cy.css}">
+    <link rel="stylesheet" th:href="@{/before/style/style.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/before/style/jquery.ad-gallery.css}">
 	<style rel="stylesheet">  
-.pagination {font-family: Tahoma;font-size: 12px;height: 22px;margin: 5px 10px;text-align: right;}  
-.pagination a,.page-cur,.page-start,.page-end,.page-disabled,.page-skip {  
-height:22px;line-height:22px;margin:0 3px 0 0;text-align:center;vertical-align:middle;white-space:nowrap;}  
-.pagination input {border-width: 1px;}  
-.page-start, .pagination a, .page-end, .page-disabled {border: 1px solid #CCCCCC;padding: 0 5px;}  
-.pagination a {text-decoration: none;}  
-.page-cur {background-color: #FFEDE1;border: 1px solid #FD6D01;color: #FD6D01;font-weight: 700;padding: 0 5px;}  
-.page-disabled {color: #CCCCCC;}  
-.page-skip {color: #666666;padding: 0 3px;}  
-</style>  
+    .pagination {font-family: Tahoma;font-size: 12px;height: 22px;margin: 5px 10px;text-align: right;}
+    .pagination a,.page-cur,.page-start,.page-end,.page-disabled,.page-skip {
+    height:22px;line-height:22px;margin:0 3px 0 0;text-align:center;vertical-align:middle;white-space:nowrap;}
+    .pagination input {border-width: 1px;}
+    .page-start, .pagination a, .page-end, .page-disabled {border: 1px solid #CCCCCC;padding: 0 5px;}
+    .pagination a {text-decoration: none;}
+    .page-cur {background-color: #FFEDE1;border: 1px solid #FD6D01;color: #FD6D01;font-weight: 700;padding: 0 5px;}
+    .page-disabled {color: #CCCCCC;}
+    .page-skip {color: #666666;padding: 0 3px;}
+    </style>
 </head>
 <body>
 <div>
@@ -29,8 +29,7 @@ height:22px;line-height:22px;margin:0 3px 0 0;text-align:center;vertical-align:m
     <div class="yc-txdd1">
         
         <!--首页banner-->
-        <div th:insert="~{head::top1}"></div>
-        <div th:insert="~{head::top2}"></div>
+        <div th:replace="head::html"></div>
  <script type="text/javascript">
 //获取地址栏
  function GetRequest() {
@@ -66,7 +65,7 @@ function loginOut(){
 
 <div class="yc-txdd">
     <div class="yc-mbx"> 
-        <p>当前位置：<a href="javascript:void(0)" class="ll" onclick="goList()"><c:if test="${clxjmainJson.type1 == 1}">国内</c:if><c:if test="${clxjmainJson.type1 ==0}">国际</c:if><c:if test="${clxjmainJson.type2 == 1}">丛林</c:if><c:if test="${clxjmainJson.type2 == 0}">闲居</c:if></a> >  <a href="javascript:void(0)" class="xz">${clxjmainJson.name }</a></p>
+        <p>当前位置：<a href="javascript:void(0)" class="ll" onclick="goList()"><span th:text="(${ClxjmainVo.type1 == false}?'国际' : '国内')+(${ClxjmainVo.type2 == false}?'闲居' : '丛林')"></span></a> >  <a href="javascript:void(0)" class="xz"><span th:text="${ClxjmainVo.name}"></span></a></p>
     </div>
     <div><img th:src="@{before/images/xxy_03.jpg}"></div>
 </div>
@@ -76,8 +75,8 @@ function loginOut(){
 <input type="hidden" value="${clxjmainJson.type1 }" id="type1"/>
 <input type="hidden" value="${clxjmainJson.type2 }" id="type2"/> 
 <input type="hidden" value="${clxjmainJson.id }" id="clxjmainId"/>
-    <p class="difang">${clxjmainJson.name }</p>
-    <p class="luxian">${clxjmainJson.address }</p>
+    <p class="difang" th:text="${ClxjmainVo.name}"></p>
+    <p class="luxian" th:text="${ClxjmainVo.address}"></p>
     <div>
         <div class="xqyt-left">
             <div id="gallery" class="ad-gallery">
@@ -103,8 +102,8 @@ function loginOut(){
         <div class="xqyt-right">
             <div class="xr-top">
                 <!-- <div class="hpl"><i class="bfl">98%</i><i class="hp">好评率</i></div> -->
-                <span class="dp">共<i>${clxjmainJson.ccount }</i>点评</span>|
-                <span class="fwzs"><img th:src="@{before/js/images/18.png}">服务指数：<i class="fs">${clxjmainJson.hpl }</i><i class="yg">/10分</i></span>
+                <span class="dp">共<i th:text="${ClxjmainVo.count}"></i>点评</span>|
+                <span class="fwzs"><img th:src="@{before/js/images/18.png}">服务指数：<i class="fs" th:text="${ClxjmainVo.avg}"></i><i class="yg">/10分</i></span>
             </div>
             <div class="xr-bottom">
                 <!-- <div class="tk">
@@ -121,14 +120,14 @@ function loginOut(){
                     <p class="xjq">地铁4号线北宫门站，换乘346路公交车至终</p>
                 </div> -->  
                <div class="tk rjj"> 
-                    <p>日均价：<i style="font-size: 25px;">随缘</i>
-                    <a href="<%=path%>/clxjmain!selClxjOfId.action?clxjmain.id=${clxjmainJson.id}&isOrder=2">立即预定</a>
+                    <p>日均价：<i style="font-size: 25px;" th:text="${ClxjmainVo.price == 0}? '随缘' : ${ClxjmainVo.price}"></i>
+                    <a th:if="${user != null}" href="<%=path%>/clxjmain!selClxjOfId.action?clxjmain.id=${clxjmainJson.id}&isOrder=2">立即预定</a>
                         <!-- 未登录显示-->
-                     <!--<a href="#" onclick="Alllogin()">请先登录</a> -->
+                     <a th:if="${user == null}" href="#" onclick="Alllogin()">请先登录</a>
                      </p> 
                 </div> 
                 <div style="margin-top: 100px;">       
-                <p>&nbsp;&nbsp;联系电话:&nbsp;&nbsp;${clxjmainJson.mobile}</p> 
+                <p>&nbsp;&nbsp;联系电话:&nbsp;&nbsp;<span th:text="${ClxjmainVo.mobile}"></span></p>
                 </div>
             </div>
         </div>
@@ -138,27 +137,25 @@ function loginOut(){
         <div class="xqy-content"> 
             <div class="xqycon-left">
                 <p class="cljj">
-                    丛林 闲居 简介<input type="hidden" id="cid" value="${clxjmainJson.id }"/>
+                    丛林 闲居 简介<input type="hidden" id="cid" th:value="${ClxjmainVo.id }"/>
                 </p>
-                <p class="jj"> 
-                	${clxjmainJson.introduction }
+                <p class="jj" id="introduction">
+                    [[${ClxjmainVo.introduction}]]
                 </p>
-                <c:if test="${clxjmainJson.type2==1 }">
-                <div class="xr-bottom"> 
+                <div class="xr-bottom" th:if="${ClxjmainVo.type2 == true}">
                     <div>
                         <p class="syzc">寺院主持</p>
-                        <p class="xjq1"><a href="#">${clxjmainJson.abbot }</a><span>${clxjmainJson.abbotresume }<span> </p>
+                        <p class="xjq1"><a href="#"><span th:text="${ClxjmainVo.abbot}"></span></a><span th:text="${ClxjmainVo.abbotresume}"></span> </p>
                     </div>
                     <div class="tk">
                         <p class="syzc">开放时间</p>
-                        <p class="xjq1">${clxjmainJson.opentime }</p>
+                        <p class="xjq1" th:text="${#dates.format(ClxjmainVo.opentime, 'yyyy-MM-dd')}"></p>
                     </div>
                    <!--  <div class="tk">
                         <p class="syzc">交通路线</p>
                         <p class="xjq1">地铁4号线北宫门站，换乘346路公交车至终点凤凰岭下车至凤凰岭公园大门，往里约三百米，即到龙泉寺。</p>
                     </div> -->
                 </div>
-                </c:if>
                 <p class="wzyzb">位置与周边</p>
                 <div class="mapdiv" id="mapditu"><div id="allmap"></div></div>
                 <p class="wzyzb">用户点评</p>
@@ -172,7 +169,7 @@ function loginOut(){
       					<div class="xxy-mian"> 
       					
       					<!-- 所有评论 -->
-                        <div class="xm-one"">  
+                        <div class="xm-one">
                             <div class="xm-top" id="commentAll" style="border:none;min-height:0px;font-size:15px;">
                             </div>
                         <div class="fenye1">
@@ -221,16 +218,16 @@ function loginOut(){
             </div>
             <div class="xqycon-right">
                 
-                <p class="zbxj"><img src="images/xxy1_03.jpg">周边</p>
+                <p class="zbxj"><img th:src="@{/before/images/xxy1_03.jpg}">周边</p>
                 <!--周边暂时无推荐哦-->
                 <div class="jd" >      
-                    <p><img style="cursor:pointer;" onclick="goOther(${clxj.id})" height="70" width="100" src="${clxjBackurl }${clxj.first_img_min}"> </p>
-                    <p class="js"><span>${clxj.name}</span><span class="jdy"></span></p>
+                    <p><img style="cursor:pointer;" onclick="goOther([[${ClxjmainVo.id}]])" height="70" width="100" th:src="@{/before/${ClxjmainVo.firstImgMin}}"> </p>
+                    <p class="js"><span th:text="${ClxjmainVo.name}"></span><span class="jdy"></span></p>
                     <p class="qian">￥<i>随缘</i></p>
                 </div>
             </div>
         </div>
- <%@ include  file="bottom.jsp"%>
+        <div th:replace="bottom::html"></div>
     </div>
 <div class="tcc none">
     <div class="cgxd1">
@@ -263,10 +260,9 @@ function loginOut(){
 
 <script th:src="@{before/js/index.js}"></script>
 
-
 <script type="text/javascript">
-    var address = '${clxjmainJson.address }';
-    var name = '${clxjmainJson.name }';
+    var address = '${ClxjmainVo.address }';
+    var name = '${ClxjmainVo.name }';
 	// 百度地图API功能
 	var map = new BMap.Map("allmap");
 	map.enableScrollWheelZoom(true);     //开启鼠标滚轮缩放 
@@ -298,7 +294,7 @@ function loginOut(){
 		id.width = 50;
 		}
 </script>
-<script type="text/javascript">  
+<script type="text/javascript">
 getCount();
 showComment();
 var countAll;
@@ -390,14 +386,14 @@ function deleteRows(tabid){
         i=i-1;
     }
 }
-/**  
+/**
   
  * @param {String} divName 分页导航渲染到的dom对象ID 
  * @param {String} funName 点击页码需要执行后台查询数据的JS函数 
  * @param {Object} params 后台查询数据函数的参数，参数顺序就是该对象的顺序，当前页面一定要设置在里面的 
  * @param {String} total 后台返回的总记录数 
  * @param {Boolean} pageSize 每页显示的记录数，默认是10 
- */  
+ */
  function supage(divId, funName, params, curPage, total, pageSize){  
 	    var output = '<div class="pagination" style="margin-top:0px;margin-left:-60px;width:320px;">';    
 	    var pageSize = parseInt(pageSize)>0 ? parseInt(pageSize) : 10;  

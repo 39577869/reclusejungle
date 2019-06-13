@@ -4,7 +4,6 @@ import com.elcusejungle.entity.Clxjmain;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.elcusejungle.vo.ClxjmainVo;
 
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -23,5 +22,12 @@ public interface IClxjmainService extends IService<Clxjmain> {
      * @return
      */
     public Map<String ,Object> selectByfind(ClxjmainVo clxjmainVo);
+
+    /**
+     * 查询丛林详细信息
+     * @param id
+     * @return
+     */
+    public ClxjmainVo selectById(Integer id);
 
 }

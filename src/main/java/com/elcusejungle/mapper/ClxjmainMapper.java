@@ -1,11 +1,11 @@
 package com.elcusejungle.mapper;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.elcusejungle.entity.Clxjmain;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.elcusejungle.vo.ClxjmainVo;
-
-import java.util.List;
+import org.apache.ibatis.annotations.Param;
 
 /**
  * <p>
@@ -17,6 +17,8 @@ import java.util.List;
  */
 public interface ClxjmainMapper extends BaseMapper<Clxjmain> {
 
-    IPage<ClxjmainVo> selectByfind(ClxjmainVo clxjmainVo);
+    IPage<ClxjmainVo> selectByfind(Page<ClxjmainVo> page, @Param("clxjmainVo") ClxjmainVo clxjmainVo);
+
+    ClxjmainVo selectById(@Param("id")Integer id);
 
 }

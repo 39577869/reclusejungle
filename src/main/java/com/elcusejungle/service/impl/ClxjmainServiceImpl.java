@@ -1,16 +1,15 @@
 package com.elcusejungle.service.impl;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.elcusejungle.entity.Clxjmain;
 import com.elcusejungle.mapper.ClxjmainMapper;
 import com.elcusejungle.service.IClxjmainService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.elcusejungle.utils.LayuiUtil;
 import com.elcusejungle.vo.ClxjmainVo;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -27,7 +26,14 @@ public class ClxjmainServiceImpl extends ServiceImpl<ClxjmainMapper, Clxjmain> i
 
     @Override
     public Map<String, Object> selectByfind(ClxjmainVo clxjmainVo) {
-        IPage<ClxjmainVo> clxjmain = baseMapper.selectByfind(clxjmainVo);
-        return LayuiUtil.data(clxjmainVo.getPages(), clxjmain.getRecords());
+        Page<ClxjmainVo> page = new Page<>(clxjmainVo.getPage(), clxjmainVo.getLimit());
+        IPage<ClxjmainVo> iPage = baseMapper.selectByfind(page, clxjmainVo);
+        return LayuiUtil.data(iPage.getTotal(), iPage.getRecords());
     }
+
+    @Override
+    public ClxjmainVo selectById(Integer id) {
+        return baseMapper.selectById(id);
+    }
+
 }
